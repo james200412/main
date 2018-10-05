@@ -38,11 +38,13 @@ include('../../db/dbconnect.php');
 
   if(mysqli_query($connect, $query))  
       {  
+
            $output .= '<label class="text-success">' . $message . '</label>';  
            $select_query = "SELECT * FROM TBUSER ORDER BY ID DESC";  
            $result = mysqli_query($connect, $select_query);  
            $output .= '  
-                <table class="table table-bordered">  
+                <table class="table table-bordered">
+                <thead>  
                      <tr>                                      
                      <th width="10%">USER ID</th>  
                      <th width="10%">NAME</th>
@@ -53,6 +55,7 @@ include('../../db/dbconnect.php');
                      <th width="5%"></th>   
                      <th width="5%"></th>  
                      </tr> 
+                     </thead>
            ';  
            
            while($row = mysqli_fetch_array($result))  
@@ -67,6 +70,7 @@ include('../../db/dbconnect.php');
                       }                              
                       
                 $output .= '  
+                <tbody>
                      <tr>  
                      <td>' . $row["id"] . '</td> 
                      <td>' . $row["uname"] . '</td> 
@@ -78,6 +82,7 @@ include('../../db/dbconnect.php');
                           <td><input type="button" name="edit" value="Edit" id="'.$row["id"] .'" class="btn btn-info btn-xs edit_data" /></td>  
                           <td><input type="button" name="delete" value="delete" id="' . $row["id"] . '" class="btn btn-info btn-xs delete_data" /></td>  
                      </tr>  
+                     </tbody>
                 ';  
            }  
            $output .= '</table>';  
@@ -86,3 +91,17 @@ include('../../db/dbconnect.php');
  }
 
  ?>
+
+<script>   	
+
+   	$( ".table" ).DataTable({
+bPaginate: true,
+bLengthChange: false,
+bFilter: true,
+bSort: false, 
+bInfo: false,
+bAutoWidth: false,
+pageLength: 10
+  	});
+
+</script>

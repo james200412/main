@@ -11,9 +11,17 @@
            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
 
+  <!-- DataTables -->
+  <link href="css/jquery.dataTables.min.css" rel="stylesheet" />
+  <script src="/js/jquery.dataTables.min.js"></script>
+
+  
+  
       </head>  
       <body>  
-           <br /><br />  
+ 
+
+          <br /><br />
            <div class="container" style="width:1000px;">  
                 <h3 align="center">Content Mangement Systems | Account Management</h3>  
                 <br />  
@@ -24,6 +32,7 @@
                      <br />  
                      <div id="usertable">  
                           <table class="table table-bordered">  
+                          <thead>
                                <tr>  
                                     
                                     <th width="10%">USER ID</th>  
@@ -35,6 +44,8 @@
                                     <th width="5%"></th>
                                     <th width="5%"></th>  
                                </tr>  
+                               </thead>
+                               <tbody>
                                <?php  
                                while($row = mysqli_fetch_array($result))  
                                {  
@@ -61,6 +72,7 @@
                                <?php  
                                } 
                                ?>  
+                                  <tbody>
                           </table>  
                      </div>  
                 </div>  
@@ -70,7 +82,7 @@
 
 
   <!-- Add Form & Edit Form-->
- <div id="dataModal" class="modal fade">  
+ <!--<div id="dataModal" class="modal fade">  
       <div class="modal-dialog">  
            <div class="modal-content">  
                 <div class="modal-header">  
@@ -84,7 +96,7 @@
                 </div>  
            </div>  
       </div>  
- </div>  
+ </div>  -->
 
 
  <div id="add_data_Modal" class="modal fade">  
@@ -92,7 +104,7 @@
            <div class="modal-content">  
                 <div class="modal-header">  
                      <button type="button" class="close" data-dismiss="modal">&times;</button>  
-                     <h4 class="modal-title">Account Management</h4>  
+                     <h4 class="modal-title">Account</h4>  
                 </div>  
                 <div class="modal-body">  
                      <form method="post" id="insert_form">  
@@ -130,9 +142,8 @@
       </div>  
  </div> 
 <!-- End Add Form and Edit Form-->
+
  <script>  
-
-
 
  $(document).ready(function(){  
       $('#add').click(function(){  
@@ -251,4 +262,13 @@ $(document).on('click', '.delete_data', function(){
  });
 
 
+   	$( ".table" ).DataTable({
+bPaginate: true,
+bLengthChange: false,
+bFilter: true,
+bSort: false, 
+bInfo: false,
+bAutoWidth: false,
+pageLength: 10
+  	});
  </script>
