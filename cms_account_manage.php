@@ -118,7 +118,7 @@
                           <input type="text" name="email" id="email" class="form-control" />  
                           <br />                            
                           <label>Enter Phone Number</label>  
-                          <input type="text" name="phone" id="phone" class="form-control" />  
+                          <input type="text" name="phone" id="phone" size="8" maxlength="8" class="form-control" />  
                           <br />
                           <label>Enter Password</label>  
                           <input type="text" name="password" id="password" class="form-control" />  
@@ -209,8 +209,9 @@
                      success:function(data){  
                           $('#insert_form')[0].reset();  
                           $('#add_data_Modal').modal('hide');  
-                          $('#usertable').html(data);
-                          $('#userid').val("");  
+                         /* $('#usertable').html(data);*/
+                          $('#userid').val("");
+                          location.reload();  
                      }  
                 });  
            }  

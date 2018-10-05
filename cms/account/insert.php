@@ -87,7 +87,7 @@ include('../../db/dbconnect.php');
            }  
            $output .= '</table>';  
       }  
-      echo $output;  
+     /* echo $output;  */
  }
 
  ?>
