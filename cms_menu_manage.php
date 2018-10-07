@@ -110,9 +110,9 @@ test
                                     <th width="10%">PRICE</th>
                                     <th width="10%">TYPE</th>
                                     <th width="20%">DETAIL</th>
-                                    <th width="5%"></th>
-                                    <th width="5%"></th>  
-                                   
+                                    <th width="10%">ACTIVATE</th>
+                                    <th width="10%"></th>
+                                    <th width="10%"></th>  
                                </tr>  
                                </thead>
                                <tbody>
@@ -126,8 +126,14 @@ test
                                     <td><?php echo $row["dname"]; ?></td> 
                                     <td><?php echo $row["dprice"]; ?></td> 
                                     <td><?php echo $row["dtype"]; ?></td>
-                                    <td><?php echo $row["detail"]; ?></td> 
-
+                                    <td><?php echo $row["detail"]; ?></td>
+                                    <td><?php if ($row["activate"] == 0){
+                                      echo "No";
+                                    }else {
+                                      echo "Yes";
+                                    }                                             
+                                    ?>
+                                    </td>  
                                     </td>
                                     <td><input type="button" name="edit" value="Edit" id="<?php echo $row["id"]; ?>" class="btn btn-info btn-xs edit_data" /></td>  
   <!-- <td><input type="button" name="view" value="view" id="<?php echo $row["id"]; ?>" class="btn btn-info btn-xs view_data" /></td> -->
@@ -202,14 +208,14 @@ test
            <div class="modal-content">  
                 <div class="modal-header">  
                      <button type="button" class="close" data-dismiss="modal">&times;</button>  
-                     <h4 class="modal-title">Account</h4>  
+                     <h4 class="modal-title">Menu</h4>  
                 </div>  
                 <div class="modal-body">  
                      <form method="post" id="insert_form">  
                           <label>Dish Name</label> 
                           <input type="text" name="name" id="name" class="form-control" />  
                           <br />  
-                          <label>Enter Image</label>  
+                          <label>Image</label>  
                           <input type="text" name="image" id="image" class="form-control" />    
                           <br />  
                           <label>Price</label>  
@@ -224,7 +230,13 @@ test
                           <label>Enter Detail</label>  
                           <textarea name="detail" id="detail" class="form-control"></textarea>  
                           <br />  
-
+                          
+                          <label>Activate</label>   
+                          <select name="activate" id="activate" class="form-control">  
+                               <option value="0">No</option>  
+                               <option value="1">Yes</option>               
+                          </select>  
+                          <br />  
                           <input type="hidden" name="userid" id="userid" />
 
                           <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />  
@@ -261,7 +273,7 @@ test
                      $('#price').val(data.dprice);
                      $('#type').val(data.dtype);
                      $('#detail').val(data.detail);                                        
-                                         
+                     $('#activate').val(data.activate);
                      $('#insert').val("Update");  
                      $('#add_data_Modal').modal('show');  
                 }  

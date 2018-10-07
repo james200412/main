@@ -88,10 +88,10 @@ include 'cms_session.php';
                 <div class="col-lg-12">
                     <div class="text-center m-t-lg">
                         <h1>
-                            Welcome in INSPINIA Static SeedProject
+                            Welcome!!! This is Content Management Systems
                         </h1>
                         <small>
-                            It is an application skeleton for a typical web app. You can use it to quickly bootstrap your webapp projects and dev environment for these projects.
+                            testing123
                         </small>
                     </div>
                 </div>

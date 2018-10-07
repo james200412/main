@@ -228,9 +228,9 @@ test
                           <br />  
                           <label>Select User Level</label>  
                           <select name="level" id="level" class="form-control">  
-                               <option value="2">Admin</option>  
+                               <option value="0">Customer</option>  
                                <option value="1">Staff</option>
-                               <option value="0">Customer</option>    
+                               <option value="2">Admin</option>    
                           </select>  
                           <br />  
                           <input type="hidden" name="userid" id="userid" />

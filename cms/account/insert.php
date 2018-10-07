@@ -37,7 +37,6 @@ include('../../db/dbconnect.php');
 
   if(mysqli_query($connect, $query))  
       {  
-
  
            $select_query = "SELECT * FROM TBUSER ORDER BY ID DESC";  
            $result = mysqli_query($connect, $select_query);  
@@ -45,7 +44,6 @@ include('../../db/dbconnect.php');
            while($row = mysqli_fetch_array($result)){}
 
       }  
-     /* echo $output;  */
  }
 
  ?>
