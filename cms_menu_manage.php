@@ -2,7 +2,7 @@
 include 'db/dbconnect.php';
 include 'cms_session.php';
 
- $query = "SELECT * FROM TBUSER ORDER BY id DESC";  
+ $query = "SELECT * FROM TBMENU ORDER BY id ASC";  
  $result = mysqli_query($connect, $query);  
  ?>  
 <!DOCTYPE html>
@@ -46,10 +46,10 @@ test
                 <li>
                     <a href="cms_index.php"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard Index</span></a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="cms_account_manage.php"><i class="fa fa-th-large"></i> <span class="nav-label">Account Management</span> </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="cms_menu_manage.php"><i class="fa fa-th-large"></i> <span class="nav-label">Menu Management</span> </a>
                 </li>
                 <li>
@@ -92,11 +92,11 @@ test
                     
   <!--start-->
            <div class="container" style="width:100%;">
-                <h3 align="center">Account Management</h3>  
+                <h3 align="center">Menu Management</h3>  
                 <br />  
                 <div class="table-responsive">  
                      <div>  
-                          <button type="button" name="add" id="add" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-warning">Add User Account</button>  
+                          <button type="button" name="add" id="add" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-warning">Add Dish</button>  
                      </div>  
                      <br />  
                      <div id="usertable">  
@@ -104,14 +104,15 @@ test
                           <thead>
                                <tr>  
                                     
-                                    <th width="10%">USER ID</th>  
-                                    <th width="10%">NAME</th>
-                                    <th width="20%">ADDRESS</th>
-                                    <th width="10%">EMAIL</th>
-                                    <th width="10%">PHONE</th>
-                                    <th width="10%">USER LEVEL</th>
+                                    <th width="10%">ID</th>  
+                                    <th width="10%">DISH IMAGE</th>
+                                    <th width="10%">DISH NAME</th>                                    
+                                    <th width="10%">PRICE</th>
+                                    <th width="10%">TYPE</th>
+                                    <th width="20%">DETAIL</th>
                                     <th width="5%"></th>
                                     <th width="5%"></th>  
+                                   
                                </tr>  
                                </thead>
                                <tbody>
@@ -120,19 +121,13 @@ test
                                {  
                                ?>  
                                <tr>  
-                                    <td><?php echo $row["id"]; ?></td> 
-                                    <td><?php echo $row["uname"]; ?></td> 
-                                    <td><?php echo $row["uaddress"]; ?></td> 
-                                    <td><?php echo $row["uemail"]; ?></td> 
-                                    <td><?php echo $row["uphone"]; ?></td> 
-                                    <td><?php if ($row["ulevel"] == 2){
-                                      echo "Admin";
-                                    }  else if($row["ulevel"] == 1){
-                                      echo "Staff";
-                                    }else{
-                                      echo "Customer";
-                                    }                              
-                                    ?>
+                                    <td><?php echo $row["id"]; ?></td>                                    
+                                    <td><img src="<?php echo img . '/' . $row["dimage"]; ?>" height="100" width="100"/></td>
+                                    <td><?php echo $row["dname"]; ?></td> 
+                                    <td><?php echo $row["dprice"]; ?></td> 
+                                    <td><?php echo $row["dtype"]; ?></td>
+                                    <td><?php echo $row["detail"]; ?></td> 
+
                                     </td>
                                     <td><input type="button" name="edit" value="Edit" id="<?php echo $row["id"]; ?>" class="btn btn-info btn-xs edit_data" /></td>  
   <!-- <td><input type="button" name="view" value="view" id="<?php echo $row["id"]; ?>" class="btn btn-info btn-xs view_data" /></td> -->
@@ -211,28 +206,25 @@ test
                 </div>  
                 <div class="modal-body">  
                      <form method="post" id="insert_form">  
-                          <label>Enter User Name</label> 
+                          <label>Dish Name</label> 
                           <input type="text" name="name" id="name" class="form-control" />  
                           <br />  
-                          <label>Enter Address</label>  
-                          <textarea name="address" id="address" class="form-control"></textarea>  
+                          <label>Enter Image</label>  
+                          <input type="text" name="image" id="image" class="form-control" />    
                           <br />  
-                          <label>Enter Email</label>  
-                          <input type="text" name="email" id="email" class="form-control" />  
+                          <label>Price</label>  
+                          <input type="text" name="price" id="price" class="form-control" />  
                           <br />                            
-                          <label>Enter Phone Number</label>  
-                          <input type="text" name="phone" id="phone" size="8" maxlength="8" class="form-control" />  
-                          <br />
-                          <label>Enter Password</label>  
-                          <input type="password" name="password" size="20" maxlength="20" id="password" class="form-control" />  
-                          <br />  
-                          <label>Select User Level</label>  
-                          <select name="level" id="level" class="form-control">  
-                               <option value="2">Admin</option>  
-                               <option value="1">Staff</option>
-                               <option value="0">Customer</option>    
+                          <label>Type</label>   
+                          <select name="type" id="type" class="form-control">  
+                               <option value="food">Food</option>  
+                               <option value="drink">Drink</option>               
                           </select>  
+                          <br />
+                          <label>Enter Detail</label>  
+                          <textarea name="detail" id="detail" class="form-control"></textarea>  
                           <br />  
+
                           <input type="hidden" name="userid" id="userid" />
 
                           <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />  
@@ -258,18 +250,17 @@ test
       $(document).on('click', '.edit_data', function(){  
            var userid = $(this).attr("id");  
            $.ajax({  
-                url:"cms/account/fetch.php",  
+                url:"cms/menu/fetch.php",  
                 method:"POST",  
                 data:{userid:userid},  
                 dataType:"json",  
                 success:function(data){
                      $('#userid').val(data.id);                   
-                     $('#name').val(data.uname);  
-                     $('#address').val(data.uaddress);  
-                     $('#email').val(data.uemail);
-                     $('#phone').val(data.uphone);
-                     $('#level').val(data.ulevel);                                        
-                     $('#password').val(data.upassword); 
+                     $('#name').val(data.dname);  
+                     $('#image').val(data.dimage);  
+                     $('#price').val(data.dprice);
+                     $('#type').val(data.dtype);
+                     $('#detail').val(data.detail);                                        
                                          
                      $('#insert').val("Update");  
                      $('#add_data_Modal').modal('show');  
@@ -282,25 +273,25 @@ test
            event.preventDefault();  
            if($('#name').val() == "")  
            {  
-                alert("Name is required");  
+                alert("Dish Name is required");  
            }  
-           else if($('#address').val() == '')  
+           else if($('#image').val() == '')  
            {  
-                alert("Address is required");  
+                alert("Image is required");  
            }
 
-           else if($('#email').val() == '')  
+           else if($('#price').val() == '')  
            {  
-                alert("Email is required");  
+                alert("Price is required");  
            }  
-           else if($('#password').val() == '')  
+           else if($('#type').val() == '')  
            {  
-                alert("Password is required");  
+                alert("Type is required");  
            }  
            else  
            {  
                 $.ajax({  
-                     url:"cms/account/insert.php",  
+                     url:"cms/menu/insert.php",  
                      method:"POST",  
                      data:$('#insert_form').serialize(), 
 
@@ -327,7 +318,7 @@ test
            if(userid != '')  
            {  
                 $.ajax({  
-                     url:"cms/account/select.php",  
+                     url:"cms/menu/select.php",  
                      method:"POST",  
                      data:{userid:userid},  
                      success:function(data){  
@@ -346,7 +337,7 @@ $(document).on('click', '.delete_data', function(){
   if(confirm("Are you sure you want to delete this?"))
   {
    $.ajax({
-    url:"cms/account/delete.php",
+    url:"cms/menu/delete.php",
     method:"POST",
     data:{userid:userid},
     success:function(data)
