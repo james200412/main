@@ -211,33 +211,36 @@ test
                      <h4 class="modal-title">Menu</h4>  
                 </div>  
                 <div class="modal-body">  
-                     <form method="post" id="insert_form">  
+                     <form method="post" id="add_form" action="<?php $_SERVER['PHP_SELF']?>" enctype="multipart/form-data">  
                           <label>Dish Name</label> 
-                          <input type="text" name="name" id="name" class="form-control" />  
-                          <br />  
-                          <label>Image</label>  
-                          <input type="text" name="image" id="image" class="form-control" />    
+                          <input type="text" name="name" id="name" class="form-control" required/>  
                           <br />  
                           <label>Price</label>  
-                          <input type="text" name="price" id="price" class="form-control" />  
+                          <input type="text" name="price" id="price" class="form-control" required/>  
                           <br />                            
                           <label>Type</label>   
-                          <select name="type" id="type" class="form-control">  
+                          <select name="type" id="type" class="form-control" required>  
                                <option value="food">Food</option>  
                                <option value="drink">Drink</option>               
                           </select>  
                           <br />
                           <label>Enter Detail</label>  
                           <textarea name="detail" id="detail" class="form-control"></textarea>  
-                          <br />  
-                          
+                          <br />                            
                           <label>Activate</label>   
                           <select name="activate" id="activate" class="form-control">  
                                <option value="0">No</option>  
                                <option value="1">Yes</option>               
                           </select>  
-                          <br />  
-                          <input type="hidden" name="userid" id="userid" />
+                          <br />
+
+
+                          <label>Select image to upload</label>
+                          <input type="file" name="fileToUpload" id="fileToUpload">
+
+
+                          <br />
+                          <input type="hidden" name="dishid" id="dishid" />
 
                           <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />  
                      </form>  
@@ -251,6 +254,10 @@ test
 <!-- End Add Form and Edit Form-->
 
 
+<?php
+include 'cms/menu/insert.php';
+?>
+
 <script>
  $(document).ready(function(){  
       $('#add').click(function(){  
@@ -260,14 +267,14 @@ test
 
 
       $(document).on('click', '.edit_data', function(){  
-           var userid = $(this).attr("id");  
+           var dishid = $(this).attr("id");  
            $.ajax({  
                 url:"cms/menu/fetch.php",  
                 method:"POST",  
-                data:{userid:userid},  
+                data: {dishid: dishid},
                 dataType:"json",  
                 success:function(data){
-                     $('#userid').val(data.id);                   
+                     $('#dishid').val(data.id);                   
                      $('#name').val(data.dname);  
                      $('#image').val(data.dimage);  
                      $('#price').val(data.dprice);
@@ -316,7 +323,8 @@ test
                           $('#insert_form')[0].reset();  
                           $('#add_data_Modal').modal('hide');  
                          /* $('#usertable').html(data);*/
-                          $('#userid').val("");
+                          $('#dishid').val("");
+                         alert(data);
                           location.reload();  
                      }  
                 });  
@@ -326,13 +334,13 @@ test
 /*
 
       $(document).on('click', '.view_data', function(){  
-           var userid = $(this).attr("id");  
-           if(userid != '')  
+           var dishid = $(this).attr("id");  
+           if(dishid != '')  
            {  
                 $.ajax({  
                      url:"cms/menu/select.php",  
                      method:"POST",  
-                     data:{userid:userid},  
+                     data:{dishid:dishid},  
                      success:function(data){  
                           $('#userdetail').html(data);  
                           $('#dataModal').modal('show');  
@@ -344,14 +352,14 @@ test
 
 
 $(document).on('click', '.delete_data', function(){
-  var userid = $(this).attr("id");
+  var dishid = $(this).attr("id");
   var el = this;
   if(confirm("Are you sure you want to delete this?"))
   {
    $.ajax({
     url:"cms/menu/delete.php",
     method:"POST",
-    data:{userid:userid},
+    data:{dishid:dishid},
     success:function(data)
     {
      $(el).closest('tr').css('background','#de6f6c');
@@ -368,10 +376,10 @@ $(document).on('click', '.delete_data', function(){
   }
  });
  
-   	$( ".table" ).DataTable({
+$( ".table" ).DataTable({
 bPaginate: true,
 bLengthChange: false,
-bFilter: false,
+bFilter: true,
 bSort: false, 
 bInfo: false,
 bAutoWidth: false,
@@ -379,3 +387,4 @@ pageLength: 10
   	});
 
 </script>
+

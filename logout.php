@@ -3,7 +3,7 @@ session_start();
 
 require ('db/dbconnect.php');
 
-$sql= "SELECT NAME FROM TBUSER WHERE id='$_SESSION[user]'";
+$sql= "SELECT uname FROM TBUSER WHERE id='$_SESSION[user]'";
 $r = mysqli_query ($connect, $sql);
 $num = @mysqli_num_rows($r);
 
