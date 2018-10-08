@@ -7,14 +7,14 @@
         include 'mysqli_connect.php';
         $userID = $_SESSION['user'];
         $query = "SELECT PRIVILEGEID FROM ACCOUNT WHERE USERID = '$userID'";
-        $result = mysqli_query($dbc, $query);
+        $result = mysqli_query($connect, $query);
         if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
             $privi = $row['PRIVILEGEID'];
             if ( $privi == 0) 
                 header("Location: homepage.php");        
         }    
-        mysqli_close($dbc);
+        mysqli_close($connect);
 
    }
    
@@ -249,7 +249,7 @@ if (isset($_POST['submit'])) {
         $query = "INSERT INTO ACCOUNT SET USERID='$_POST[userID]', NAME='$_POST[userName]', AMOUNT = '$_POST[amount]', POINTS='$_POST[point]',
                     EMAIL='$_POST[email]', TELEPHONE='$_POST[tel]', PRIVILEGEID='$_POST[privilegeid]', PASSWORD='$_POST[userPassword]'";
 
-        if (mysqli_query($dbc, $query)) {
+        if (mysqli_query($connect, $query)) {
             echo '成功加入新用戶';
             //echo "<script>$(document).ready(function() {" . "$('#message').html(\"成功加入新用戶\");})</script>";
         }  else {
@@ -262,7 +262,7 @@ if (isset($_POST['submit'])) {
     if ($_POST['submit'] == "搜尋") {
         $userID = $_POST['userID'];
         $query = "SELECT * FROM ACCOUNT WHERE USERID = '$userID'";
-        $result = mysqli_query($dbc, $query);
+        $result = mysqli_query($connect, $query);
         if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
 
@@ -284,7 +284,7 @@ if (isset($_POST['submit'])) {
             //basename($_FILES["fileToUpload"]["name"]) = $row['DISHIMAGE'];  //test  
             $target_file = $target_dir . $row['DISHIMAGE'];
         } else {
-            echo '沒有配對的用戶 ' . mysqli_error($dbc);
+            echo '沒有配對的用戶 ' . mysqli_error($connect);
         }
     }
 
@@ -301,7 +301,7 @@ if (isset($_POST['submit'])) {
         
         $query = "UPDATE ACCOUNT SET NAME='$_POST[userName]', AMOUNT = '$_POST[amount]', POINTS='$_POST[point]',
                     EMAIL='$_POST[email]', TELEPHONE='$_POST[tel]', PRIVILEGEID=$r, PASSWORD='$_POST[userPassword]' WHERE USERID = '$userID'";
-        if (mysqli_query($dbc, $query)) {
+        if (mysqli_query($connect, $query)) {
             echo '成功更改用戶資料';
         }  else {
             echo '更改用戶資料失敗';
@@ -311,7 +311,7 @@ if (isset($_POST['submit'])) {
     if ($_POST['submit'] == "刪除") {
         $userID = $_POST['userID'];
         $query = "DELETE FROM ACCOUNT WHERE USERID = '$userID'";
-        $result = mysqli_query($dbc, $query);
+        $result = mysqli_query($connect, $query);
         if ($result) {
             echo '成功刪除用戶';
         }  else {
@@ -320,7 +320,7 @@ if (isset($_POST['submit'])) {
         
     }
      
-    mysqli_close($dbc);
+    mysqli_close($connect);
    
 }
 
@@ -358,7 +358,7 @@ if (isset($_POST['submit'])) {
                     $query = "SELECT * FROM ACCOUNT WHERE PRIVILEGEID = 0";
                     if ($privi == 2) 
 					    $query = "SELECT * FROM ACCOUNT";                    
-					$result = mysqli_query($dbc, $query);
+					$result = mysqli_query($connect, $query);
 					if ($result) {
 						while ($row = mysqli_fetch_assoc($result)) {
                             echo '<tr>';

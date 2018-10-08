@@ -92,11 +92,11 @@ test
                     
   <!--start-->
            <div class="container" style="width:100%;">
-                <h3 align="center">Account Management</h3>  
+           <h1 class="manage">Account Management</h1>
                 <br />  
                 <div class="table-responsive">  
                      <div>  
-                          <button type="button" name="add" id="add" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-warning">Add User Account</button>  
+                          <button type="button" name="add" id="add" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-success">Add User Account</button>  
                      </div>  
                      <br />  
                      <div id="usertable">  

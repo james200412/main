@@ -18,13 +18,8 @@ while($row = mysqli_fetch_array($r, MYSQL_ASSOC)){
 	header("Location: index.php");
 }
 }else{
-//clear session
-	session_unset(); 
 
-	// destroy the session 
-	session_destroy();
-	
-	header("Location: index.php");
+header("Location: index.php");
 
 } 
 

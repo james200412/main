@@ -59,7 +59,7 @@ include 'include/front_topmenu.php'
                             echo '<br>';
                             while ($row = mysqli_fetch_assoc($result)) {
                             echo '<div class="Popular-Restaurants-grid wow fadeInRight" data-wow-delay="0.4s">' .
-                                '<div class="col-md-3 restaurent-logo"><img src="img/' . $row['dimage'] . '" class="img-responsive" alt="" /></div>' .
+                                '<div class="col-md-3 restaurent-logo"><img src="img/menu/' . $row['dimage'] . '" class="img-responsive" alt="" /></div>' .
                                 '<div class="col-md-5 restaurent-title"><div class="logo-title"><h4>' . $row['dname'] . '</h4></div>'.
                                 '<div class="rating">'. $row['detail'] .'</div>';
                      		echo '</div>';
@@ -80,7 +80,7 @@ include 'include/front_topmenu.php'
                             echo '<br>';
                             while ($row = mysqli_fetch_assoc($result)) {
                             echo '<div class="Popular-Restaurants-grid wow fadeInRight" data-wow-delay="0.4s">' .
-                                '<div class="col-md-3 restaurent-logo"><img src="img/' . $row['dimage'] . '" class="img-responsive" alt="" /></div>' .
+                                '<div class="col-md-3 restaurent-logo"><img src="img/menu/' . $row['dimage'] . '" class="img-responsive" alt="" /></div>' .
                                 '<div class="col-md-5 restaurent-title"><div class="logo-title"><h4>' . $row['dname'] . '</h4></div>'.
                                 '<div class="rating">'. $row['detail'] .'</div>';
                      		echo '</div>';
