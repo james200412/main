@@ -222,7 +222,7 @@ test
                           <textarea name="address" id="address" class="form-control"></textarea>  
                           <br />  
                           <label>Enter Email</label>  
-                          <input type="text" name="email" id="email" class="form-control" />  
+                          <input type="email" name="email" id="email" class="form-control" />  
                           <br />                            
                           <label>Enter Phone Number</label>  
                           <input type="text" name="phone" id="phone" size="8" maxlength="8" class="form-control" />  

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Popular-restaurent</title>
+<title>Menu</title>
 <link href="frontend/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="frontend/js/jquery.min.js"></script>

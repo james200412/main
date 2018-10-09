@@ -3,7 +3,7 @@
 		<div class="container">
 			<div class="top-header">
 				<div class="logo">
-					<a href="index.html"><img src="images/logo.png" class="img-responsive" alt="" /></a>
+					<a href="index.html"><img src="../frontend/images/logo.png" class="img-responsive" alt="" /></a>
 				</div>
 				<div class="queries">
 					<p>Order Food now!!!<span>1234-5678 </span><label>(11AM to 11PM)</label></p>
@@ -15,7 +15,7 @@
 			<div class="container">
 				<div class="top-menu">
 					<ul>
-						<li class="active"><a href="index.php">Home</a></li>|
+						<li><a href="index.php">Home</a></li>|
 						<li><a href="front_menu.php">Menu</a></li>|
 						<li><a href="Order.php">Order</a></li>|
 						<li><a href="contact.php">contact</a></li>
@@ -26,7 +26,7 @@
 					<ul>
 						<li><a href="login.php">Login</a>  </li> |
 						<li><a href="register.php">Register</a> </li> |
-						<li><a href="#">Help</a></li>
+						<li><a href="cms_stafflogin.php">Staff Login</a></li>
 						<div class="clearfix"></div>
 					</ul>
 				</div>

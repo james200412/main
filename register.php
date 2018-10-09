@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>login page</title>
+<title>Register</title>
 <link href="frontend/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="frontend/js/jquery.min.js"></script>
@@ -32,67 +32,59 @@
 </head>
 <body>
     <!-- header-section-starts -->
+
 <?php
-
 include 'include/front_topmenu.php';
-
 ?>
-
-
+	
 	<!-- header-section-ends -->
 	<!-- content-section-starts -->
 	<div class="content">
-	<div class="container">
-		<div class="login-page">
-			    <div class="dreamcrub">
-			   	 <ul class="breadcrumbs">
-                    <li class="home">
-                       <a href="index.php" title="Go to Home Page">Home</a>&nbsp;
-                       <span>&gt;</span>
-                    </li>
-                    <li>
-                       Login
-                    </li>
-                </ul>
-                <ul class="previous">
-                	<li><a href="index.php">Back to Home Page</a></li>
-                </ul>
-                <div class="clearfix"></div>
-			   </div>
-			   <div class="account_grid">
-			   <div class="col-md-6 login-left wow fadeInLeft" data-wow-delay="0.4s">
-			  	 <h3>NEW CUSTOMERS</h3>
-				 <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
-				 <a class="acount-btn" href="register.php">Create an Account</a>
-			   </div>
-
-
-
-			   <div class="col-md-6 login-right wow fadeInRight" data-wow-delay="0.4s">
-			  	<h3>REGISTERED CUSTOMERS</h3>
-				<p>If you have an account with us, please log in.</p>
-				<form>
-				  <div>
-					<span>Email Address<label>*</label></span>
-					<input type="text"> 
-				  </div>
-				  <div>
-					<span>Password<label>*</label></span>
-					<input type="text"> 
-				  </div>
-				  <a class="forgot" href="#">Forgot Your Password?</a>
-				  <input type="submit" value="Login">
-			    </form>
-			   </div>	
-
-
-
-			   <div class="clearfix"> </div>
-
-
-			 </div>
+	<div class="main">
+	   <div class="container">
+		  <div class="register">
+		  	  <form> 
+				 <div class="register-top-grid">
+					<h3>PERSONAL INFORMATION</h3>
+					 <div class="wow fadeInLeft" data-wow-delay="0.4s">
+						<span>First Name<label>*</label></span>
+						<input type="text"> 
+					 </div>
+					 <div class="wow fadeInRight" data-wow-delay="0.4s">
+						<span>Last Name<label>*</label></span>
+						<input type="text"> 
+					 </div>
+					 <div class="wow fadeInRight" data-wow-delay="0.4s">
+						 <span>Email Address<label>*</label></span>
+						 <input type="text"> 
+					 </div>
+					 <div class="clearfix"> </div>
+					   <a class="news-letter" href="#">
+						 
+					   </a>
+					 </div>
+				     <div class="register-bottom-grid">
+						    <h3>LOGIN INFORMATION</h3>
+							 <div class="wow fadeInLeft" data-wow-delay="0.4s">
+								<span>Password<label>*</label></span>
+								<input type="text">
+							 </div>
+							 <div class="wow fadeInRight" data-wow-delay="0.4s">
+								<span>Confirm Password<label>*</label></span>
+								<input type="text">
+							 </div>
+					 </div>
+				</form>
+				<div class="clearfix"> </div>
+				<div class="register-but">
+				   <form>
+					   <input type="submit" value="submit">
+					   <div class="clearfix"> </div>
+				   </form>
+				</div>
 		   </div>
-</div>
+	     </div>
+	    </div>
 <div class="special-offers-section">
 			<div class="container">
 				<div class="special-offers-section-head text-center dotted-line">
@@ -105,7 +97,7 @@ include 'include/front_topmenu.php';
 						<li>
 							<div class="offer">
 								<div class="offer-image">	
-									<img src="frontend/images/p1.jpg" class="img-responsive" alt=""/>
+									<img src="images/p1.jpg" class="img-responsive" alt=""/>
 								</div>
 								<div class="offer-text">
 									<h4>Olister Combo pack lorem</h4>
@@ -119,7 +111,7 @@ include 'include/front_topmenu.php';
 						<li>
 							<div class="offer">
 								<div class="offer-image">	
-									<img src="frontend/images/p2.jpg" class="img-responsive" alt=""/>
+									<img src="images/p2.jpg" class="img-responsive" alt=""/>
 								</div>
 								<div class="offer-text">
 									<h4>Chicken Jumbo pack lorem</h4>
@@ -133,7 +125,7 @@ include 'include/front_topmenu.php';
 						<li>
 							<div class="offer">
 								<div class="offer-image">	
-									<img src="frontend/images/p3.jpg" class="img-responsive" alt=""/>
+									<img src="images/p3.jpg" class="img-responsive" alt=""/>
 								</div>
 								<div class="offer-text">
 									<h4>Crab Combo pack lorem</h4>
@@ -148,7 +140,7 @@ include 'include/front_topmenu.php';
 						<li>
 							<div class="offer">
 								<div class="offer-image">	
-									<img src="frontend/images/p2.jpg" class="img-responsive" alt=""/>
+									<img src="images/p2.jpg" class="img-responsive" alt=""/>
 								</div>
 								<div class="offer-text">
 									<h4>Chicken Jumbo pack lorem</h4>
@@ -195,11 +187,9 @@ include 'include/front_topmenu.php';
 		</div>
 		</div>
 
-
+		
 <?php
-
 include 'include/front_footer.php';
-
 ?>
 
 </body>

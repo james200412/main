@@ -6,7 +6,7 @@
 						<h4>Menu</h4>
 						<ul>
 							<li><i class="point"></i></li>
-							<li class="data"><a href="#">Menu</a></li>
+							<li class="data"><a href="front_menu.php">Menu</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3 contact-section-grid wow fadeInLeft" data-wow-delay="0.4s">

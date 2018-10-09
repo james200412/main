@@ -208,29 +208,29 @@ test
                 <div class="modal-body">  
                      <form method="post" action="cms/menu/insert.php" enctype="multipart/form-data">  
                           <label>Enter Name</label> 
-                          <input type="text" name="adname" id="adname" class="form-control" />  
+                          <input type="text" name="adname" id="adname" class="form-control" required/>  
                           <br />  
                           <label>Detail</label>  
-                          <textarea name="adetail" id="adetail" class="form-control"></textarea>  
+                          <textarea name="adetail" id="adetail" class="form-control" required></textarea>  
                           <br />  
                           <label>TYPE</label>  
-                          <select name="atype" id="atype" class="form-control">  
+                          <select name="atype" id="atype" class="form-control" required>  
                                <option value="food">Food</option>  
                                <option value="drink">Drink</option>
                           </select>  
                           <br />                            
                           <label>Enter Price</label>  
-                          <input type="text" name="adprice" id="adprice" size="8" maxlength="8" class="form-control" />  
+                          <input type="text" name="adprice" id="adprice" size="8" maxlength="8" class="form-control" required/>  
                           <br />
                           <label>Activate</label>  
-                          <select name="activate1" id="activate1" class="form-control">  
+                          <select name="activate1" id="activate1" class="form-control" required>  
                                <option value="0">NO</option>  
                                <option value="1">YES</option>
                           </select>  
                           <br />  
 
                          <label>Select image to upload:</label>
-                          <input type="file" name="aimage" id="aimage">
+                          <input type="file" name="aimage" id="aimage" required>
                           <br />  
 
                           <input type="hidden" name="dishid" id="dishid" />
