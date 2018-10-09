@@ -120,8 +120,10 @@ test
                                <tr>  
                                     <td><?php echo $row["id"]; ?></td> 
                                     <td>
+
+
+                                    <img src="<?php echo $row["dimage"]; ?>" height="85" width="100"/>
                                     
-                                    <?php echo $row["dimage"]; ?>
                                     
                                     
                                     </td> 
@@ -190,39 +192,11 @@ test
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- call form -->
 
 
 <!-- Add Form-->
- <!--<div id="dataModal" class="modal fade">  
-      <div class="modal-dialog">  
-           <div class="modal-content">  
-                <div class="modal-header">  
-                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
-                     <h4 class="modal-title">User Details</h4>  
-                </div>  
-                <div class="modal-body" id="userdetail">  
-                </div>  
-                <div class="modal-footer">  
-                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
-                </div>  
-           </div>  
-      </div>  
- </div>  -->
+
 
 <div id="add_data_Modal" class="modal fade">  
       <div class="modal-dialog">  
@@ -276,31 +250,7 @@ test
 
 
 
-
-
-
-
-
-
-
-
 <!-- Edit Form-->
- <!--<div id="dataModal" class="modal fade">  
-      <div class="modal-dialog">  
-           <div class="modal-content">  
-                <div class="modal-header">  
-                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
-                     <h4 class="modal-title">User Details</h4>  
-                </div>  
-                <div class="modal-body" id="userdetail">  
-                </div>  
-                <div class="modal-footer">  
-                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
-                </div>  
-           </div>  
-      </div>  
- </div>  -->
-
 
 <div id="edit_data_Modal" class="modal fade">  
       <div class="modal-dialog">  
@@ -310,7 +260,7 @@ test
                      <h4 class="modal-title">Edit</h4>  
                 </div>  
                 <div class="modal-body">  
-                     <form method="post" id="edit_form">  
+                     <form method="post" action="cms/menu/update.php" enctype="multipart/form-data">
                           <label>Enter Name</label> 
                           <input type="text" name="edname" id="edname" class="form-control" />  
                           <br />  
@@ -333,12 +283,11 @@ test
                           </select>  
                           <br />  
 
-
-                          <label>Enter Image</label>  
-                          <input type="text" name="eimage" id="eimage" class="form-control" />  
+                         <label>Select image to upload:</label>
+                          <input type="file" name="eimage" id="eimage">
                           <br />  
 
-                          <input type="hidden" name="dishid" id="dishid" />
+                          <input type="hidden" name="dishid1" id="dishid1"/>
                           <input type="submit" name="update" id="update" value="Update" class="btn btn-success" />  
                      </form>  
                 </div>  
@@ -357,74 +306,23 @@ test
 
 <script>
 
-/*ajax insert
-     $('#insert_form').on("submit", function(event){  
-           event.preventDefault();  
-           if($('#name').val() == "")  
-           {  
-                alert("Name is required");  
-           }  
-           else if($('#address').val() == '')  
-           {  
-                alert("Address is required");  
-           }
-
-           else if($('#email').val() == '')  
-           {  
-                alert("Email is required");  
-           }  
-           else if($('#password').val() == '')  
-           {  
-                alert("Password is required");  
-           }  
-           else  
-           {  
-                $.ajax({  
-                     url:"cms/account/insert.php",  
-                     method:"POST",  
-                     data:$('#insert_form').serialize(), 
-
-                     success:function(data){  
-                          $('#insert_form')[0].reset();  
-                          $('#add_data_Modal').modal('hide');  
-                          $('#dishid').val("");
-                          location.reload();  
-                     }  
-                });  
-           }  
-      }); 
-
-
-*/
-
-
-
-
-
-
-
-
-
-
 
 /*ajax fetch data to edit form*/
       $(document).on('click', '.edit_data', function(){  
-           var dishid = $(this).attr("id");  
+           var dishid1 = $(this).attr("id");  
            $.ajax({  
                 url:"cms/menu/fetch.php",  
                 method:"POST",  
-                data:{dishid:dishid},  
+                data:{dishid1:dishid1},  
                 dataType:"json",  
                 success:function(data){
-                     $('#dishid').val(data.id);                   
+                    
+                     $('#dishid1').val(data.id);                   
                      $('#edname').val(data.dname);  
                      $('#edetail').val(data.detail);  
                      $('#etype').val(data.dtype);
                      $('#edprice').val(data.dprice);
                      $('#eactivate').val(data.activate); 
-
-                                                           
-                     $('#eimage').val(data.dimage); 
                                          
                      $('#edit_data_Modal').modal('show');  
                 }  

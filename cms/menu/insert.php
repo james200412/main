@@ -75,4 +75,7 @@ include('../../db/dbconnect.php');
       }
 
 
+
+header("Location: ../../cms_menu_manage.php");
+exit;
  ?>

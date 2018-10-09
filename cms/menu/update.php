@@ -1,63 +1,44 @@
 <?php  
 include('../../db/dbconnect.php');
 
+      $name = mysqli_real_escape_string($connect, $_POST["edname"]); 
+      $detail = mysqli_real_escape_string($connect, $_POST["edetail"]); 
+      $type = mysqli_real_escape_string($connect, $_POST["etype"]); 
+      $price = mysqli_real_escape_string($connect, $_POST["edprice"]); 
+      $activate = mysqli_real_escape_string($connect, $_POST["eactivate"]); 
 
- if(!empty($_POST))  
- {   
-      $message = '';  
-      $name = mysqli_real_escape_string($connect, $_POST["name"]);  
-      $address = mysqli_real_escape_string($connect, $_POST["address"]);  
-      $email = mysqli_real_escape_string($connect, $_POST["email"]);        
-      $phone = mysqli_real_escape_string($connect, $_POST["phone"]); 
-      $level = mysqli_real_escape_string($connect, $_POST["level"]);  
-      $password = mysqli_real_escape_string($connect, $_POST["password"]);  
+//      $imagetodb = "/img/menu/". basename($_FILES["eimage"]["name"]);
+$dishid= $_POST["dishid1"];
+$c_image= $_FILES['eimage']['name'];
+$c_image_temp=$_FILES['eimage']['name'];
 
-      if($_POST["dishid"] != '')  
-      {  
-      
-           $query = "  
-           UPDATE TBUSER   
-           SET uname='$name',   
-           uaddress='$address',              
-           uemail = '$email',
-           uphone = '$phone',   
-           ulevel='$level',
-           upassword = '$password'   
-           WHERE id='".$_POST["dishid"]."'";  
-           $message = 'Update Complete';             
-      }  
-      else  
-      {  
-           $query = "  
-           INSERT INTO TBUSER(uname, uaddress, uemail, uphone, ulevel, upassword)  
-           VALUES('$name', '$address', '$email',  '$phone', '$level', '$password');  
-           ";  
-           $message = 'Add Complete';  
-      }  
+if(isset($_POST["dishid1"]))  
+{  
+    if($c_image_temp != "")
+      {
+          move_uploaded_file($c_image_temp , "../../img/menu/$c_image");
+          $c_update="update TBMENU set dname='$name', detail='$detail', dtype='$type',  dprice= '$price', dimage='/img/menu/$c_image', activate='$activate'
+           where id='$dishid'";   
 
-  if(mysqli_query($connect, $query))  
-      {  
- 
-           $select_query = "SELECT * FROM TBUSER ORDER BY ID DESC";  
-           $result = mysqli_query($connect, $select_query);  
 
-           while($row = mysqli_fetch_array($result)){}
+           $query5 = "SELECT dimage FROM TBMENU WHERE id = $dishid";
+           $result5 = mysqli_query($connect, $query5);
+           $row5 = mysqli_fetch_array($result5);  
+          
+           unlink('../../'. $row['dimage']);
 
-      }  
- }
 
+      }else
+      {
+          $c_update="update TBMENU set dname='$name', detail='$detail', dtype='$type', dprice= '$price', activate='$activate'
+           where id='$dishid'";
+      }
+    }
+mysqli_query($connect, $c_update);
+
+echo $c_update;
+
+
+header("Location: ../../cms_menu_manage.php");
+exit;
  ?>
-
-<script>   	
-
-   	$( ".table" ).DataTable({
-bPaginate: true,
-bLengthChange: false,
-bFilter: true,
-bSort: false, 
-bInfo: false,
-bAutoWidth: false,
-pageLength: 10
-  	});
-
-</script>
