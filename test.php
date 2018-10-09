@@ -2,11 +2,11 @@
 <html>
 <head>
 <title>Popular-restaurent</title>
-<link href="frontend/frontend-templates/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="frontend/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="frontend/frontend-templates/js/jquery.min.js"></script>
+<script src="frontend/js/jquery.min.js"></script>
 <!-- Custom Theme files -->
-<link href="frontend/frontend-templates/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="frontend/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -14,13 +14,13 @@
 <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Lobster+Two:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
 <!--Animation-->
-<script src="frontend/frontend-templates/js/wow.min.js"></script>
-<link href="frontend/frontend-templates/css/animate.css" rel='stylesheet' type='text/css' />
+<script src="frontend/js/wow.min.js"></script>
+<link href="frontend/css/animate.css" rel='stylesheet' type='text/css' />
 <script>
 	new WOW().init();
 </script>
-<script type="text/javascript" src="frontend/frontend-templates/js/move-top.js"></script>
-<script type="text/javascript" src="frontend/frontend-templates/js/easing.js"></script>
+<script type="text/javascript" src="frontend/js/move-top.js"></script>
+<script type="text/javascript" src="frontend/js/easing.js"></script>
 <script type="text/javascript">
 			jQuery(document).ready(function($) {
 				$(".scroll").click(function(event){		

@@ -101,12 +101,12 @@ test
                           <table class="table table-bordered">  
                           <thead>
                                <tr>  
-                                    <th width="10%">DISH ID</th>  
-                                    <th width="10%">DISH IMAGE</th>
-                                    <th width="20%">DISH NAME</th>
+                                    <th width="5%">DISH ID</th>  
+                                    <th width="15%">DISH IMAGE</th>
+                                    <th width="10%">DISH NAME</th>
                                     <th width="10%">DISH PRICE</th>
                                     <th width="10%">DISH TYPE</th>
-                                    <th width="10%">DETAIL</th>
+                                    <th width="30%">DETAIL</th>
                                     <th width="10%">ACTIVATE</th>
                                     <th width="5%"></th>
                                     <th width="5%"></th>  
