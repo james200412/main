@@ -1,5 +1,9 @@
 <?php  
+include 'db/dbconnect.php';
 include 'cms_session.php';
+
+ $query = "SELECT * FROM TBMENU ORDER BY id ASC";  
+ $result = mysqli_query($connect, $query);  
  ?>  
 
  
@@ -85,243 +89,69 @@ test
 
                     
   <!--start-->
-  <h1 class="manage">Menu Manage</h1>	
+  <div class="container" style="width:100%;">
+           <h1 class="manage">Menu Management</h1>
+                <br />  
+                <div class="table-responsive">  
+                     <div>  
+                          <button type="button" name="add" id="add" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-success">Add Menu</button>  
+                     </div>  
+                     <br />  
+                     <div id="usertable">  
+                          <table class="table table-bordered">  
+                          <thead>
+                               <tr>  
+                                    <th width="10%">DISH ID</th>  
+                                    <th width="10%">DISH IMAGE</th>
+                                    <th width="20%">DISH NAME</th>
+                                    <th width="10%">DISH PRICE</th>
+                                    <th width="10%">DISH TYPE</th>
+                                    <th width="10%">DETAIL</th>
+                                    <th width="10%">ACTIVATE</th>
+                                    <th width="5%"></th>
+                                    <th width="5%"></th>  
+                               </tr>  
+                               </thead>
+                               <tbody>
+                               <?php  
+                               while($row = mysqli_fetch_array($result))  
+                               {  
+                               ?>  
+                               <tr>  
+                                    <td><?php echo $row["id"]; ?></td> 
+                                    <td>
+                                    
+                                    <?php echo $row["dimage"]; ?>
+                                    
+                                    
+                                    </td> 
+                                    <td><?php echo $row["dname"]; ?></td> 
+                                    <td><?php echo $row["dprice"]; ?></td> 
+                                    <td><?php echo $row["dtype"]; ?></td> 
+                                    <td><?php echo $row["detail"]; ?></td>
+                                    <td><?php if ($row["activate"] == 0){
+                                      echo "No";
+                                    }  else{
+                                      echo "Yes";
+                                    }                              
+                                    ?>
+                                    </td>
+                                    <td><input type="button" name="edit" value="Edit" id="<?php echo $row["id"]; ?>" class="btn btn-info btn-xs edit_data" /></td>  
+  <!-- <td><input type="button" name="view" value="view" id="<?php echo $row["id"]; ?>" class="btn btn-info btn-xs view_data" /></td> -->
+                                    <td><input type="button" name="delete" value="delete" id="<?php echo $row["id"]; ?>" class="btn btn-info btn-xs delete_data" /></td> 
+                               </tr>  
+                               <?php  
+                               } 
+                               ?>  
+                                  <tbody>
+                          </table>  
+                     </div>  
+                </div>  
+           </div>  
 
 
-<div class="form_div">
-<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
-    <div class="form-group">
-        <label for="dishID" class="control-label col-sm-4">ID:</label> 
-        <div class="col-sm-8"  id="dID">
-            <input type="text" class="form-control"  name="dishID" id="dishID" placeholder="" required="">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="dishName" class="control-label col-sm-4">DISH NAME:</label>
-        <div class="col-sm-8">
-            <input type="text" class="form-control" name="dishName" id="dishName" placeholder="">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="price" class="control-label col-sm-4">PRICE:</label>
-        <div class="col-sm-8">
-            <input type="text" class="form-control" name="price" id="price" placeholder="">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="dishType" class="control-label col-sm-4">TYPE:</label>
-        <div class="col-sm-8">
-        <select class="form-control" id="dishType" name="dishType" >
-            <option selected value=""  name="dishType" disabled>SELECT</option>
-            <option value="food">FOOD</option>
-            <option value="drink">DRINK</option>                        
-        </select> 
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="detail" class="control-label col-sm-4">DETAIL:</label>
-        <div class="col-sm-8">
-            <input type="text" class="form-control" name="detail" id="detail" placeholder="">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="activate" class="control-label col-sm-4">ACTIVATE:</label>
-        <div class="col-sm-8">
-        <select class="form-control" id="activate" name="activate" >
-            <option selected value=""  name="activate" disabled>SELECT</option>
-            <option value="0">NO</option>
-            <option value="1">YES</option>                        
-        </select> 
-        </div>
-    </div>  
- 
 
-    <div class="form-group">
-        <div class="col-sm-offset-4 col-sm-8">
-            <input type="file" name="fileToUpload" id="fileToUpload">
-        </div>
-    </div>
-    <div class="form-group">
-    <div class="col-sm-offset-4 col-sm-8">
-        <input type="submit"  class="btn btn-success" value="ADD"  name="submit" id="add">
-       <!-- <input type="submit"  class="btn btn-success" value="SEARCH"  name="submit" id="search">-->
-        <input type="submit"  class="btn btn-success" value="EDIT"  name="submit" id="edit">
-        <input type="submit"  class="btn btn-success" value="DELETE"  name="submit" id="delete">
-    </div>
-    </div>
-</form>		
-</div>
-
-<div style="text-align:center; color: red; font-weight:bolder; font-size:20px;">
-<?php
-$target_dir = "img/menu/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$uploadOk = 1;
-$imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
-
-if ($_POST['submit']) {
-    if ($_POST['submit'] == "ADD") {
-        // Check if image file is a actual image or fake image
-        $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-        if ($check !== false) {
-            //echo "File is an image - " . $check["mime"] . ".<br>";
-            $uploadOk = 1;
-        } else {
-            echo 'File are not image';
-            $uploadOk = 0;
-        }
-
-        // Check if file already exists
-        if (file_exists($target_file)) {
-            echo 'File Exist, Please Rename and Upload again';
-            $uploadOk = 0;
-        }
-        // Check file size
-        if ($_FILES["fileToUpload"]["size"] > 500000) {
-            echo 'File Too Large';
-            $uploadOk = 0;
-        }
-        // Allow certain file formats
-        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-            echo 'Only accept image file (JPG, JPEG, PNG & GIF)';
-            $uploadOk = 0;
-        }
-        // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 0) {
-            echo 'Upload Failed';
-            // if everything is ok, try to upload file
-        } else {
-            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                // echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.<br>";
-                //.......................................................      
-                //.......................................................   
-                include 'db/dbconnect.php';
-
-                $dishImage = basename($_FILES["fileToUpload"]["name"]);
-
-                $query = "insert into TBMENU set id='$_POST[dishID]', dname='$_POST[dishName]', dprice='$_POST[price]', "
-                        . "dtype='$_POST[dishType]', detail='$_POST[detail]', activate='$_POST[activate]', dimage='$dishImage'";
-
-                if (mysqli_query($connect, $query)) {
-                    echo 'Product Add success';
-                } else {
-                    echo 'Error ' . mysqli_error($connect);
-                }
-            } else {
-                echo "Upload Failed";
-            }
-        }
-        mysqli_close($connect);
-    }
-
-
-    /*
-    if ($_POST['submit'] == "search") {
-        include 'db/dbconnect.php';
-        $dishName = $_POST['dishName'];
-        $query = "SELECT * FROM TBMENU WHERE dname = '$dishName'";
-        $result = mysqli_query($connect, $query);
-        if ($result) {
-            $roW = mysqli_fetch_assoc($result);
-
-            echo $row;
-            echo "<script>$(document).ready(function() {" . "$('#dishID').val(\"" . $row['id'] . "\");})</script>";
-            echo "<script>$(document).ready(function() {" . "$('#dishName').val(\"" . $row['dname'] . "\");})</script>";
-            echo "<script>$(document).ready(function() {" . "$('#dishType').val(\"" . $row['dtype'] . "\");})</script>";
-            echo "<script>$(document).ready(function() {" . "$('#price').val(\"" . $row['dprice'] . "\");})</script>";
-            echo "<script>$(document).ready(function() {" . "$('#detail').val(\"" . $row['detail'] . "\");})</script>";
-            echo "<script>$(document).ready(function() {" . "$('#activate').val(\"" . $row['activate'] . "\");})</script>";
-            echo "<script>$(document).ready(function() {" . "$('#edit').toggle();})</script>";
-            echo "<script>$(document).ready(function() {" . "$('#delete').toggle();})</script>";
-            $target_file = $target_dir . $row['dimage'];
-        
-        } else {
-            echo '沒有配對的產品 ' . mysqli_error($connect);
-        }
-        mysqli_close($connect);
-    }*/
-
-    if ($_POST['submit'] == "EDIT") {
-        include 'db/dbconnect.php';
-        $dishImage = basename($_FILES["fileToUpload"]["name"]);
-
-        $query = "UPDATE TBMENU set id='$_POST[dishID]', dname='$_POST[dishName]', dprice='$_POST[price]', "
-                . "dtype='$_POST[dishType]', detail='$_POST[detail]', activate='$_POST[activate]', 
-                WHERE dname='$_POST[dishName]'"; //exclude , DISHIMAGE='$dishImage'
-        if (mysqli_query($connect, $query)) {
-            echo 'EDIT COMPLETE';
-        } else {
-            echo 'ERROR' . mysqli_error($connect);
-        }
-        mysqli_close($connect);
-    }
-
-    
-
-    if ($_POST['submit'] == "DELETE") {
-        include 'db/dbconnect.php';
-        $query1 = "SELECT dimage FROM TBMENU WHERE id = $_POST[dishID]";
-        $result1 = mysqli_query($connect, $query1);
-        $row1 = mysqli_fetch_assoc($result1);
-        $data = $row1['dimage'];
-
-        $query = "DELETE FROM TBMENU WHERE id = $_POST[dishID]";
-        if (mysqli_query($connect, $query)) {
-            echo 'DELETE SUCCESS';          
-            $dirHandle = opendir("img/menu/");
-            while ($file = readdir($dirHandle)) {
-                if ($file == $data) {
-                    unlink("img/menu/" . $file);
-                }
-            }
-        } else {
-            echo 'Error' . mysqli_error($connect);
-        }
-        mysqli_close($connect);
-    }
-}
-?>
-</div>
-
-<div class="data_table">
-<table id="productData" class="table table-striped table-bordered" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>DISH NAME</th>
-                <th>PRICE</th>
-                <th>TYPE</th>
-                <th>DETAIL</th>
-                <th>ACTIVATE</th>              
-            </tr>
-        </thead>
-
-        <tbody>       
-        		<?php              
-					include 'db/dbconnect.php';
-					$query = "SELECT * FROM TBMENU";
-					$result = mysqli_query($connect, $query);
-					if ($result) {
-						while ($row = mysqli_fetch_assoc($result)) {
-                            echo '<tr>';
-                            $position = "";
-							echo '<td>' . $row['id'] . '</td>';
-							echo '<td>' . $row['dname'] . '</td>';
-							echo '<td>' . $row['dprice'] . '</td>';
-							echo '<td>' . $row['dtype'] . '</td>';
-							echo '<td>' . $row['detail'] . '</td>';
-    						echo '<td>' . $row['activate'] . '</td>';
-                            echo '</tr>';
-						}
-					}
-                
-				?>
-        
-		</tbody>
-</table>
-</div>
-
-           <!--end-->
+  <!--end-->
 
 
                     </div>
@@ -358,11 +188,284 @@ if ($_POST['submit']) {
 
 
 
-  <script>
-  	$( "#productData" ).DataTable({
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- call form -->
+
+
+<!-- Add Form-->
+ <!--<div id="dataModal" class="modal fade">  
+      <div class="modal-dialog">  
+           <div class="modal-content">  
+                <div class="modal-header">  
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
+                     <h4 class="modal-title">User Details</h4>  
+                </div>  
+                <div class="modal-body" id="userdetail">  
+                </div>  
+                <div class="modal-footer">  
+                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+                </div>  
+           </div>  
+      </div>  
+ </div>  -->
+
+<div id="add_data_Modal" class="modal fade">  
+      <div class="modal-dialog">  
+           <div class="modal-content">  
+                <div class="modal-header">  
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
+                     <h4 class="modal-title">ADD Form</h4>  
+                </div>  
+                <div class="modal-body">  
+                     <form method="post" action="cms/menu/insert.php" enctype="multipart/form-data">  
+                          <label>Enter Name</label> 
+                          <input type="text" name="adname" id="adname" class="form-control" />  
+                          <br />  
+                          <label>Detail</label>  
+                          <textarea name="adetail" id="adetail" class="form-control"></textarea>  
+                          <br />  
+                          <label>TYPE</label>  
+                          <select name="atype" id="atype" class="form-control">  
+                               <option value="food">Food</option>  
+                               <option value="drink">Drink</option>
+                          </select>  
+                          <br />                            
+                          <label>Enter Price</label>  
+                          <input type="text" name="adprice" id="adprice" size="8" maxlength="8" class="form-control" />  
+                          <br />
+                          <label>Activate</label>  
+                          <select name="activate1" id="activate1" class="form-control">  
+                               <option value="0">NO</option>  
+                               <option value="1">YES</option>
+                          </select>  
+                          <br />  
+
+                         <label>Select image to upload:</label>
+                          <input type="file" name="aimage" id="aimage">
+                          <br />  
+
+                          <input type="hidden" name="dishid" id="dishid" />
+                          <input type="submit" name="insert" id="insert" value="insert" class="btn btn-success" />  
+                     </form>  
+                </div>  
+                <div class="modal-footer">  
+                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+                </div>  
+           </div>  
+      </div>  
+ </div> 
+<!-- End Add Form-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Edit Form-->
+ <!--<div id="dataModal" class="modal fade">  
+      <div class="modal-dialog">  
+           <div class="modal-content">  
+                <div class="modal-header">  
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
+                     <h4 class="modal-title">User Details</h4>  
+                </div>  
+                <div class="modal-body" id="userdetail">  
+                </div>  
+                <div class="modal-footer">  
+                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+                </div>  
+           </div>  
+      </div>  
+ </div>  -->
+
+
+<div id="edit_data_Modal" class="modal fade">  
+      <div class="modal-dialog">  
+           <div class="modal-content">  
+                <div class="modal-header">  
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
+                     <h4 class="modal-title">Edit</h4>  
+                </div>  
+                <div class="modal-body">  
+                     <form method="post" id="edit_form">  
+                          <label>Enter Name</label> 
+                          <input type="text" name="edname" id="edname" class="form-control" />  
+                          <br />  
+                          <label>Detail</label>  
+                          <textarea name="edetail" id="edetail" class="form-control"></textarea>  
+                          <br />  
+                          <label>TYPE</label>  
+                          <select name="etype" id="etype" class="form-control">  
+                               <option value="food">Food</option>  
+                               <option value="drink">Drink</option>
+                          </select>  
+                          <br />                            
+                          <label>Enter Price</label>  
+                          <input type="text" name="edprice" id="edprice" size="8" maxlength="8" class="form-control" />  
+                          <br />
+                          <label>Activate</label>  
+                          <select name="eactivate" id="eactivate" class="form-control">  
+                               <option value="0">NO</option>  
+                               <option value="1">YES</option>
+                          </select>  
+                          <br />  
+
+
+                          <label>Enter Image</label>  
+                          <input type="text" name="eimage" id="eimage" class="form-control" />  
+                          <br />  
+
+                          <input type="hidden" name="dishid" id="dishid" />
+                          <input type="submit" name="update" id="update" value="Update" class="btn btn-success" />  
+                     </form>  
+                </div>  
+                <div class="modal-footer">  
+                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+                </div>  
+           </div>  
+      </div>  
+ </div> 
+<!-- End Edit Form-->
+
+
+
+<!-- call form end-->
+
+
+<script>
+
+/*ajax insert
+     $('#insert_form').on("submit", function(event){  
+           event.preventDefault();  
+           if($('#name').val() == "")  
+           {  
+                alert("Name is required");  
+           }  
+           else if($('#address').val() == '')  
+           {  
+                alert("Address is required");  
+           }
+
+           else if($('#email').val() == '')  
+           {  
+                alert("Email is required");  
+           }  
+           else if($('#password').val() == '')  
+           {  
+                alert("Password is required");  
+           }  
+           else  
+           {  
+                $.ajax({  
+                     url:"cms/account/insert.php",  
+                     method:"POST",  
+                     data:$('#insert_form').serialize(), 
+
+                     success:function(data){  
+                          $('#insert_form')[0].reset();  
+                          $('#add_data_Modal').modal('hide');  
+                          $('#dishid').val("");
+                          location.reload();  
+                     }  
+                });  
+           }  
+      }); 
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+/*ajax fetch data to edit form*/
+      $(document).on('click', '.edit_data', function(){  
+           var dishid = $(this).attr("id");  
+           $.ajax({  
+                url:"cms/menu/fetch.php",  
+                method:"POST",  
+                data:{dishid:dishid},  
+                dataType:"json",  
+                success:function(data){
+                     $('#dishid').val(data.id);                   
+                     $('#edname').val(data.dname);  
+                     $('#edetail').val(data.detail);  
+                     $('#etype').val(data.dtype);
+                     $('#edprice').val(data.dprice);
+                     $('#eactivate').val(data.activate); 
+
+                                                           
+                     $('#eimage').val(data.dimage); 
+                                         
+                     $('#edit_data_Modal').modal('show');  
+                }  
+           });  
+      });  
+
+
+
+/*ajax delete*/
+
+$(document).on('click', '.delete_data', function(){
+  var dishid = $(this).attr("id");
+  var el = this;
+  if(confirm("Are you sure you want to delete this?"))
+  {
+   $.ajax({
+    url:"cms/menu/delete.php",
+    method:"POST",
+    data:{dishid:dishid},
+    success:function(data)
+    {
+     $(el).closest('tr').css('background','#de6f6c');
+    $(el).closest('tr').fadeOut(800, function(){ 
+     $(this).remove();
+    });
+
+    }
+   });
+  }
+  else
+  {
+   return false; 
+  }
+ });
+ 
+
+
+  	$( ".table" ).DataTable({
         bPaginate: true,
 bLengthChange: false,
-bFilter: false,
+bFilter: true,
 bSort: false, 
 bInfo: false,
 bAutoWidth: false,

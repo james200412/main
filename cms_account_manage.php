@@ -184,6 +184,10 @@ test
 
 
 
+
+<!-- call form -->
+
+
   <!-- Add Form & Edit Form-->
  <!--<div id="dataModal" class="modal fade">  
       <div class="modal-dialog">  
@@ -246,6 +250,8 @@ test
  </div> 
 <!-- End Add Form and Edit Form-->
 
+
+<!-- call form end-->
 
 <script>
  $(document).ready(function(){  
@@ -368,7 +374,7 @@ $(document).on('click', '.delete_data', function(){
    	$( ".table" ).DataTable({
 bPaginate: true,
 bLengthChange: false,
-bFilter: false,
+bFilter: true,
 bSort: false, 
 bInfo: false,
 bAutoWidth: false,
