@@ -24,15 +24,17 @@
             <div class="col-md-6">
                 <h2 class="font-bold">Welcome To</h2>
                 <h2 class="font-bold">Content Management Systems</h2>
-
-
-<img src="img/menu/apple.jpg" width=200 height=200/>
+<small>Please Login with your staff ID and Password.</small>
+<p><br>
+<small>This page is Design for the Restaurant employee.<br> If you are the customers, please click <a href="front_login.php">Here</a> Return to the Customer login page. Thank You!</small>
+<!-- Welcome Image
+<img src="img/menu/apple.jpg" width=200 height=200/>-->
 
             </div>
             <div class="col-md-6">
                 <div class="ibox-content">
 
-                    <form method="post" action="login_action.php" class="m-t" role="form">
+                    <form method="post" action="cms_login_action.php" class="m-t" role="form">
                         <div class="form-group">
                             <input type="text" name="userid" id="userid" class="form-control" placeholder="Staff ID" required="">
                         </div>
@@ -56,7 +58,7 @@
         <hr/>
         <div class="row">
             <div class="col-md-6">
-                Copyright12345678901234567890
+              Copyright © 2018 all rights reserved
             </div>
             <div class="col-md-6 text-right">
                <small>©2018</small>

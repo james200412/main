@@ -31,9 +31,27 @@ include 'cms_session.php';
                     <div class="dropdown profile-element">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">
-                            test
+                            
+                            <?php
+                         // echo 'Welcome : ';                          
+                            echo $_SESSION['username'];
+                            
+                            ?>
+                            
                             </strong>
-                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
+                             </span> <span class="text-muted text-xs block">
+
+                             <?php if ($_SESSION['userlevel'] == 2){
+                                      echo "Administrator";
+                                    }  else if($_SESSION['userlevel'] == 1){
+                                      echo "Staff";
+                                    }else{
+                                      //echo "Customer";
+                                    }                              
+                                    ?>
+                                                       
+                             <b class="caret"></b></span> </span> </a>
+
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                 <li><a href="logout.php">Logout</a></li>
                             </ul>

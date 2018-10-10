@@ -3,7 +3,7 @@ session_start();
 
 require ('db/dbconnect.php');
 
-$sql= "SELECT uname FROM TBUSER WHERE id='$_SESSION[user]'";
+$sql= "SELECT uname FROM TBUSER WHERE id='$_SESSION[userid]'";
 $r = mysqli_query ($connect, $sql);
 $num = @mysqli_num_rows($r);
 
@@ -18,11 +18,9 @@ while($row = mysqli_fetch_array($r, MYSQL_ASSOC)){
 	header("Location: index.php");
 }
 }else{
-
-header("Location: index.php");
-
+	echo "No Session";
 } 
 
-//echo "No Session";
+
 
 ?>
