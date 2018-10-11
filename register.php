@@ -39,55 +39,64 @@ include 'include/front_topmenu.php';
 	
 	<!-- header-section-ends -->
 	<!-- content-section-starts -->
+
 	<div class="content">
 	<div class="main">
 	   <div class="container">
 		  <div class="register">
-		  	  <form> 
-				 <div class="register-top-grid">
+
+
+
+<form method="post" action="register_action.php"> 
+<div class="register-top-grid">
 					<h3>PERSONAL INFORMATION</h3>
+					 
+					 
 					 <div class="wow fadeInLeft" data-wow-delay="0.4s">
-						<span>First Name<label>*</label></span>
-						<input type="text"> 
+						<span> Name<label>*</label></span>
+						<input type="text" name="name" id="name" required/> 
 					 </div>
-					 <div class="wow fadeInRight" data-wow-delay="0.4s">
-						<span>Last Name<label>*</label></span>
-						<input type="text"> 
-					 </div>
+
+
 					 <div class="wow fadeInRight" data-wow-delay="0.4s">
 						 <span>Email Address<label>*</label></span>
-						 <input type="text"> 
+						 <input type="email" name="email" id="email" required/> 
 					 </div>
-					 <div class="clearfix"> </div>
-					   <a class="news-letter" href="#">
-						 
-					   </a>
-					 </div>
-				     <div class="register-bottom-grid">
+					
+					
+					<div class="wow fadeInRight" data-wow-delay="0.4s">
+					<span>Default Delivery Address<label>*</label></span>
+					<input type="text" name="address" id="address" required/> 
+					</div>
+					
+					<div class="wow fadeInRight" data-wow-delay="0.4s">
+					<span>Phone Number<label>*</label></span>
+                	<input type="text" name="phone" id="phone" size="8" maxlength="8" required/>  
+					</div>
+</div>
+
+
+<div class="register-bottom-grid">
 						    <h3>LOGIN INFORMATION</h3>
 							 <div class="wow fadeInLeft" data-wow-delay="0.4s">
-								<span>Password<label>*</label></span>
-								<input type="text">
+								<span>Password (within 8 ~ 20 characters)<label>*</label></span>
+								<input type="password" name="password" id="password" size="20" minlength="8" maxlength="20" required/>
 							 </div>
-							 <div class="wow fadeInRight" data-wow-delay="0.4s">
-								<span>Confirm Password<label>*</label></span>
-								<input type="text">
-							 </div>
-					 </div>
-				</form>
+</div>
+
 				<div class="clearfix"> </div>
 				<div class="register-but">
-				   <form>
-					   <input type="submit" value="submit">
+					   <input type="submit" name="submit" id="submit" value="Confirm"/>
 					   <div class="clearfix"> </div>
-				   </form>
 				</div>
-		   </div>
-	     </div>
-		</div>
-		
+				
+</form>
 
 
+</div>
+</div>
+</div>
+</div>
 
 
 

@@ -2,13 +2,14 @@
 session_start(); 
 require ('db/dbconnect.php');
 
-$sql= "SELECT uname, ulevel, uaddress  FROM TBUSER WHERE id='$_POST[userid]' && upassword='$_POST[userpw]'";
+$sql= "SELECT id, uname, ulevel, uaddress  
+FROM TBUSER WHERE (id='$_POST[userid]' OR uemail='$_POST[userid]' ) && upassword='$_POST[userpw]'";
 $r = @mysqli_query ($connect, $sql);
 $num = mysqli_num_rows($r);
 
 if ($num > 0){
 	while($row = mysqli_fetch_array($r, MYSQL_ASSOC)){
-		$_SESSION["userid"]="$_POST[userid]";
+		$_SESSION["userid"]=$row['id'];
 		$_SESSION['username']=$row['uname'];
 		$_SESSION['defaultaddress']=$row['uaddress'];
 		$_SESSION['userlevel'] = $row['ulevel'];

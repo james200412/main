@@ -49,7 +49,7 @@ if(isset($_SESSION['userid']) && $_SESSION['userlevel'] == 0){
 //SESSION userid exist and user level = 0, user is login
 ?>
 
-<!--Login menu-->
+<!--menu-->
 			<div class="container">
 				
 							
@@ -109,7 +109,7 @@ else{
 
 
 
-<!--Guest menu-->
+<!--menu-->
 <div class="container">
 				
 							
@@ -185,3 +185,23 @@ include 'include/front_footer.php';
 </body>
 </html>
 
+
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">購物車訊息</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="message"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">關閉視窗</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+			

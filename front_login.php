@@ -73,12 +73,12 @@ include 'include/front_topmenu.php';
 				<p>If you have an account with us, please log in.</p>
 				<form method="post" action="front_login_action.php">
 				  <div>
-					<span>User ID or Email Address<label>*</label></span>
+					<span>User Email Address<label>*</label></span>
 					<input type="text" name="userid" id="userid" required> 
 				  </div>
 				  <div>
 					<span>Password<label>*</label></span>
-					<input type="text" name="userpw" id="userpw" required> 
+					<input type="password" name="userpw" id="userpw" required> 
 				  </div>
 				  <a class="forgot" href="#">Forgot Your Password?</a>
 				  <input type="submit" value="Login">

@@ -98,6 +98,8 @@ label{
 .login-section ul li{
 	display:inline-block;
 	margin: 0 16px;
+	color: #515151;
+	font-size:18px;
 }
 .login-section ul li a{
 	margin:0.5em 0;
@@ -1395,6 +1397,13 @@ i.mail{
 	font-size:0.8125em;
 	padding: 0.5em;
 }
+.login-right input[type="password"] {
+	border: 1px solid #EEE;
+	outline-color:#fb4d01;
+	width: 96%;
+	font-size:0.8125em;
+	padding: 0.5em;
+}
 .login-right input[type="submit"] {
 	background: #E24425;
 	color: #FFF;
@@ -1537,6 +1546,20 @@ ul.women_pagenation li a:hover{
 	font-size: 1em;
 	padding: 0.5em;
 }
+.register-top-grid input[type="password"], .register-bottom-grid input[type="password"] {
+	border: 1px solid #EEE;
+	outline-color:#FF5B36;
+	width: 96%;
+	font-size: 1em;
+	padding: 0.5em;
+}
+.register-top-grid input[type="email"], .register-bottom-grid input[type="email"] {
+	border: 1px solid #EEE;
+	outline-color:#FF5B36;
+	width: 96%;
+	font-size: 1em;
+	padding: 0.5em;
+}
 .checkbox {
 	margin-bottom: 4px;
 	padding-left: 27px;
@@ -1609,6 +1632,20 @@ ul.women_pagenation li a:hover{
 	margin-top:1em;
 }
 .register-but form input[type="submit"] {
+	background:#E24425;
+	color: #FFF;
+	font-size: 1.2em;
+	padding: 0.6em 2em;
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	display: inline-block;
+	text-transform: uppercase;
+	border:none;
+	outline:none;
+}
+.register-but input[type="submit"] {
 	background:#E24425;
 	color: #FFF;
 	font-size: 1.2em;
@@ -2840,10 +2877,19 @@ address {
 	.register-but form input[type="submit"] {
 		padding: 0.4em 1.5em;
 	}
+	.register-top-grid input[type="submit"] {
+		padding: 0.4em 1.5em;
+	}
 	.register {
 		padding: 2em 0 3em 0;
 	}
 	.register-top-grid input[type="text"], .register-bottom-grid input[type="text"] {
+		padding: 0.4em;
+	}
+	.register-top-grid input[type="password"], .register-bottom-grid input[type="password"] {
+		padding: 0.4em;
+	}
+	.register-top-grid input[type="email"], .register-bottom-grid input[type="email"] {
 		padding: 0.4em;
 	}
 	.login-left h3, .login-right h3 {
@@ -3186,6 +3232,9 @@ address {
 	.register-top-grid input[type="text"], .register-bottom-grid input[type="text"] {
 		padding: 0.3em;
 	}
+	.register-top-grid input[type="password"], .register-bottom-grid input[type="password"] {
+		padding: 0.3em;
+	}
 	.register-but form input[type="submit"] {
 		padding: 0.3em 1.3em;
 	}
@@ -3435,6 +3484,9 @@ address {
 		float: none;
 	}
 	.register-top-grid input[type="text"], .register-bottom-grid input[type="text"] {
+		padding: 0.2em;
+	}
+	.register-top-grid input[type="password"], .register-bottom-grid input[type="password"] {
 		padding: 0.2em;
 	}
 	.register-but form input[type="submit"] {
@@ -3772,6 +3824,9 @@ address {
 		font-size: 0.875em;
 	}
 	.login-right input[type="text"] {
+		padding: 0.4em;
+	}
+	.login-right input[type="password"] {
 		padding: 0.4em;
 	}
 	.contact-head h3 {

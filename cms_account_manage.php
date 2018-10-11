@@ -244,7 +244,7 @@ include 'db/dbconnect.php';
                           <input type="text" name="phone" id="phone" size="8" maxlength="8" class="form-control" />  
                           <br />
                           <label>Enter Password</label>  
-                          <input type="password" name="password" size="20" maxlength="20" id="password" class="form-control" />  
+                          <input type="password" name="password" size="20"  minlength="8" maxlength="20" id="password" class="form-control" />  
                           <br />  
                           <label>Select User Level</label>  
                           <select name="level" id="level" class="form-control">  
