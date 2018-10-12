@@ -45,9 +45,43 @@ include 'include/front_topmenu.php'
 		<div class="Popular-Restaurants-grids">
 
 <?php
-if(isset($_SESSION['userid']) && $_SESSION['userlevel'] == 0){
+if(!isset($_SESSION['userid'])){
 //SESSION userid exist and user level = 0, user is login
+
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!--menu-->
 			<div class="container">
@@ -63,10 +97,10 @@ if(isset($_SESSION['userid']) && $_SESSION['userlevel'] == 0){
                             echo '<div class="Popular-Restaurants-grid wow fadeInRight" data-wow-delay="0.4s">' .
                                 '<div class="col-md-3 restaurent-logo"><img src="' . $row['dimage'] . '" class="img-responsive" alt="" /></div>' .
                                 '<div class="col-md-5 restaurent-title"><div class="logo-title"><h4>' . $row['dname'] . '</h4></div>'.
-                                '<div class="rating">'. $row['detail'] .'</div>';
+                                '<div>'. $row['detail'] .'</div>';
                      		echo '</div>';
 							echo '<div class="col-md-4 buy"><span>' . '$' . $row['dprice'] . 
-								'</span><class="morebtn hvr-rectangle-in"><input type="button" data-toggle="modal" data-target="#myModal" name="' . $row['id'] . '" id="' . $row['id'] . '" value="Add to Cart" /></div>' .
+								'</span><class="morebtn hvr-rectangle-in"><a href="addtocart.php?id=' . $row['id'] . '"><input type="button" value="Add to Cart"></a></div>' .
                                 '<div class="clearfix"></div>' .
                                 '</div>';
                             }
@@ -84,7 +118,7 @@ if(isset($_SESSION['userid']) && $_SESSION['userlevel'] == 0){
                             echo '<div class="Popular-Restaurants-grid wow fadeInRight" data-wow-delay="0.4s">' .
                                 '<div class="col-md-3 restaurent-logo"><img src="' . $row['dimage'] . '" class="img-responsive" alt="" /></div>' .
                                 '<div class="col-md-5 restaurent-title"><div class="logo-title"><h4>' . $row['dname'] . '</h4></div>'.
-                                '<div class="rating">'. $row['detail'] .'</div>';
+                                '<div>'. $row['detail'] .'</div>';
                      		echo '</div>';
 							echo '<div class="col-md-4 buy"><span>' . '$' . $row['dprice'] . 
 								'</span><class="morebtn hvr-rectangle-in"><input type="button" data-toggle="modal" data-target="#myModal" name="' . $row['id'] . '" id="' . $row['id'] . '" value="Add to Cart" /></div>' .

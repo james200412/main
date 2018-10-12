@@ -30,6 +30,18 @@
 			});
 		</script>
 
+
+  
+
+<!--    <link href="css/bootstrap.min.css" rel="stylesheet">
+ <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+
+-->
+
+
 </head>
 <body>
     <!-- header-section-starts -->
@@ -39,11 +51,199 @@
 	<!-- header-section-ends -->
 
 
-<div>
+
+
+
+         <div class="register-top-grid">
+             <div class="col-lg-10">
+                 <h2>Customer Cart</h2>
+             </div>
+         </div>
+
+        <div class="animated fadeInRight">
+<br>
+
+
+            <div class="row">
+                <div class="col-md-9">
+
+
+
+                        <div class="ibox-content">
+                            <div class="table-responsive">
+                                <table class="table shoping-cart-table">
+
+                                    <tbody>
+                                    <tr>
+                                        <td width="90">
+                                            <div class="cart-product-imitation">
+                                            </div>
+                                        </td>
+                                        <td class="desc">
+                                            <h3>
+                                                <a href="#" class="text-navy">
+                                                    Text editor
+                                                </a>
+                                            </h3>
+                                            <p class="small">
+                                                There are many variations of passages of Lorem Ipsum available
+                                            </p>
+                                            <dl class="small m-b-none">
+                                                <dt>Description lists</dt>
+                                                <dd>List is perfect for defining terms.</dd>
+                                            </dl>
+
+                                            <div>
+                                                <a href="#" class="text-muted">Remove item</a>
+                                            </div>
+
+                                            
+                                        </td>
+
+                                        <td>
+                                            $50,00
+                                        </td>
+                                        <td width="65">
+                                            <input type="text" class="form-control" placeholder="2">
+                                        </td>
+                                        <td>
+                                            <h4>
+                                                $100,00
+                                            </h4>
+                                        </td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
 
 
 
 
+                        <div class="">
+                            <div class="table-responsive">
+                                <table class="table shoping-cart-table">
+
+                                    <tbody>
+                                    <tr>
+                                        <td width="90">
+                                            <div class="cart-product-imitation">
+                                            </div>
+                                        </td>
+                                        <td class="desc">
+                                            <h3>
+                                                <a href="#" class="text-navy">
+                                                    Text editor
+                                                </a>
+                                            </h3>
+                                            <p class="small">
+                                                There are many variations of passages of Lorem Ipsum available
+                                            </p>
+                                            <dl class="small m-b-none">
+                                                <dt>Description lists</dt>
+                                                <dd>List is perfect for defining terms.</dd>
+                                            </dl>
+
+                                            <div>
+                                                <a href="#" class="text-muted">Remove item</a>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            $50,00
+                                        </td>
+                                        <td width="65">
+                                            <input type="text" class="form-control" placeholder="2">
+                                        </td>
+                                        <td>
+                                            <h4>
+                                                $100,00
+                                            </h4>
+                                        </td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    <button class="btn btn-white">Checkout</button>
+                    &nbsp&nbsp&nbsp
+                    <button class="btn btn-white">Back to Menu</button>
+
+                    <br> 
+                </div>
+            </div>
+
+
+
+
+        </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--test cart-->
+<!--
 <?php session_start();
 #cart.php - A simple shopping cart with add to cart, and remove links
  //---------------------------
@@ -174,14 +374,14 @@ $amounts = array("19.99", "10.99", "2.99");
  <?php
  }
  ?>
+-->
+
 
 
 
 
 
 </div>
-
-
 	<!-- footer-section-starts -->
 <?php
 
