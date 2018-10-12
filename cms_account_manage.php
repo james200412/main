@@ -128,7 +128,7 @@ include 'db/dbconnect.php';
                                     <th width="10%">USER LEVEL</th>
                                     <th width="5%">ACTIVATE</th>
                                     <th width="5%"></th>
-                                    <th width="5%"></th>  
+                                   <!-- <th width="5%"></th>  -->
                                </tr>  
                                </thead>
                                <tbody>
@@ -160,7 +160,8 @@ include 'db/dbconnect.php';
                                     </td>
                                     <td><input type="button" name="edit" value="Edit" id="<?php echo $row["id"]; ?>" class="btn btn-info btn-xs edit_data" /></td>  
   <!-- <td><input type="button" name="view" value="view" id="<?php echo $row["id"]; ?>" class="btn btn-info btn-xs view_data" /></td> -->
-                                    <td><input type="button" name="delete" value="delete" id="<?php echo $row["id"]; ?>" class="btn btn-info btn-xs delete_data" /></td> 
+  <!--<td><input type="button" name="delete" value="delete" id="<?php echo $row["id"]; ?>" class="btn btn-info btn-xs delete_data" /></td> 
+                               -->
                                </tr>  
                                <?php  
                                } 
@@ -179,11 +180,9 @@ include 'db/dbconnect.php';
             </div>
         </div>
         <div class="footer">
-            <div class="pull-right">
-                10GB of <strong>250GB</strong> Free.
-            </div>
+    
             <div>
-                <strong>Copyright</strong> Example Company &copy; 2014-2017
+                <strong>Copyright</strong> &copy; 2018
             </div>
         </div>
 

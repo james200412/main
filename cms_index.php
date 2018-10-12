@@ -106,21 +106,15 @@ include 'cms_session.php';
                 <div class="col-lg-12">
                     <div class="text-center m-t-lg">
                         <h1>
-                            Welcome!!! This is Content Management Systems
+                            Welcome To Content Management Systems
                         </h1>
-                        <small>
-                            testing123
-                        </small>
                     </div>
                 </div>
             </div>
         </div>
         <div class="footer">
-            <div class="pull-right">
-                10GB of <strong>250GB</strong> Free.
-            </div>
             <div>
-                <strong>Copyright</strong> Example Company &copy; 2014-2017
+                <strong>Copyright</strong> &copy; 2018
             </div>
         </div>
 
