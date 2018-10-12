@@ -17,14 +17,15 @@ if (isset($_POST['submit'])) {
 		$num = mysqli_num_rows($result);
 
 
-        if ($num == 0) { // IF no previous user is using this email.
+        if ($num == 0) { // If no existing user is using this email.
 
             $query = "INSERT INTO TBUSER (uname, uemail ,uaddress ,uphone ,upassword, ulevel) 
 			VALUES ( '$name', '$email', '$address', '$phone', '$password', '0')";
 
 			$result = mysqli_query($connect, $query);
 			
-            if (mysqli_affected_rows($connect) == 1) { //If the Insert Query was successfull.
+            if (mysqli_affected_rows($connect) == 1) {               
+                //If the Insert was successfull.
 
                 // Send an email, Do it in future
 
@@ -37,7 +38,8 @@ echo "<script type='text/javascript'>alert('Thank you for registering! You Can n
 				exit;
             } 
 
-        } else { // The email is not available.
+        } else { 
+            // The email is not available.
 //			echo '<div class="errormsgbox" >Email has been registered before, please use other email address.</div>';
 
 echo "<script type='text/javascript'>alert('Email has been registered before, please use other email address.');</script>";

@@ -2,13 +2,25 @@
 session_start(); 
 require ('db/dbconnect.php');
 
-$sql= "SELECT id, uname, ulevel, uaddress  
+$sql= "SELECT id, uname, ulevel, uaddress, activate  
 FROM TBUSER WHERE (id='$_POST[userid]' OR uemail='$_POST[userid]' ) && upassword='$_POST[userpw]'";
 $r = @mysqli_query ($connect, $sql);
 $num = mysqli_num_rows($r);
 
 if ($num > 0){
 	while($row = mysqli_fetch_array($r, MYSQL_ASSOC)){
+
+		if($row['activate'] == 0){
+			echo "<script type='text/javascript'>alert('Your Account has Disabled, please contact Admin');</script>";
+			include 'index.php';
+
+			// make sure no session exist
+			session_unset(); 
+			// destroy the session 
+			session_destroy();
+			exit;
+					}
+
 		$_SESSION["userid"]=$row['id'];
 		$_SESSION['username']=$row['uname'];
 		$_SESSION['defaultaddress']=$row['uaddress'];
@@ -28,9 +40,12 @@ if ($num > 0){
 }
 else{
 echo "<script type='text/javascript'>alert('Wrong Password or ID');</script>";
-
+			// make sure no session exist
+			session_unset(); 
+			// destroy the session 
+			session_destroy();
 include 'front_login.php';
-
+exit;
 //header("Location: /index.php");
 //exit;
 }

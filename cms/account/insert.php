@@ -10,7 +10,8 @@ include('../../db/dbconnect.php');
       $email = mysqli_real_escape_string($connect, $_POST["email"]);        
       $phone = mysqli_real_escape_string($connect, $_POST["phone"]); 
       $level = mysqli_real_escape_string($connect, $_POST["level"]);  
-      $password = mysqli_real_escape_string($connect, $_POST["password"]);  
+      $password = mysqli_real_escape_string($connect, $_POST["password"]); 
+      $activate = mysqli_real_escape_string($connect, $_POST["activate"]);
 
       if($_POST["userid"] != '')  
       {  
@@ -22,17 +23,18 @@ include('../../db/dbconnect.php');
            uemail = '$email',
            uphone = '$phone',   
            ulevel='$level',
-           upassword = '$password'   
+           upassword = '$password',  
+           activate = '$activate' 
            WHERE id='".$_POST["userid"]."'";  
-           $message = 'Update Complete';             
+            
       }  
       else  
       {  
            $query = "  
-           INSERT INTO TBUSER(uname, uaddress, uemail, uphone, ulevel, upassword)  
-           VALUES('$name', '$address', '$email',  '$phone', '$level', '$password');  
+           INSERT INTO TBUSER(uname, uaddress, uemail, uphone, ulevel, upassword, activate)  
+           VALUES('$name', '$address', '$email',  '$phone', '$level', '$password', '$activate');  
            ";  
-           $message = 'Add Complete';  
+ 
       }  
 
   if(mysqli_query($connect, $query))  

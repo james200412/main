@@ -3,6 +3,7 @@ session_start();
 
 $_SESSION['userlevel'];
 
+
 if ($_SESSION['userlevel'] == 0) {
     header("Location: index.php");
 }

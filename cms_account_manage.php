@@ -120,12 +120,13 @@ include 'db/dbconnect.php';
                           <thead>
                                <tr>  
                                     
-                                    <th width="10%">USER ID</th>  
+                                    <th width="5%">USER ID</th>  
                                     <th width="10%">NAME</th>
                                     <th width="20%">ADDRESS</th>
                                     <th width="10%">EMAIL</th>
                                     <th width="10%">PHONE</th>
                                     <th width="10%">USER LEVEL</th>
+                                    <th width="5%">ACTIVATE</th>
                                     <th width="5%"></th>
                                     <th width="5%"></th>  
                                </tr>  
@@ -148,6 +149,13 @@ include 'db/dbconnect.php';
                                     }else{
                                       echo "Customer";
                                     }                              
+                                    ?>
+                                    </td>
+                                    <td><?php if ($row["activate"] == 1){
+                                      echo "Yes";
+                                    }  else{
+                                      echo "No";
+                                    }                      
                                     ?>
                                     </td>
                                     <td><input type="button" name="edit" value="Edit" id="<?php echo $row["id"]; ?>" class="btn btn-info btn-xs edit_data" /></td>  
@@ -252,7 +260,13 @@ include 'db/dbconnect.php';
                                <option value="1">Staff</option>
                                <option value="2">Admin</option>    
                           </select>  
-                          <br />  
+                          <br />
+                          <label>ACTIVATE</label>  
+                          <select name="activate" id="activate" class="form-control">  
+                               <option value="1">Yes</option>  
+                               <option value="0">No</option>
+                          </select>  
+                          <br />    
                           <input type="hidden" name="userid" id="userid" />
 
                           <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />  
@@ -292,7 +306,8 @@ include 'db/dbconnect.php';
                      $('#phone').val(data.uphone);
                      $('#level').val(data.ulevel);                                        
                      $('#password').val(data.upassword); 
-                                         
+                     $('#activate').val(data.activate);
+
                      $('#insert').val("Update");  
                      $('#add_data_Modal').modal('show');  
                 }  
