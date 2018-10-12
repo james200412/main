@@ -49,9 +49,29 @@ if(isset($_SESSION['userid']) && $_SESSION['userlevel'] == 0){
 //SESSION userid exist and user level = 0, user is login
 ?>
 
-<!--Login menu-->
+<!--Logined menu-->
+
 			<div class="container">
-				
+		
+<!-- head link-->
+<div class="dreamcrub">
+			   	 <ul class="breadcrumbs">
+                    <li class="home">
+                       <a href="index.php" title="Go to Home Page">Home</a>&nbsp;
+                       <span>&gt;</span>
+                    </li>
+                    <li>
+                       Menu
+                    </li>
+                </ul>
+                <ul class="previous">
+                	<li><a href="index.php">Back to Home Page</a></li>
+                </ul>
+                <div class="clearfix"></div>
+			   </div>	
+
+
+<!-- Menu Start -->		
 							
                             <?php
                             include 'db/dbconnect.php';
@@ -110,9 +130,28 @@ else{
 
 
 <!--Guest menu-->
+
 <div class="container">
-				
-							
+
+<!-- head link-->
+<div class="dreamcrub">
+			   	 <ul class="breadcrumbs">
+                    <li class="home">
+                       <a href="index.php" title="Go to Home Page">Home</a>&nbsp;
+                       <span>&gt;</span>
+                    </li>
+                    <li>
+                       Menu
+                    </li>
+                </ul>
+                <ul class="previous">
+                	<li><a href="index.php">Back to Home Page</a></li>
+                </ul>
+                <div class="clearfix"></div>
+			   </div>	
+
+
+<!-- Menu Start -->
                 <?php
 //food
                 include 'db/dbconnect.php';
