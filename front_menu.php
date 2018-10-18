@@ -2,6 +2,13 @@
 <html>
 <head>
 <title>Menu</title>
+<!--Add to cart js and css-->
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+  <script src="../js/jquery-3.1.1.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+<!--Add to cart js and css-->
+
+
 <link href="frontend/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="frontend/js/jquery.min.js"></script>
@@ -36,7 +43,8 @@
 
 <!-- header-section-starts -->
 <?php
-include 'include/front_topmenu.php'
+include 'include/front_topmenu.php';
+include 'include/front_cart.php';
 ?>
 <!-- header-section-ends -->
 <!-- content-section-starts -->
@@ -166,7 +174,7 @@ else{
                     '<div class="rating">'. $row['detail'] .'</div>';
                 echo '</div>';
                 echo '<div class="col-md-4 buy"><span>' . '$' . $row['dprice'] . 
-                    '</span><class="morebtn hvr-rectangle-in"><input type="button" data-toggle="modal" data-target="#myModal" name="' . $row['id'] . '" id="' . $row['id'] . '" value="Add to Cart" /></div>' .
+                    '</span><class="morebtn hvr-rectangle-in"><input type="button" data-toggle="modal" data-target="#myModalguest" name="' . $row['id'] . '" id="' . $row['id'] . '" value="Add to Cart" /></div>' .
                     '<div class="clearfix"></div>' .
                     '</div>';
                 }
@@ -188,7 +196,7 @@ else{
                     '<div class="rating">'. $row['detail'] .'</div>';
                  echo '</div>';
                 echo '<div class="col-md-4 buy"><span>' . '$' . $row['dprice'] . 
-                    '</span><class="morebtn hvr-rectangle-in"><input type="button" data-toggle="modal" data-target="#myModal" name="' . $row['id'] . '" id="' . $row['id'] . '" value="Add to Cart" /></div>' .
+                    '</span><class="morebtn hvr-rectangle-in"><input type="button" data-toggle="modal" data-target="#myModalguest" name="' . $row['id'] . '" id="' . $row['id'] . '" value="Add to Cart" /></div>' .
                     '<div class="clearfix"></div>' .
                     '</div>';
                 }

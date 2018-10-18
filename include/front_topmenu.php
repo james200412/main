@@ -36,6 +36,7 @@ if(isset($_SESSION["userid"]) && $_SESSION['userlevel'] == 0){
 						<li>Welcome !! <b><?php  echo $_SESSION["username"];?></b></li>|
 						<li><a href="front_userinfo.php"><b>User Account Info</a></b></li>|
 						<li><a href="front_cart.php"><b>Cart</a></b></li>|
+
 						<li><a href="logout.php"><b>Log Out</b></a>  </li>
 						<div class="clearfix"></div>
 					</ul>
