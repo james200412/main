@@ -42,7 +42,7 @@ include 'include/front_topmenu.php';
 		    <div class="container">
 				<div class="banner-info">
 					<div class="banner-info-head text-center wow fadeInLeft" data-wow-delay="0.5s">
-						<h1>Cityu Scope and Food</h1>
+						<h1>SC and Food</h1>
 						<div class="line">
 							<h2>Order Now</h2>
 						</div>

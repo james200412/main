@@ -13,7 +13,7 @@ if(isset($_SESSION["userid"]) && $_SESSION['userlevel'] == 0){
 					<a href="index.php"><img src="../frontend/images/logo.png" class="img-responsive" alt="" /></a>
 				</div>
 				<div class="queries">
-					<p>Order Food now!!!<span>1234-5678 </span><label>(11AM to 11PM)</label></p>
+					<p>Order Food now!!!<span>Available at </span><label>11AM to 11PM</label></p>
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -60,7 +60,7 @@ if(isset($_SESSION["userid"]) && $_SESSION['userlevel'] == 0){
 				<a href="index.php"><img src="../frontend/images/logo.png" class="img-responsive" alt="" /></a>
 			</div>
 			<div class="queries">
-				<p>Order Food now!!!<span>1234-5678 </span><label>(11AM to 11PM)</label></p>
+				<p>Order Food now!!!<span>Available at </span><label>11AM to 11PM</label></p>
 			</div>
 			<div class="clearfix"></div>
 		</div>
