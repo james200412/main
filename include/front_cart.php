@@ -33,24 +33,6 @@
               <td>100$</td>
               <td><a><i class="fa fa-remove"></i></a></td>
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Product 2</td>
-              <td>100$</td>
-              <td><a><i class="fa fa-remove"></i></a></td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Product 3</td>
-              <td>100$</td>
-              <td><a><i class="fa fa-remove"></i></a></td>
-            </tr>
-            <tr>
-              <th scope="row">4</th>
-              <td>Product 4</td>
-              <td>100$</td>
-              <td><a><i class="fa fa-remove"></i></a></td>
-            </tr>
             <tr class="total">
               <th scope="row">5</th>
               <td>Total</td>

@@ -94,9 +94,7 @@ if(isset($_SESSION['userid']) && $_SESSION['userlevel'] == 0){
                                 '<div class="rating">'. $row['detail'] .'</div>';
                      		echo '</div>';
 							echo '<div class="col-md-4 buy"><span>' . '$' . $row['dprice'] . 
-                                '</span>
-                                <a class="btn btn-success" href="cartAction.php?action=addToCart&id=' . $row["id"] . '">Add to cart</a>
-                                </div>' .
+								'</span><class="morebtn hvr-rectangle-in"><input type="button" data-toggle="modal" data-target="#myModal" name="' . $row['id'] . '" id="' . $row['id'] . '" value="Add to Cart" /></div>' .
                                 '<div class="clearfix"></div>' .
                                 '</div>';
                             }
@@ -117,9 +115,7 @@ if(isset($_SESSION['userid']) && $_SESSION['userlevel'] == 0){
                                 '<div class="rating">'. $row['detail'] .'</div>';
                      		echo '</div>';
 							echo '<div class="col-md-4 buy"><span>' . '$' . $row['dprice'] . 
-                                '</span>
-                                <a class="btn btn-success" href="cartAction.php?action=addToCart&id=' . $row["id"] . '">Add to cart</a>
-                                </div>' .
+								'</span><class="morebtn hvr-rectangle-in"><input type="button" data-toggle="modal" data-target="#myModal" name="' . $row['id'] . '" id="' . $row['id'] . '" value="Add to Cart" /></div>' .
                                 '<div class="clearfix"></div>' .
                                 '</div>';
                             }
@@ -178,7 +174,7 @@ else{
                     '<div class="rating">'. $row['detail'] .'</div>';
                 echo '</div>';
                 echo '<div class="col-md-4 buy"><span>' . '$' . $row['dprice'] . 
-                    '</span><a class="btn btn-success" data-toggle="modal" data-target="#myModalguest">Add to cart</a></div>' .
+                    '</span><class="morebtn hvr-rectangle-in"><input type="button" data-toggle="modal" data-target="#myModalguest" name="' . $row['id'] . '" id="' . $row['id'] . '" value="Add to Cart" /></div>' .
                     '<div class="clearfix"></div>' .
                     '</div>';
                 }
@@ -200,7 +196,7 @@ else{
                     '<div class="rating">'. $row['detail'] .'</div>';
                  echo '</div>';
                 echo '<div class="col-md-4 buy"><span>' . '$' . $row['dprice'] . 
-                    '</span><a class="btn btn-success"  data-toggle="modal" data-target="#myModalguest">Add to cart</a></div>' .
+                    '</span><class="morebtn hvr-rectangle-in"><input type="button" data-toggle="modal" data-target="#myModalguest" name="' . $row['id'] . '" id="' . $row['id'] . '" value="Add to Cart" /></div>' .
                     '<div class="clearfix"></div>' .
                     '</div>';
                 }

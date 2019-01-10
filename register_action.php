@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
 			$result = mysqli_query($connect, $query);
 			
             if (mysqli_affected_rows($connect) == 1) {               
-                //If the Insert was successfull.
+                //If the Insert was successful.
 
                 // Send an email, Do it in future
 

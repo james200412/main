@@ -104,7 +104,7 @@ include 'include/front_topmenu.php';
 		</div>
 
 
-	
+<!--
 		<div class="popular-restaurents" id="Popular-Restaurants">
 			<div class="container">
 				<div class="col-md-4 top-restaurents">
@@ -178,6 +178,8 @@ include 'include/front_topmenu.php';
 				<div class="clearfix"></div>
 			</div>
 		</div>
+-->
+
 		<div class="service-section">
 			<div class="service-section-top-row">
 				<div class="container">
@@ -208,6 +210,8 @@ include 'include/front_topmenu.php';
 					<div class="clearfix"></div>
 					</div>
 				</div>
+				
+				
 			</div>
 			<div class="service-section-bottom-row">
 				<div class="container">
