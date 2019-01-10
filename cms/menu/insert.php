@@ -33,8 +33,8 @@ include('../../db/dbconnect.php');
       //    echo "Sorry, file already exists.";
           $uploadOk = 0;
       }
-      // Check file size
-      if ($_FILES["aimage"]["size"] > 500000) {
+      // Check file size within 10MB
+      if ($_FILES["aimage"]["size"] > 10000000) {
         echo "<script type='text/javascript'>alert('Sorry, your file is too large');</script>";
         //  echo "Sorry, your file is too large.";
           $uploadOk = 0;
@@ -73,7 +73,6 @@ include('../../db/dbconnect.php');
              // echo "Sorry, there was an error uploading your file.";
           }
       }
-
 
 
 header("Location: ../../cms_menu_manage.php");

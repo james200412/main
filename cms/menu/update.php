@@ -10,7 +10,7 @@ include('../../db/dbconnect.php');
 //      $imagetodb = "/img/menu/". basename($_FILES["eimage"]["name"]);
 $dishid= $_POST["dishid1"];
 $c_image= $_FILES['eimage']['name'];
-$c_image_temp=$_FILES['eimage']['name'];
+$c_image_temp=$_FILES['eimage']['tmp_name'];
 
 if(isset($_POST["dishid1"]))  
 {  
