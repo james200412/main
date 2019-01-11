@@ -1,4 +1,6 @@
 <?php
+session_start(); 
+$userid123 = $_SESSION["userid"];
 
 include ('db/dbconnect.php');
 
@@ -9,12 +11,15 @@ if (isset($_POST['submit'])) {
 	$phone = $_POST['phone'];
     $password = $_POST['password'];
 
-         $query = "SELECT * FROM TBUSER WHERE uemail = '$email'";
-		$result = mysqli_query($connect, $query);
-		$num = mysqli_num_rows($result);
+        $query = "SELECT * FROM TBUSER WHERE uemail = '$email'";
+        $result = mysqli_query($connect, $query);        
+        $row = mysqli_fetch_array($result);
+        $num = mysqli_num_rows($result);
+$rowid = $row['id'];
 
 
-        if ($num < 1) { // If no existing user is using this email.
+
+        if ($num == 1 && $rowid == $userid123 || $num ==0) { // If no existing user is using this email.
 
            $query = "UPDATE TBUSER SET 
            uname = '$name', 
@@ -22,10 +27,10 @@ if (isset($_POST['submit'])) {
            uemail = '$email', 
            uphone = '$phone', 
            upassword = '$password' 
-           WHERE id = 55104";
+           WHERE id = '$userid123'";
         
            $result12 = mysqli_query($connect, $query);
-			
+
             if (mysqli_affected_rows($connect) == 1) {               
                 //If the Insert was successful.
 
@@ -34,17 +39,22 @@ echo "<script type='text/javascript'>alert('Account Information Updated!');</scr
                 include 'index.php';
                 mysqli_close($connect);
 				exit;
-            } 
+            }
+if($num > 1){
+    echo "<script type='text/javascript'>alert('Email1212 has been registered before, please use other email address.');</script>";
+    include 'index.php';
+    mysqli_close($connect); 
 
-        } else { 
+}
+        }else { 
             // The email is not available.
 
 echo "<script type='text/javascript'>alert('Email has been registered before, please use other email address.');</script>";
-        
-
+include 'index.php';
+mysqli_close($connect);
+exit;
 }
-
-    mysqli_close($connect);
+exit;
 }
 
 ?>

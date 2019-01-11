@@ -87,7 +87,7 @@ $cart = new Cart;
             
             <td><?php echo '$'.$item["subtotal"].' HKD'; ?></td>
             <td>
-                <a href="cartaction.php?action=removeCartItem&id=<?php echo $item["rowid"]; ?>" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="glyphicon glyphicon-trash"></i></a>
+                <a href="cartaction.php?action=removeCartItem&id=<?php echo $item["rowid"]; ?>" class="btn btn-danger" onclick="return confirm('Confirm Delete?')"><i class="glyphicon glyphicon-trash"></i></a>
             </td>
         </tr>
         <?php 

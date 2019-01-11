@@ -38,6 +38,19 @@
 	?>
 	<!-- header-section-ends -->
 
+<?php
+include 'db/dbconnect.php';
+ $query = "SELECT * FROM TBUSER WHERE id = '".$_SESSION["userid"]."'";  
+ $result = mysqli_query($connect, $query);  
+ $row = mysqli_fetch_array($result);
+
+ $rname = $row['uname'];
+ $remail = $row['uemail'];
+ $raddress = $row['uaddress'];
+ $rphone = $row['uphone'];
+ $rpassword = $row['upassword'];
+
+ ?>  
 
 
 	<div class="contact-section-page">
@@ -55,24 +68,24 @@
 
 					 <div class="wow fadeInLeft" data-wow-delay="0.4s">
 						<span> Name<label>*</label></span>
-						<input type="text" style="border:1px solid #5e5e5e"  name="name" id="name" required/> 
+						<input type="text" style="border:1px solid #5e5e5e"  name="name" id="name" value="<?php echo $rname;?>" required/> 
 					 </div>
 
 
 					 <div class="wow fadeInRight" data-wow-delay="0.4s">
 						 <span>Email Address<label>*</label></span>
-						 <input type="email" style="border:1px solid #5e5e5e" name="email" id="email" required/> 
+						 <input type="email" style="border:1px solid #5e5e5e" name="email" id="email" value="<?php echo $remail;?>" required/> 
 					 </div>
 					
 					
 					<div class="wow fadeInRight" data-wow-delay="0.4s">
 					<span>Default Delivery Address<label>*</label></span>
-					<input type="text" style="border:1px solid #5e5e5e" name="address" id="address" required/> 
+					<input type="text" style="border:1px solid #5e5e5e" name="address" id="address" value="<?php echo $raddress;?>" required/> 
 					</div>
 					
 					<div class="wow fadeInRight" data-wow-delay="0.4s">
 					<span>Phone Number<label>*</label></span>
-                	<input type="text" style="border:1px solid #5e5e5e" name="phone" id="phone" size="8" maxlength="8" required/>  
+                	<input type="text" style="border:1px solid #5e5e5e" name="phone" id="phone" size="8" maxlength="8" value="<?php echo $rphone;?>" required/>  
 					</div>
 </div>
 
@@ -80,7 +93,7 @@
 <div class="register-bottom-grid">
 							 <div class="wow fadeInLeft" data-wow-delay="0.4s">
 								<span>Password (within 8 ~ 20 characters)<label>*</label></span>
-								<input type="password" style="border:1px solid #5e5e5e" name="password" id="password" size="20" minlength="8" maxlength="20" required/>
+								<input type="password" style="border:1px solid #5e5e5e" name="password" id="password" size="20" minlength="8" maxlength="20" value="<?php echo $rpassword;?>" required/>
 							 </div>
 </div>
 
