@@ -50,9 +50,13 @@ echo 'error';
     
     }elseif($_REQUEST['action'] == 'placeOrder' && $cart->total_items() > 0 && !empty($_SESSION['userid'])){
         // insert order details into database
-$query = "  
+$payment = $_POST['disposition-group'];
+
+        $query = "  
 INSERT INTO TBORDER(uid, amount, odate, status, oaddress, paytype)  
-VALUES('".$_SESSION['userid']."', '".$cart->total()."', '".date("Y-m-d H:i:s")."', '0','".$_SESSION['defaultaddress']."', 0)";
+VALUES('".$_SESSION['userid']."', '".$cart->total()."', '".date("Y-m-d H:i:s")."', '0','".$_SESSION['defaultaddress']."', $payment)";
+
+
 
 die($query);
 $result1 = mysqli_query($connect, $query);

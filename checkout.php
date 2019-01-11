@@ -24,6 +24,13 @@ $crow = mysqli_fetch_assoc($result);
 <html>
 <head>
 <title>SC & FOOD | Order Preview</title>
+<!--Add to modal cart js and css-->
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+  <script src="../js/jquery-3.1.1.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+<!--Add to modal cart js and css-->
+
+
 <link href="frontend/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="frontend/js/jquery.min.js"></script>
@@ -110,12 +117,15 @@ $crow = mysqli_fetch_assoc($result);
     </div><br>
 
     <div class="footBtn">
-    <a href="front_viewcart.php" class="btn btn-warning"><i class="glyphicon glyphicon-menu-left"></i> Back to Cart</a>
-    <a href="front_userinfo.php" class="btn btn-success"><i class="glyphicon glyphicon-menu-left"></i> Edit Delivery Address</a>
-  <!--  <a href="cartaction.php?action=placeOrder" class="btn btn-success orderBtn">Confirm Order<i class="glyphicon glyphicon-menu-right"></i></a>
+    <a href="front_viewcart.php" class="btn btn-warning"> Back to Cart</a>
+    <a href="front_userinfo.php" class="btn btn-success"> Edit Delivery Address</a>
+  <!--  <a href="cartaction.php?action=placeOrder" class="btn btn-success orderBtn">Confirm Order</a>
   -->  
-  <a href="front_payment.php" class="btn btn-success orderBtn">Confirm Order<i class="glyphicon glyphicon-menu-right"></i></a>
-    </div><br>
+<a class="btn btn-success orderBtn" data-toggle="modal" data-target="#paymentModal">Confirm Order</a>
+
+ <!-- <a href="front_payment.php" class="btn btn-success orderBtn">Confirm Order</a>
+            -->
+</div><br>
 </div>
 
 <!-- footer-section-starts -->
@@ -124,5 +134,48 @@ $crow = mysqli_fetch_assoc($result);
 include 'include/front_footer.php';
 
 ?>
+
 </body>
 </html>
+
+<!-- Guest Modal -->
+<!-- Modal: modalCart -->
+<div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <h3 class="modal-title" id="myModalLabel"> Please Select </h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
+      
+<form action="cartaction.php?action=placeOrder" method="post">
+<ul class="list-inline order-type clearfix">
+<li><label for="cod">
+<span><i class="fa fa-taxi"></i> </span>
+<span>Cash on delivery</span>
+<input type="radio" id="cod" name="disposition-group" value="0" CHECKED/>
+</label></li>
+<li><label for="Others">
+ <span class="disposition">Others</span>
+<input type="radio" id="Others" name="disposition-group" value="1"></label>
+</li></ul>
+
+      </div>
+      <!--Footer-->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        <!--<a href="cartaction.php?action=placeOrder" class="btn btn-success orderBtn">Confirm Order</a>-->
+     <button id="submit" class="btn btn-success orderBtn">Confirm Order</button>
+</form> 
+</div>
+    </div>
+  </div>
+</div>
+<!-- Modal: modalCart -->
+
