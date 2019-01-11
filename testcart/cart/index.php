@@ -5,7 +5,7 @@ include 'dbConfig.php';
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>PHP Shopping Cart Tutorial</title>
+    <title>SC & FOOD | PHP Shopping Cart Tutorial</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -37,7 +37,7 @@ include 'dbConfig.php';
                             <p class="lead"><?php echo '$'.$row["price"].' USD'; ?></p>
                         </div>
                         <div class="col-md-6">
-                            <a class="btn btn-success" href="cartAction.php?action=addToCart&id=<?php echo $row["id"]; ?>">Add to cart</a>
+                            <a class="btn btn-success" href="cartaction.php?action=addToCart&id=<?php echo $row["id"]; ?>">Add to cart</a>
                         </div>
                     </div>
                 </div>

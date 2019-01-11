@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Menu</title>
+<title>SC & FOOD | Menu</title>
 <!--Add to cart js and css-->
 <link rel="stylesheet" href="../css/bootstrap.min.css">
   <script src="../js/jquery-3.1.1.min.js"></script>

@@ -7,7 +7,7 @@ $cart = new Cart;
 <!DOCTYPE html>
 <html>
 <head>
-<title>Cart</title>
+<title>SC & FOOD | Cart</title>
 <link href="frontend/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="frontend/js/jquery.min.js"></script>
@@ -36,7 +36,7 @@ $cart = new Cart;
 			});
 
     function updateCartItem(obj,id){
-        $.get("cartAction.php", {action:"updateCartItem", id:id, qty:obj.value}, function(data){
+        $.get("cartaction.php", {action:"updateCartItem", id:id, qty:obj.value}, function(data){
             if(data == 'error'){
                 alert('Only Accept Integer');
             }else if(data == 'ok'){
@@ -87,7 +87,7 @@ $cart = new Cart;
             
             <td><?php echo '$'.$item["subtotal"].' HKD'; ?></td>
             <td>
-                <a href="cartAction.php?action=removeCartItem&id=<?php echo $item["rowid"]; ?>" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="glyphicon glyphicon-trash"></i></a>
+                <a href="cartaction.php?action=removeCartItem&id=<?php echo $item["rowid"]; ?>" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="glyphicon glyphicon-trash"></i></a>
             </td>
         </tr>
         <?php 

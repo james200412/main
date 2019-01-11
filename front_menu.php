@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Menu</title>
+<title>SC & FOOD | Menu</title>
 <!--Add to cart js and css-->
 <link rel="stylesheet" href="../css/bootstrap.min.css">
   <script src="../js/jquery-3.1.1.min.js"></script>
@@ -44,7 +44,7 @@
 <!-- header-section-starts -->
 <?php
 include 'include/front_topmenu.php';
-include 'include/front_cart.php';
+
 ?>
 <!-- header-section-ends -->
 <!-- content-section-starts -->
@@ -95,7 +95,7 @@ if(isset($_SESSION['userid']) && $_SESSION['userlevel'] == 0){
                      		echo '</div>';
 							echo '<div class="col-md-4 buy"><span>' . '$' . $row['dprice'] . 
                                 '</span>
-                                <a class="btn btn-success" href="cartAction.php?action=addToCart&id=' . $row["id"] . '">Add to cart</a>
+                                <a class="btn btn-success" href="cartaction.php?action=addToCart&id=' . $row["id"] . '">Add to cart</a>
                                 </div>' .
                                 '<div class="clearfix"></div>' .
                                 '</div>';
@@ -118,7 +118,7 @@ if(isset($_SESSION['userid']) && $_SESSION['userlevel'] == 0){
                      		echo '</div>';
 							echo '<div class="col-md-4 buy"><span>' . '$' . $row['dprice'] . 
                                 '</span>
-                                <a class="btn btn-success" href="cartAction.php?action=addToCart&id=' . $row["id"] . '">Add to cart</a>
+                                <a class="btn btn-success" href="cartaction.php?action=addToCart&id=' . $row["id"] . '">Add to cart</a>
                                 </div>' .
                                 '<div class="clearfix"></div>' .
                                 '</div>';
@@ -236,3 +236,30 @@ include 'include/front_footer.php';
 </body>
 </html>
 
+
+<!-- Guest Modal -->
+<!-- Modal: modalCart -->
+<div class="modal fade" id="myModalguest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Please Login</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
+
+       Please Login and continue the Ordering Process. Thank you!
+      </div>
+      <!--Footer-->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal: modalCart -->
