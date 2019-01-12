@@ -67,32 +67,33 @@ include 'db/dbconnect.php';
 <div class="register-top-grid">
 
 					 <div class="wow fadeInLeft" data-wow-delay="0.4s">
-						<span> Name<label>*</label></span>
+						Name<label>*</label> 
 						<input type="text" style="border:1px solid #5e5e5e"  name="name" id="name" value="<?php echo $rname;?>" required/> 
 					 </div>
 
 
 					 <div class="wow fadeInRight" data-wow-delay="0.4s">
-						 <span>Email Address<label>*</label></span>
+						 Email Address<label>*</label> 
 						 <input type="email" style="border:1px solid #5e5e5e" name="email" id="email" value="<?php echo $remail;?>" required/> 
 					 </div>
 					
-					
 					<div class="wow fadeInRight" data-wow-delay="0.4s">
-					<span>Default Delivery Address<label>*</label></span>
-					<input type="text" style="border:1px solid #5e5e5e" name="address" id="address" value="<?php echo $raddress;?>" required/> 
+						Phone Number<label>*</label> 
+                		<input type="text" style="border:1px solid #5e5e5e" name="phone" id="phone" size="8" maxlength="8" value="<?php echo $rphone;?>" required/>  
+					</div>
+
+					<div class="wow fadeInRight" data-wow-delay="0.4s">
+						Default Delivery Address<label>*</label>
+						<input type="text" style="width: 250%; border:1px solid #5e5e5e" name="address" id="address" value="<?php echo $raddress;?>" required/> 
 					</div>
 					
-					<div class="wow fadeInRight" data-wow-delay="0.4s">
-					<span>Phone Number<label>*</label></span>
-                	<input type="text" style="border:1px solid #5e5e5e" name="phone" id="phone" size="8" maxlength="8" value="<?php echo $rphone;?>" required/>  
-					</div>
+				
 </div>
 
 
 <div class="register-bottom-grid">
 							 <div class="wow fadeInLeft" data-wow-delay="0.4s">
-								<span>Password (within 8 ~ 20 characters)<label>*</label></span>
+								Password (within 8 ~ 20 characters)<label>*</label>
 								<input type="password" style="border:1px solid #5e5e5e" name="password" id="password" size="20" minlength="8" maxlength="20" value="<?php echo $rpassword;?>" required/>
 							 </div>
 </div>

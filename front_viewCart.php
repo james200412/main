@@ -87,7 +87,7 @@ $cart = new Cart;
             
             <td><?php echo '$'.$item["subtotal"].' HKD'; ?></td>
             <td>
-                <a href="cartaction.php?action=removeCartItem&id=<?php echo $item["rowid"]; ?>" class="btn btn-danger" onclick="return confirm('Confirm Delete?')"><i class="glyphicon glyphicon-trash"></i></a>
+                <a href="cartaction.php?action=removeCartItem&id=<?php echo $item["rowid"]; ?>" class="btn btn-danger" onclick="return confirm('Confirm Delete')"><i class="glyphicon glyphicon-ban-circle"></i></a>
             </td>
         </tr>
         <?php 
@@ -99,13 +99,12 @@ $cart = new Cart;
     </tbody>
     <tfoot>
         <tr>
-            <td><a href="front_menu.php" class="btn btn-warning">
-            <i class="glyphicon glyphicon-menu-left"></i>Back To Menu</a></td>
+            <td><a href="front_menu.php" class="btn btn-warning">Back To Menu</a></td>
 
             <td colspan="2"></td>
             <?php if($cart->total_items() > 0){ ?>
             <td class="text-center"><strong>Total Price: <?php echo '$'.$cart->total().' HKD'; ?></strong></td>
-            <td><a href="checkout.php" class="btn btn-success btn-block">Checkout<i class="glyphicon glyphicon-menu-right"></i></a></td>
+            <td><a href="checkout.php" class="btn btn-success btn-block">Checkout  <i class="glyphicon glyphicon-circle-arrow-right"></i></a></td>
             <?php } ?>
         </tr>
     </tfoot>

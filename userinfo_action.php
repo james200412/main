@@ -19,7 +19,7 @@ $rowid = $row['id'];
 
 
 
-        if ($num == 1 && $rowid == $userid123 || $num ==0) { // If no existing user is using this email.
+        if ($num == 1 && $rowid == $userid123 || $num == 0) { // If no existing user is using this email.
 
            $query = "UPDATE TBUSER SET 
            uname = '$name', 
@@ -33,28 +33,26 @@ $rowid = $row['id'];
 
             if (mysqli_affected_rows($connect) == 1) {               
                 //If the Insert was successful.
-
 echo "<script type='text/javascript'>alert('Account Information Updated!');</script>";
-
                 include 'index.php';
                 mysqli_close($connect);
-				exit;
+                exit;
+                
             }
-if($num > 1){
-    echo "<script type='text/javascript'>alert('Email1212 has been registered before, please use other email address.');</script>";
+echo "<script type='text/javascript'>alert('No Change Apply!');</script>";
     include 'index.php';
-    mysqli_close($connect); 
+    mysqli_close($connect);
+    exit;
 
-}
         }else { 
             // The email is not available.
 
 echo "<script type='text/javascript'>alert('Email has been registered before, please use other email address.');</script>";
-include 'index.php';
-mysqli_close($connect);
-exit;
+    include 'index.php';
+    mysqli_close($connect);
+    exit;
 }
-exit;
+    exit;
 }
 
 ?>

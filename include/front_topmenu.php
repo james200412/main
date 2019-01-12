@@ -34,8 +34,15 @@ if(isset($_SESSION["userid"]) && $_SESSION['userlevel'] == 0){
 				<div class="login-section">
 					<ul>
 						<li>Welcome !! <b><?php  echo $_SESSION["username"];?></b></li>|
-						<li><a href="front_userinfo.php"><b>User Account Info</a></b></li>|
-						<li><a href="front_viewcart.php"><b>Cart</a></b></li>|
+						<li><a href="front_userinfo.php"><b>Account Info</a></b></li>|
+
+			<?php	if(isset($_SESSION['cart_contents'])){	?>
+						<li><a href="front_viewcart.php" ><b>
+							<span class="glyphicon glyphicon-shopping-cart" style="color:red"></span>Cart</a></b></li>|
+			<?php	}else{	?>
+							<li><a href="front_viewcart.php" ><b>
+							<span class="glyphicon glyphicon-shopping-cart"></span>Cart</a></b></li>|
+			<?php	}	?>
 
 						<li><a href="logout.php"><b>Log Out</b></a>  </li>
 						<div class="clearfix"></div>
