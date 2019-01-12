@@ -58,7 +58,7 @@ VALUES('".$_SESSION['userid']."', '".$cart->total()."', '".date("Y-m-d H:i:s")."
 
 
 
-die($query);
+//die($query);
 $result1 = mysqli_query($connect, $query);
 
 $insertOrder = $query;

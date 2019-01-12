@@ -16,7 +16,7 @@ if(!isset($_REQUEST['id'])){
 </head>
 <body>
 <div class="container">
-    <h1>Order Status</h1>
+    <h1>Order Placed</h1>
     <p>Your order has submitted successfully. Order ID is #<?php echo $_GET['id']; ?></p>
 </div>
 </body>

@@ -33,7 +33,7 @@ if(isset($_SESSION["userid"]) && $_SESSION['userlevel'] == 0){
 
 				<div class="login-section">
 					<ul>
-						<li>Welcome !! <b><?php  echo $_SESSION["username"];?></b></li>|
+						<li><i><b>Welcome !! <?php  echo $_SESSION["username"];?></i></b></li>|
 						<li><a href="front_userinfo.php"><b>Account Info</a></b></li>|
 
 			<?php	if(isset($_SESSION['cart_contents'])){	?>

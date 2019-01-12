@@ -138,7 +138,7 @@ include 'include/front_footer.php';
 </body>
 </html>
 
-<!-- Guest Modal -->
+
 <!-- Modal: modalCart -->
 <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">

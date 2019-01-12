@@ -108,6 +108,13 @@ label{
 	font-size:16px;
 	font-weight:500;
 }
+.login-section ul li i{
+	margin:0.5em 0;
+	display:block;
+	color: #515151;
+	font-size:16px;
+	font-weight:500;
+}
 
 .login-section ul li a:hover{
 	color:#E24425;
