@@ -1,3 +1,6 @@
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b921927bca7c3ad"></script>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,7 +53,7 @@
 			 		<div class="container">
 			 			<div class="col-md-6 contact_left wow fadeInRight" data-wow-delay="0.4s">
 			 				<h4>Contact Form</h4>
-			 				<p>Lorem ipsum dolor sit amet, adipiscing elit. Donec tincidunt dolor et tristique bibendum. Aenean sollicitudin vitae dolor ut posuere.</p>
+			 				<p></p>
 							  <form>
 								 <div class="form_details">
 					                 <input type="text" class="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}">
@@ -66,27 +69,27 @@
 					        </div>
 					        <div class="col-md-6 company-right wow fadeInLeft" data-wow-delay="0.4s">
 					        	<div class="contact-map">
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1578265.0941403757!2d-98.9828708842255!3d39.41170802696131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited+States!5e0!3m2!1sen!2sin!4v1407515822047"> </iframe>
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17555.804209326525!2d114.16640211677054!3d22.328951638805563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3404073400f3ef35%3A0xeb61704ffb0ba959!2z6aaZ5riv5Z-O5biC5aSn5a24!5e0!3m2!1szh-TW!2shk!4v1547402103268" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 		</div>
       
 	  <div class="company-right">
 					        	<div class="company_ad">
 							     		<h3>Contact Info</h3>
-							     		<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit velit justo.</span>
+							     		
 			      						<address>
-											 <p>email:<a href="mail-to: info@example.com">info@display.com</a></p>
-											 <p>phone:  +255 55 55 777</p>
-									   		<p>28-7-169, 2nd Ave South</p>
-									   		<p>Saskabush, SK   S7M 1T6</p>
-									 	 	
+											 <p>Email:<a href="mail-to: info@scfood.com"> fakeinfo@scfood.com</a></p>
+											 <p>Phone:  +852 1234 5678</p>
+											 <p>Address: </p>
+											<p>SC & FOOD Ltd, Cityu Scope</p>
+									 	 	<p>City University of Hong Kong.</p>
+											<p>Tat Chee Avenue. Kowloon Tong</p>
 							   			</address>
 							   		</div>
 									</div>	
 									<div class="follow-us">
 										<h3>follow us on</h3>
-										<a href="#"><i class="facebook"></i></a>
-										<a href="#"><i class="twitter"></i></a>
-										<a href="#"><i class="google-pluse"></i></a>
+										<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+										<div class="addthis_inline_share_toolbox"></div> 
 									</div>
 			
 							
