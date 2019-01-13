@@ -13,7 +13,7 @@ if(isset($_SESSION["userid"]) && $_SESSION['userlevel'] == 0){
 					<a href="index.php"><img src="../frontend/images/logo.png" class="img-responsive" alt="" /></a>
 				</div>
 				<div class="queries">
-					<p>Order Food now!!!<span>Available at </span><label>11AM to 11PM</label></p>
+					<p>Order Food now!!!<span>24-hour service</span></p>
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -67,7 +67,7 @@ if(isset($_SESSION["userid"]) && $_SESSION['userlevel'] == 0){
 				<a href="index.php"><img src="../frontend/images/logo.png" class="img-responsive" alt="" /></a>
 			</div>
 			<div class="queries">
-				<p>Order Food now!!!<span>Available at </span><label>11AM to 11PM</label></p>
+				<p>Order Food now!!!<span>24-hour service</span></p>
 			</div>
 			<div class="clearfix"></div>
 		</div>
@@ -85,9 +85,9 @@ if(isset($_SESSION["userid"]) && $_SESSION['userlevel'] == 0){
 			</div>
 			<div class="login-section">
 				<ul>
-					<li><a href="front_login.php">Login</a>  </li> |
-					<li><a href="register.php">Register</a> </li> |
-					<li><a href="cms_stafflogin.php">Staff Login</a></li>
+					<li><a href="front_login.php"><b>Login</a></li> |
+					<li><a href="register.php"><b>Register</a> </li> |
+					<li><a href="cms_stafflogin.php"><b>Staff Login</a></li>
 					<div class="clearfix"></div>
 				</ul>
 			</div>

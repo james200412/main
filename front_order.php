@@ -86,56 +86,131 @@ include 'include/front_topmenu.php';
 	<div class="order-section-page">
 		<div class="ordering-form">
 			<div class="container">
-			<div class="order-form-head text-center wow bounceInLeft" data-wow-delay="0.4s">
-						<h3>Restaurant Order Form</h3>
-						<p>Ordering Food Was Never So Simple !!!!!!</p>
+			<div class="order-form-head text-Right wow bounceInLeft" data-wow-delay="0.4s">
+						<h3>Order History</h3>
 					</div>
-				<div class="col-md-6 order-form-grids">
-					
-					<div class="order-form-grid  wow fadeInLeft" data-wow-delay="0.4s">
-						<h5>Order Information</h5>
-								<span>Type of Order</span>
-								 <div class="dropdown-button">           			
-            			<select class="dropdown" tabindex="9" data-settings='{"wrapperClass":"flat"}'>
-            			<option value="0">Pick up</option>	
-						<option value="1">Delivery</option>
-						<option value="2">Catering</option>
-					  </select>
-					</div>
-		              <span>Restaurant Location</span>
-					   <div class="dropdown-button wow">           			
-            			<select class="dropdown" tabindex="9" data-settings='{"wrapperClass":"flat"}'>
-            			<option value="0">Restaurent A,144 East MG Road Indore</option>	
-						<option value="1">Restaurent B,64 Paarli Hills IndoreIndore</option>
-					  </select> 
-					</div>
-					<span>Location name</span>
-								 <div class="dropdown-button">           			
-            			<select class="dropdown" tabindex="9" data-settings='{"wrapperClass":"flat"}'>
-            			<option value="0">Secundrabad</option>	
-						<option value="1">Location-1</option>
-						<option value="2">Location-2</option>
-					  </select>
-					</div>
-					<span>cuisine-name</span>
-					   <div class="dropdown-button">           			
-            			<select class="dropdown" tabindex="9" data-settings='{"wrapperClass":"flat"}'>
-            			<option value="0">cuisine-name</option>	
-						<option value="1">cuisine-name</option>
-						<option value="2">cuisine-name</option>
-					  </select> 
-					</div>
-					<input type="text" class="text" value="Time" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Time';}"><br>
-					<div class="wow swing animated" data-wow-delay= "0.4s">
-					<input type="button" value="order now">
-					</div>
-					</div>
-				</div>
-				<div class="col-md-6 ordering-image wow bounceIn" data-wow-delay="0.4s">
-					<img src="frontend/images/order.jpg" class="img-responsive" alt="" />
+<!--Left Side-->
+
+<?php
+include 'db/dbconnect.php';
+ $queryuser = "SELECT * FROM TBUSER WHERE id = '".$_SESSION["userid"]."'";  
+ $resultuser = mysqli_query($connect, $queryuser);  
+ $rowuser = mysqli_fetch_assoc($resultuser);
+
+ $querysum = "SELECT SUM(amount) AS sum FROM TBORDER WHERE uid = '".$_SESSION["userid"]."'";  
+ $resultsum = mysqli_query($connect, $querysum);  
+ $rowsum = mysqli_fetch_assoc($resultsum);
+ $sum = $rowsum['sum'];
+
+ $querylast = "SELECT CAST(odate AS DATE) FROM TBORDER WHERE uid = '".$_SESSION["userid"]."' ORDER BY odate DESC";  
+ $resultlast = mysqli_query($connect, $querylast);  
+ $rowlast = mysqli_fetch_assoc($resultlast);
+?>  
+
+<div class="col-md-5 wow bounceIn" data-wow-delay="0.4s">
+<br><br><br><br>
+<div class="order-account">
+<ul class="h4">
+<?php
+echo '<li><b>'. $rowuser['uname'] .'</b></li><br>';
+echo '<li>Member Card ID： '. $rowuser['id'] .'</li>';
+echo '<li>Accumulated Spending [Till '. $rowlast['CAST(odate AS DATE)'] .'] : $HKD '.$sum.'.00</li>';
+?>
+<br>
+	<a class="btn btn-success" href="front_userinfo.php"><h4>Update Account Detail</h4></a>
+</ul>
+</div>
+	
+</div>
+
+<!--Left Side end-->
+
+
+<!-- Right Side Order History Start -->	
+<style type="text/css">
+       .order-account {
+            border: solid 1px gray;
+            border-bottom-width: 1px;
+			border-radius: 10px;
+			padding-left: 10px;
+			width: 80%;
+        }
+
+       .order-history__content {
+            border: solid 1px none;
+            border-bottom-width: 1px;
+			border-radius: 10px;
+			width: 100%;
+        }
+		ul{
+			list-style-type: none;
+			padding-left: 5px;
+		}
+		li{
+            padding-top: 5px;
+            padding-bottom: 5px
+		}
+
+	.accordion {
+  border-left: 5px solid lightgreen;
+  background-color: #f1f1f1;
+  list-style-type: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  padding-left: 10px;
+}
+    </style>
+	
+<div class="col-md-6 ordering-image wow bounceIn" data-wow-delay="0.4s">
+	<div class="order-history">
+		<header class="order-history__header">
+		<br>
+			<h3>Past Orders - Only last 5 Orders will be display</h3> 
+			<div class="text-right"><br></div></header>			
+
+<?php
+						$query = "SELECT * FROM TBORDER WHERE uid = '".$_SESSION['userid']."' ORDER BY id DESC LIMIT 5";
+						$result = @mysqli_query($connect, $query);
+						$numcount = mysqli_num_rows($result);
+if($numcount > 0){
+while ($row = mysqli_fetch_assoc($result)) {
+echo '<div class="order-history__content">';
+echo '<div class="accordion">';
+echo '<ul><li class="accordion__item cf active">';
+echo '<a href="#" class="accordion__title"><h4><u>'. $row['odate'] . '</u></h4><i class="fa fa-angle-up"></i></a>';
+echo '<ul class="accordion__content" ><li>';
+echo '<ul><li>Order ID#' . $row['id'] . '</li></ul>';
+
+//Order content
+$query1 = "SELECT * FROM TBORDER_DETAIL JOIN TBMENU ON (TBMENU.id = TBORDER_DETAIL.did) WHERE oid = '".$row['id']."' ORDER BY TBMENU.dprice DESC";
+		$result1 = @mysqli_query($connect, $query1);
+while ($row1 = mysqli_fetch_assoc($result1)) {
+echo '<div class="order-detail"><div><h4 class="h4"><b>Item : </b>'. $row1['dname'] .' x '. $row1['qty'] .'</h4>';
+echo '<div>Sub Total : $HKD '. $row1['subtotal'] .'.00</div>';
+echo '<ul><li><b>Item detail : </b>';
+echo '<div>'. $row1['detail'] .'</div>';
+echo '</li></ul></div>';
+}
+
+echo '<br><div><div><p><b>Delivery Address:</b><br>'. $row['oaddress'] .'</p></div>
+
+<ul><br><li><b>Order Total : </b>';
+echo '$HKD '. $row['amount'] .'.00</li>
+<li></li></ul></div></li></ul></li></ul></div></div>
+<br>';
+}
+}else{
+	echo 'No Order Placed Before!! <a href="front_menu.php" style="color:red;font-size:20px;">Order</a> Now!';
+}
+?>
+
+			</div>
 				</div>
 			</div>
+
 		</div>
+<!-- Order History End -->	
+
 
 
 
@@ -145,3 +220,31 @@ include 'include/front_footer.php';
 	?>
 </body>
 </html>
+
+<script>
+(function () {
+            var allItems = $('.accordion__item');
+            // close all panels
+            var allPanels = $('.accordion__content').hide();
+            // when you click a title
+            $('.accordion__title').click(function() {
+                $(this).find('.fa').toggleClass('fa-angle-up fa-angle-down');
+                $this = $(this);
+                $target = $this.closest('li');
+                // if open remove class and slide up
+                if ($target.hasClass('active')) {
+                    $target.removeClass('active');
+                    $target.find('ul').slideUp();
+                } else {
+                    allItems.removeClass('active');
+                    allItems.find('.accordion__title').find('.fa').removeClass('fa-angle-up');
+                    allItems.find('.accordion__title').find('.fa').addClass('fa-angle-down');
+                    $target.find('.accordion__title').find('.fa').toggleClass('fa-angle-up fa-angle-down');
+                    allPanels.slideUp();
+                    $target.addClass('active');
+                    $target.find('ul').slideDown();
+                }
+                return false;
+            });
+        })();
+		</script>

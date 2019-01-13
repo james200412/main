@@ -66,9 +66,15 @@ $crow = mysqli_fetch_assoc($result);
 	include 'include/front_topmenu.php'
 	?>
 	<!-- header-section-ends -->
+	<div class="contact-head">
+		    <div class="container">
+				<h3>Order Preview</h3>
+			</div>
+		</div>
 
+<br>
 <div class="container">
-    <h1>Order Preview</h1>
+    <h1></h1>
     <table class="table">
     <thead>
         <tr>

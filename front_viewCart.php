@@ -56,10 +56,14 @@ $cart = new Cart;
 	?>
 	<!-- header-section-ends -->
 
-
-
+	<div class="contact-head">
+		    <div class="container">
+				<h3>Cart</h3>
+			</div>
+		</div>
+<br>
     <div class="container">
-    <h1>Cart</h1>
+    <h1></h1>
     <table class="table">
     <thead>
         <tr>

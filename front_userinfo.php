@@ -62,7 +62,7 @@ include 'db/dbconnect.php';
 		<div class="contact_top">
 			 		<div class="container">
 			 			<div class="col-md-6 contact_left wow fadeInRight" data-wow-delay="0.4s">
-			 				<h4>Account Detail</h4>
+			 				<h4>Account Update</h4>
 <form method="post" action="userinfo_action.php"> 
 <div class="register-top-grid">
 
