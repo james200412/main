@@ -90,6 +90,10 @@ include 'include/front_topmenu.php';
 						<h3>Order History</h3>
 					</div>
 <!--Left Side-->
+<?php
+if(isset($_SESSION['userid']) && $_SESSION['userlevel'] == 0){
+//SESSION userid exist and user level = 0, user is login
+?>
 
 <?php
 include 'db/dbconnect.php';
@@ -201,6 +205,9 @@ echo '$HKD '. $row['amount'] .'.00</li>
 }
 }else{
 	echo 'No Order Placed Before!! <a href="front_menu.php" style="color:red;font-size:20px;">Order</a> Now!';
+}
+}else{
+    echo '<br><br>Please <a href="register.php" class="h4" style="color: red"><b>Register</b></a> To Place Order!';
 }
 ?>
 
