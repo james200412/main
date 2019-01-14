@@ -1,6 +1,3 @@
-<!-- Go to www.addthis.com/dashboard to customize your tools --> 
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b921927bca7c3ad"></script>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,11 +82,11 @@
 											<p>Tat Chee Avenue. Kowloon Tong</p>
 							   			</address>
 							   		</div>
-									</div>	
+									</div>
+									
+										
 									<div class="follow-us">
-										<h3>follow us on</h3>
-										<!-- Go to www.addthis.com/dashboard to customize your tools --> 
-										<div class="addthis_inline_share_toolbox"></div> 
+	
 									</div>
 			
 							
