@@ -90,7 +90,7 @@ VALUES('".$_SESSION['userid']."', '".$cart->total()."', '".date("Y-m-d H:i:s")."
 
 }
 
-
+unset($_SESSION['othersaddress']);
 
 //die();
 $result1 = mysqli_query($connect, $query);
