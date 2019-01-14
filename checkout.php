@@ -121,12 +121,20 @@ $crow = mysqli_fetch_assoc($result);
         <b>Phone Number:</b>
         <p><?php echo $crow['uphone']; ?></p>
         <b>Delivery Address:</b>
-        <p><?php echo $crow['uaddress']; ?></p>
+        <p>
+        <?php 
+        if(isset($_SESSION['othersaddress'])){
+            echo $_SESSION['othersaddress']; 
+        }else{
+            echo $crow['uaddress']; 
+        }     
+        ?>
+        </p>
     </div><br>
 
     <div class="footBtn">
     <a href="front_viewcart.php" class="btn btn-warning"> Back to Cart</a>
-    <a href="front_userinfo.php" class="btn btn-success"> Edit Delivery Address</a>
+    <a data-toggle="modal" data-target="#modalCartAddress" class="btn btn-success ">Use Other Delivery Address</a>
   <!--  <a href="cartaction.php?action=placeOrder" class="btn btn-success orderBtn">Confirm Order</a>
   -->  
 <a class="btn btn-success orderBtn" data-toggle="modal" data-target="#paymentModal">Confirm Order</a>
@@ -187,3 +195,65 @@ include 'include/front_footer.php';
 </div>
 <!-- Modal: modalCart -->
 
+
+
+
+<!-- Modal: modalCartAddress -->
+<div class="modal fade" id="modalCartAddress" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <h3 class="modal-title" id="myModalLabel"> Select Delivery Address </h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
+      
+<form action="cartaction.php?action=ChangeAddress" method="post">
+<ul class="list-inline order-type clearfix">
+<li><label for="defaultaddress1">
+<span><i class="fa fa-taxi"></i> </span>
+<span>Default Delivery Address</span>
+
+<input type="radio" id="defaultaddress" name="address" value="0" CHECKED/>
+<p>
+<?php
+echo 'Address : '.$crow['uaddress'].'';
+?>
+</label></li>
+<li><label for="Others"><br>
+ <span class="disposition">Use Others Address</span>
+<input type="radio" id="Otheraddress" name="address" value="1"></label><br>
+
+<input type="text" id="Otheraddresstext" name="Otheraddresstext" style="width: 500px" disabled/>  
+
+</li></ul>
+
+      </div>
+      <!--Footer-->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        <!--<a href="cartaction.php?action=placeOrder" class="btn btn-success orderBtn">Confirm Order</a>-->
+     <button id="submit" class="btn btn-success orderBtn">Confirm Order</button>
+</form> 
+</div>
+    </div>
+  </div>
+</div>
+<!-- Modal: modalCartAddress -->
+
+<script type="text/javascript">
+        $("#defaultaddress").click(function() {
+            $("#Otheraddresstext").prop("required", false);
+            $("#Otheraddresstext").prop("disabled", true);
+        });
+        $("#Otheraddress").click(function() {
+            $("#Otheraddresstext").prop("required", true);
+            $("#Otheraddresstext").prop("disabled", false);
+            $("#Otheraddresstext").focus();
+        });
+</script> 

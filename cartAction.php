@@ -52,18 +52,47 @@ echo 'error';
         $cart->destroy();
         header("Location: front_viewCart.php");
 
-    
+
+    }elseif($_REQUEST['action'] == 'ChangeAddress'){
+ if($_POST['address']==1){
+
+       $otheraddress = $_POST['Otheraddresstext'];
+
+session_start();
+$_SESSION['othersaddress'] = $otheraddress;
+
+ header("Location: checkout.php");
+
+ }else{
+
+unset($_SESSION['othersaddress']);
+ 
+header("Location: checkout.php");
+ }
+
     }elseif($_REQUEST['action'] == 'placeOrder' && $cart->total_items() > 0 && !empty($_SESSION['userid'])){
         // insert order details into database
 $payment = $_POST['disposition-group'];
 
+if(isset($_SESSION['othersaddress'])){
+
         $query = "  
 INSERT INTO TBORDER(uid, amount, odate, status, oaddress, paytype)  
-VALUES('".$_SESSION['userid']."', '".$cart->total()."', '".date("Y-m-d H:i:s")."', '0','".$_SESSION['defaultaddress']."', $payment)";
+VALUES('".$_SESSION['userid']."', '".$cart->total()."', '".date("Y-m-d H:i:s")."', '0','".$_SESSION['othersaddress']."', $payment)";
+
+
+}else{
+
+    $query = "  
+    INSERT INTO TBORDER(uid, amount, odate, status, oaddress, paytype)  
+    VALUES('".$_SESSION['userid']."', '".$cart->total()."', '".date("Y-m-d H:i:s")."', '0','".$_SESSION['defaultaddress']."', $payment)";
+        
+
+}
 
 
 
-//die($query);
+//die();
 $result1 = mysqli_query($connect, $query);
 
 $insertOrder = $query;
