@@ -65,16 +65,18 @@ $cart = new Cart;
     <div class="container">
     <h1></h1>
     <table class="table">
-    <thead>
+    <thead>    
         <tr>
-            <th>Dish Detail</th>
+            <th>Dish Name</th>
+            <th>Detail</th>
             <th>Item Price</th>
             <th>Quantity</th>
             <th>Subtotal</th>
             <th>&nbsp;</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody>        
+
         <?php
         if($cart->total_items() > 0){
             //get cart items from session
@@ -82,33 +84,55 @@ $cart = new Cart;
             foreach($cartItems as $item){
         ?>
         <tr>
-            <td><?php echo $item["name"]; ?></td>
-            <td><?php echo '$'.$item["price"].' HKD'; ?></td>
+            <td style="width: 10%"><?php echo $item["name"]; ?></td>
+            <td style="width: 40%"><?php echo $item["detail"]; ?></td>
+            <td style="width: 10%"><?php echo '$'.$item["price"].' HKD'; ?></td>
            
-           
-<td><input type="number"  class="form-control text-center" value="<?php echo $item["qty"]; ?>" onchange="updateCartItem(this, '<?php echo $item["rowid"]; ?>')"></td>
+<style>
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+</style>
+
+<td style="width: 5%"><input type="number" min="1" class="form-control text-center" value="<?php echo $item["qty"]; ?>" onchange="updateCartItem(this, '<?php echo $item["rowid"]; ?>')"></td>
             
             
-            <td><?php echo '$'.$item["subtotal"].' HKD'; ?></td>
-            <td>
+            <td style="width: 15%"><?php echo '$'.$item["subtotal"].' HKD'; ?></td>
+           
+            <td style="width: 10%">
                 <a href="cartaction.php?action=removeCartItem&id=<?php echo $item["rowid"]; ?>" class="btn btn-danger" onclick="return confirm('Confirm Delete')"><i class="glyphicon glyphicon-ban-circle"></i></a>
-            </td>
+            </td> 
+
         </tr>
+
+    
+       
+      
+
         <?php 
         } 
           }else{ 
         ?>
-        <tr><td><p>The Cart is Empty</p></td>
+        <td><I style="font-size:18px">The Cart is Empty.<br></td>
+
         <?php } ?>
     </tbody>
     <tfoot>
         <tr>
             <td><a href="front_menu.php" class="btn btn-warning">Back To Menu</a></td>
 
+    <?php if($cart->total_items() > 0){ ?>
+            <td>
+            <a href="cartaction.php?action=removeCartItemall" class="btn btn-danger" onclick="return confirm('Confirm Delete')">Clear All</a>
+     </td>
+            <?php } ?>
+
             <td colspan="2"></td>
             <?php if($cart->total_items() > 0){ ?>
             <td class="text-center"><strong>Total Price: <?php echo '$'.$cart->total().' HKD'; ?></strong></td>
-            <td><a href="checkout.php" class="btn btn-success btn-block">Checkout  <i class="glyphicon glyphicon-circle-arrow-right"></i></a></td>
+            <td><a href="checkout.php" class="btn btn-success btn-block">Checkout <i class="glyphicon glyphicon-circle-arrow-right"></i></a></td>
             <?php } ?>
         </tr>
     </tfoot>

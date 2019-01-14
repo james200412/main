@@ -79,6 +79,7 @@ $crow = mysqli_fetch_assoc($result);
     <thead>
         <tr>
             <th>Dish Detail</th>
+            <th>Detail</th>
             <th>Item Price</th>
             <th>Quantity</th>
             <th>Subtotal</th>
@@ -92,10 +93,11 @@ $crow = mysqli_fetch_assoc($result);
             foreach($cartItems as $item){
         ?>
         <tr>
-            <td><?php echo $item["name"]; ?></td>
-            <td><?php echo '$'.$item["price"].' HKD'; ?></td>
-            <td><?php echo $item["qty"]; ?></td>
-            <td><?php echo '$'.$item["subtotal"].' HKD'; ?></td>
+            <td style="width: 10%"><?php echo $item["name"]; ?></td>
+            <td style="width: 40%"><?php echo $item["detail"]; ?></td>
+            <td style="width: 10%"><?php echo '$'.$item["price"].' HKD'; ?></td>
+            <td style="width: 5%"><?php echo $item["qty"]; ?></td>
+            <td style="width: 10%"><?php echo '$'.$item["subtotal"].' HKD'; ?></td>
         </tr>
         <?php } }else{ ?>
         <tr><td colspan="4"><p>No items in your cart......</p></td>
@@ -103,7 +105,7 @@ $crow = mysqli_fetch_assoc($result);
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="3"></td>
+            <td colspan="4"></td>
             <?php if($cart->total_items() > 0){ ?>
             <td class="text-center"><strong>Total <?php echo '$'.$cart->total().' HKD'; ?></strong></td>
             <?php } ?>

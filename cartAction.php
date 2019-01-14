@@ -21,6 +21,7 @@ if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
             'id' => $row['id'],
             'name' => $row['dname'],
             'price' => $row['dprice'],
+            'detail'=> $row['detail'],
             'qty' => 1
         );
         $insertItem = $cart->insert($itemData);
@@ -45,6 +46,10 @@ echo 'error';
 
     }elseif($_REQUEST['action'] == 'removeCartItem' && !empty($_REQUEST['id'])){
         $deleteItem = $cart->remove($_REQUEST['id']);
+        header("Location: front_viewCart.php");
+
+    }elseif($_REQUEST['action'] == 'removeCartItemall'){
+        $cart->destroy();
         header("Location: front_viewCart.php");
 
     
