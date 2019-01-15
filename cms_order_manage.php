@@ -148,27 +148,40 @@ include 'db/dbconnect.php';
                                     }                              
                                     ?>
                                     </td>
-                                    <td><?php if ($orderrow["status"] == 0){
-                                      echo "Ordered";
+
+                                    <?php 
+                                    if($orderrow["status"] == 0){
+                                        echo '<td bgcolor="#EF3B3B" style="color: white;">';
                                     }else if($orderrow["status"] == 1){
-                                      echo "Processing";
+                                        echo '<td bgcolor="#F2BBB0" style="color: white;">';
                                     }else if($orderrow["status"] == 2){
-                                      echo "Delivering";
+                                        echo '<td bgcolor="lightgreen" style="color: white;">';
                                     }else if($orderrow["status"] == 3){
+                                        echo '<td bgcolor="LightGray" style="color: white;">';
+                                    }                        
+                                    ?>
+
+                                    
+                                    <?php 
+                                    if($orderrow["status"] == 0){
+                                      echo "Processing";
+                                    }else if($orderrow["status"] == 1){
+                                      echo "Delivered";
+                                    }else if($orderrow["status"] == 2){
                                       echo "Completed"; 
-                                    }else if($orderrow["status"] == 4){
+                                    }else if($orderrow["status"] == 3){
                                       echo "Canceled";
                                     }                        
                                     ?>
                                     </td>
                                    
-<td><input type="button" data-toggle="modal" data-target="#orderdetail" name="detail" value="Detail" id="<?php echo $orderrow["id"]; ?>" class="btn btn-info btn-xs detail_data" /></td>  
+<td align="center"><input type="button" data-toggle="modal" data-target="#orderdetail" name="detail" value="Detail" id="<?php echo $orderrow["id"]; ?>" class="btn btn-info btn-xs detail_data" /></td>  
 
                                </tr>
                                <?php
                                } 
                                ?>  
-                                  <tbody>
+                                  </tbody>
                           </table>  
                      </div>  
                 </div>  
@@ -216,43 +229,28 @@ include 'db/dbconnect.php';
     <div class="modal-content">
       <!--Header-->
       <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal">&times;</button>  
+      <button type="button" class="close" onClick="location.href=location.href">&times;</button>  
         <h4 class="modal-title" id="myModalLabel">Order Detail</h4>
       </div>
       <!--Body-->
+
+      <br><div style="text-align: right; width: 95%;">
+      <button class="btn btn-secondary btn-sm" onclick="printDiv('tableprint')">Print Order</button>      
+      </div>
 <div class="modal-body" id="modaldetail">
 
 
 
 </div>
-      <!--Footer
+
+      <!--Footer-->
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Update Status</button>
-      </div>-->
+        <button type="button" class="btn btn-outline-primary" onClick="location.href=location.href">Close</button>
+      </div>
     </div>
   </div>
 </div>
 <!-- Modal: modalCart -->
-
-<form action="../cms/order/update.php" method="POST">
-<tr>  
-<td width="30%"><label>Order Status</label></td> 
-<td>
-<select>
-  <option value="0">Ordered</option>
-  <option value="1">Processing</option>
-  <option value="2">Delivering</option>
-  <option value="3">Completed</option>
-  <option value="4">Canceled</option>
-</select>
-<tr><td width="30%"></td>
-<td>
-<button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
-<input type="submit" name="submit" id="submit" class="btn btn-outline-primary" Value="Update Status">
-</td>
-</tr>
-</form>
 
 <script>
 /*ajax fetch data to edit form*/
@@ -272,5 +270,15 @@ include 'db/dbconnect.php';
                 });  
            }     
       });  
+
+
+
+  		function printDiv(divName){
+			var printContents = document.getElementById(divName).innerHTML;
+			var originalContents = document.body.innerHTML;
+			document.body.innerHTML = printContents;
+			window.print();
+			document.body.innerHTML = originalContents;
+		}
 
 </script>
