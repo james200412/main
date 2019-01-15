@@ -148,11 +148,24 @@ include 'db/dbconnect.php';
                                     }                              
                                     ?>
                                     </td>
-                                    <td><?php echo $orderrow["status"]; ?></td>
-<td><input type="button" data-toggle="modal" data-target="#orderdetail" name="edit" value="Detail" id="<?php echo $orderrow["id"]; ?>" class="btn btn-info btn-xs edit_data" /></td>  
+                                    <td><?php if ($orderrow["status"] == 0){
+                                      echo "Ordered";
+                                    }else if($orderrow["status"] == 1){
+                                      echo "Processing";
+                                    }else if($orderrow["status"] == 2){
+                                      echo "Delivering";
+                                    }else if($orderrow["status"] == 3){
+                                      echo "Completed"; 
+                                    }else if($orderrow["status"] == 4){
+                                      echo "Canceled";
+                                    }                        
+                                    ?>
+                                    </td>
+                                   
+<td><input type="button" data-toggle="modal" data-target="#orderdetail" name="detail" value="Detail" id="<?php echo $orderrow["id"]; ?>" class="btn btn-info btn-xs detail_data" /></td>  
 
-                               </tr>  
-                               <?php  
+                               </tr>
+                               <?php
                                } 
                                ?>  
                                   <tbody>
@@ -203,66 +216,61 @@ include 'db/dbconnect.php';
     <div class="modal-content">
       <!--Header-->
       <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>  
         <h4 class="modal-title" id="myModalLabel">Order Detail</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
       </div>
       <!--Body-->
-      <div class="modal-body">
-
-
-<?php 
-include 'db/dbconnect.php';
-$morderquery = "SELECT * FROM TBORDER WHERE id = '".$orderrow["id"]."'";  
-
-$morderresult = mysqli_query($connect, $morderquery);  
-
-echo '<div>'.$morderrow['id'].'</div>';
+<div class="modal-body" id="modaldetail">
 
 
 
-?>
-<div name="">123</div>
-<div>123</div>
-<div>123</div>
-<div>123</div>
-
-
-
-       Please Login and continue the Ordering Process. Thank you!
-      </div>
-      <!--Footer-->
+</div>
+      <!--Footer
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Update Status</button>
-      </div>
+      </div>-->
     </div>
   </div>
 </div>
 <!-- Modal: modalCart -->
 
+<form action="../cms/order/update.php" method="POST">
+<tr>  
+<td width="30%"><label>Order Status</label></td> 
+<td>
+<select>
+  <option value="0">Ordered</option>
+  <option value="1">Processing</option>
+  <option value="2">Delivering</option>
+  <option value="3">Completed</option>
+  <option value="4">Canceled</option>
+</select>
+<tr><td width="30%"></td>
+<td>
+<button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
+<input type="submit" name="submit" id="submit" class="btn btn-outline-primary" Value="Update Status">
+</td>
+</tr>
+</form>
 
 <script>
 /*ajax fetch data to edit form*/
-      $(document).on('click', '.edit_data', function(){  
-           var dishid1 = $(this).attr("id");  
-           $.ajax({  
-                url:"cms/menu/fetch.php",  
-                method:"POST",  
-                data:{dishid1:dishid1},  
-                dataType:"json",  
-                success:function(data){
-                    
-                     $('#dishid1').val(data.id);                   
-                     $('#edname').val(data.dname);  
-                     $('#edetail').val(data.detail);  
-                     $('#etype').val(data.dtype);
-                     $('#edprice').val(data.dprice);
-                     $('#eactivate').val(data.activate); 
-                                         
-                     $('#edit_data_Modal').modal('show');  
-                }  
-           });  
+
+      $(document).on('click', '.detail_data', function(){  
+           var orderid = $(this).attr("id");  
+           if(orderid != '')  
+           {  
+                $.ajax({  
+                     url:"cms/order/fetch.php",  
+                     method:"POST",  
+                     data:{orderid:orderid},  
+                     success:function(data){  
+                          $('#modaldetail').html(data);  
+                          $('#orderdetail').modal('show');  
+                     }  
+                });  
+           }     
       });  
+
 </script>

@@ -238,7 +238,7 @@ echo 'Address : '.$crow['uaddress'].'';
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
         <!--<a href="cartaction.php?action=placeOrder" class="btn btn-success orderBtn">Confirm Order</a>-->
-     <button id="submit" class="btn btn-success orderBtn">Confirm Order</button>
+     <button id="submit" class="btn btn-success orderBtn">Update</button>
 </form> 
 </div>
     </div>
