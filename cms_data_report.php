@@ -61,19 +61,19 @@ include 'cms_session.php';
                     </div>
                 </li>
                 <li>
-                    <a href="cms_index.php"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard Index</span></a>
+                    <a href="cms_index.php"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard </span></a>
                 </li>
                 <li>
-                    <a href="cms_account_manage.php"><i class="fa fa-th-large"></i> <span class="nav-label">Account Management</span> </a>
+                    <a href="cms_account_manage.php"><i class="fa fa-user-o"></i> <span class="nav-label">Account Management</span> </a>
                 </li>
                 <li>
-                    <a href="cms_menu_manage.php"><i class="fa fa-th-large"></i> <span class="nav-label">Menu Management</span> </a>
+                    <a href="cms_menu_manage.php"><i class="fa fa-list-alt"></i> <span class="nav-label">Menu Management</span> </a>
                 </li>
                 <li>
-                    <a href="cms_order_manage.php"><i class="fa fa-th-large"></i> <span class="nav-label">Order Management</span> </a>
+                    <a href="cms_order_manage.php"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Order Management</span> </a>
                 </li>
                 <li class="active">
-                    <a href="cms_sales_report.php"><i class="fa fa-th-large"></i> <span class="nav-label">Sales Report</span> </a>
+                    <a href="cms_data_report.php"><i class="fa fa-area-chart"></i> <span class="nav-label">Data Analysis & Report</span> </a>
                 </li>
             </ul>
 
@@ -106,8 +106,21 @@ include 'cms_session.php';
                 <div class="col-lg-12">
                     <div class="text-center m-t-lg">
                         <h1>
-                            Welcome To Content Management Systems
+                            Sales Data
                         </h1>
+
+
+
+<p>Sales Data Analysis and Reporting Module
+<p>The staff can view the sales data in the report within the content management module. 
+<p>The report is divided the sales data according to the different time period, for example by month.
+
+
+
+
+
+
+
                     </div>
                 </div>
             </div>

@@ -60,19 +60,19 @@ include 'db/dbconnect.php';
                     </div>
                 </li>
                 <li>
-                    <a href="cms_index.php"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard Index</span></a>
+                    <a href="cms_index.php"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard </span></a>
                 </li>
                 <li class="active">
-                    <a href="cms_account_manage.php"><i class="fa fa-th-large"></i> <span class="nav-label">Account Management</span> </a>
+                    <a href="cms_account_manage.php"><i class="fa fa-user-o"></i> <span class="nav-label">Account Management</span> </a>
                 </li>
                 <li>
-                    <a href="cms_menu_manage.php"><i class="fa fa-th-large"></i> <span class="nav-label">Menu Management</span> </a>
+                    <a href="cms_menu_manage.php"><i class="fa fa-list-alt"></i> <span class="nav-label">Menu Management</span> </a>
                 </li>
                 <li>
-                    <a href="cms_order_manage.php"><i class="fa fa-th-large"></i> <span class="nav-label">Order Management</span> </a>
+                    <a href="cms_order_manage.php"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Order Management</span> </a>
                 </li>
                 <li>
-                    <a href="cms_sales_report.php"><i class="fa fa-th-large"></i> <span class="nav-label">Sales Report</span> </a>
+                    <a href="cms_data_report.php"><i class="fa fa-area-chart"></i> <span class="nav-label">Data Analysis & Report</span> </a>
                 </li>
             </ul>
 
