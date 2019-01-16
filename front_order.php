@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>SC & FOOD | order page</title>
+<title>SC & FOOD | Order History</title>
 <link href="frontend/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="frontend/js/jquery.min.js"></script>

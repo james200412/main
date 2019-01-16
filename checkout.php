@@ -137,7 +137,7 @@ $crow = mysqli_fetch_assoc($result);
     <a data-toggle="modal" data-target="#modalCartAddress" class="btn btn-success ">Use Other Delivery Address</a>
   <!--  <a href="cartaction.php?action=placeOrder" class="btn btn-success orderBtn">Confirm Order</a>
   -->  
-<a class="btn btn-success orderBtn" data-toggle="modal" data-target="#paymentModal">Confirm Order</a>
+<a class="btn btn-success orderBtn" data-toggle="modal" data-target="#paymentModal">Confirm Order <i class="glyphicon glyphicon-circle-arrow-right"></i></a>
 
  <!-- <a href="front_payment.php" class="btn btn-success orderBtn">Confirm Order</a>
             -->
@@ -187,7 +187,7 @@ include 'include/front_footer.php';
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
         <!--<a href="cartaction.php?action=placeOrder" class="btn btn-success orderBtn">Confirm Order</a>-->
-     <button id="submit" class="btn btn-success orderBtn">Confirm Order</button>
+     <button id="submit" class="btn btn-success orderBtn" onclick="return confirm('Confirm?')">Confirm Order <i class="glyphicon glyphicon-circle-arrow-right"></i></button>
 </form> 
 </div>
     </div>
