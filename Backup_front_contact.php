@@ -49,8 +49,29 @@
 		<div class="contact_top">
 			 		<div class="container">
 			 			<div class="col-md-6 contact_left wow fadeInRight" data-wow-delay="0.4s">
-
-							 <h4>Contact Info</h4>
+			 				<h4>Contact Form</h4>
+			 				<p></p>
+							  <form>
+								 <div class="form_details">
+					                 <input type="text" class="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}">
+									 <input type="text" class="text" value="Email Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}">
+									 <input type="text" class="text" value="Subject" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Subject';}">
+									 <textarea value="Message" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message</textarea>
+									 <div class="clearfix"> </div>
+									 <div class="sub-button wow fadeInLeft" data-wow-delay= "0.4s">
+									 	<input name="submit" type="submit" value="Send message">
+									 </div>
+						          </div>
+						       </form>
+					        </div>
+					        <div class="col-md-6 company-right wow fadeInLeft" data-wow-delay="0.4s">
+					        	<div class="contact-map">
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17555.804209326525!2d114.16640211677054!3d22.328951638805563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3404073400f3ef35%3A0xeb61704ffb0ba959!2z6aaZ5riv5Z-O5biC5aSn5a24!5e0!3m2!1szh-TW!2shk!4v1547402103268" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+		</div>
+      
+	  <div class="company-right">
+					        	<div class="company_ad">
+							     		<h3>Contact Info</h3>
 							     		
 			      						<address>
 											 <p>Email:<a href="mail-to: info@scfood.com"> fakeinfo@scfood.com</a></p>
@@ -60,16 +81,15 @@
 									 	 	<p>City University of Hong Kong.</p>
 											<p>Tat Chee Avenue. Kowloon Tong</p>
 							   			</address>
-
- <a href="front_feedback.php" class="btn btn-info">Go Feed Back</a> 						
-					        
-							</div>
-
-					        <div class="col-md-6 company-right wow fadeInLeft" data-wow-delay="0.4s">
-					        	<div class="contact-map">
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17555.804209326525!2d114.16640211677054!3d22.328951638805563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3404073400f3ef35%3A0xeb61704ffb0ba959!2z6aaZ5riv5Z-O5biC5aSn5a24!5e0!3m2!1szh-TW!2shk!4v1547402103268" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-		</div>
-						
+							   		</div>
+									</div>
+									
+										
+									<div class="follow-us">
+	
+									</div>
+			
+							
 							 </div>
 						</div>
 					</div>

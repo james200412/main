@@ -164,40 +164,14 @@ echo 'Estimated Delivery Time : '.$stamp.'';
 <div class="col-md-6 ordering-image wow bounceIn" data-wow-delay="0.4s">
 	<div class="order-history">
 		<header class="order-history__header">
-			<h3>FeedBack</h3> 
+			<h3>FeedBack To Us!</h3> 
 			<div class="text-right"><br></div>
             </header>			
 <div class="feedback-content">
- <form method="post" id="feedback">  
-                          <label>今天的消費方式</label> 
-                          <input type="text" name="name" id="name" class="form-control" />  
-                          <br />  
-                          <label>整體滿意度</label>  
-                          <textarea name="address" id="address" class="form-control"></textarea>  
-                          <br />  
-                          <label>不滿意的餐點項目</label>  
-                          <input type="email" name="email" id="email" class="form-control" />  
-                          <br />                            
-                          <label>用餐碰到的問題</label>  
-                          <input type="text" name="phone" id="phone" size="8" maxlength="8" class="form-control" />  
-                          <br />
-                          <label>其中會有一題(非選擇題)可以詳述你的用餐經驗</label>  
-                          <input type="password" name="password" size="20"  minlength="8" maxlength="20" id="password" class="form-control" />  
-                          <br />
-                          <label>ACTIVATE</label>  
-                          <select name="activate" id="activate" class="form-control">  
-                               <option value="1">Yes</option>  
-                               <option value="0">No</option>
-                          </select>  
-                          <br />    
-						  <label>Select</label>  
-<p><input type="radio" id="cod" name="disposition-group" value="0" CHECKED/> Cash on delivery
-<p><input type="radio" id="cod" name="disposition-group" value="0" CHECKED/> Cash on delivery
-<br><br>
-                          <input type="hidden" name="userid" id="userid" />
 
-                          <input type="submit" name="insert" id="insert" value="Submit" class="btn btn-success" />  
-                     </form>  
+ <a href="front_feedback.php" class="btn btn-info">Go Feed Back</a> 
+
+ 
 
 
 
