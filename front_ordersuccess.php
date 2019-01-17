@@ -17,7 +17,7 @@ $crow = mysqli_fetch_assoc($result);
 <!DOCTYPE html>
 <html>
 <head>
-<title>SC & FOOD | FeedBack </title>
+<title>SC & FOOD | Order Completed </title>
 <link href="frontend/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="frontend/js/jquery.min.js"></script>
@@ -169,7 +169,7 @@ echo 'Estimated Delivery Time : '.$stamp.'';
             </header>			
 <div class="feedback-content">
 
- <a href="front_feedback.php" class="btn btn-info">Go Feed Back</a> 
+ <a href="front_feedback_action.php" class="btn btn-info" target="_blank">Go Feed Back</a> 
 
  
 

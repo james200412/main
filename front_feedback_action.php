@@ -1,10 +1,20 @@
 <?php
-if(!isset($_SESSION['feedback'])){
 
-	header('Location: index.php');
+$orderid = $_POST['orderid'];
+$date = $_POST['orderdate'];
+	
+include 'db/dbconnect.php';
+$query = "SELECT * FROM TBORDER where id = '$orderid' AND odate BETWEEN '$date 00:00:00' AND '$date 23:59:59'";
 
+$result = @mysqli_query($connect, $query);
+$num = mysqli_num_rows($result); 
+
+if($num > 0){
+	
 }
+
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,39 +67,24 @@ if(!isset($_SESSION['feedback'])){
 			 		<div class="container">
 			 			<div class="col-md-6 contact_left wow fadeInRight" data-wow-delay="0.4s">
 	  					  
-							<form method="post" id="feedback">  
-                          <label>今天的消費方式</label> 
-                          <input type="text" name="name" id="name" class="form-control" />  
-                          <br />  
-                          <label>整體滿意度</label>  
-                          <textarea name="address" id="address" class="form-control"></textarea>  
-                          <br />  
-                          <label>不滿意的餐點項目</label>  
-                          <input type="email" name="email" id="email" class="form-control" />  
-                          <br />                            
-                          <label>用餐碰到的問題</label>  
-                          <input type="text" name="phone" id="phone" size="8" maxlength="8" class="form-control" />  
-                          <br />
-                          <label>其中會有一題(非選擇題)可以詳述你的用餐經驗</label>  
-                          <input type="password" name="password" size="20"  minlength="8" maxlength="20" id="password" class="form-control" />  
-                          <br />
-                          <label>ACTIVATE</label>  
-                          <select name="activate" id="activate" class="form-control">  
-                               <option value="1">Yes</option>  
-                               <option value="0">No</option>
-                          </select>  
-                          <br />    
-						  <label>Select</label>  
-<p><input type="radio" id="cod" name="disposition-group" value="0" CHECKED/> Cash on delivery
-<p><input type="radio" id="cod" name="disposition-group" value="0" CHECKED/> Cash on delivery
-<br><br>
-                          <input type="hidden" name="userid" id="userid" />
 
-                          <input type="submit" name="insert" id="insert" value="Submit" class="btn btn-success" />  
+<Strong>
+<p>You are welcome to participate in the SC&FOOD customer experience survey. 
+<p>We value your feedback and thank you for your willingness to take 10 minutes to complete this survey and provide valuable advice to Us.
+</Strong>
+
+<p>Please enter the following information according to your Order.
+						  <form action="#" method="post" id="feedback">  
+                          <label>Order ID : </label> (e.g. : 100001)
+                          <input type="text" name="orderid" id="orderid" class="form-control" />  
+                          <br />  
+                          <label>Order Date</label>  
+                          <input type="date" name="orderdate" id="orderdate" class="form-control" data-date-format="YYYY-MM-DD"></textarea>  
+                          <br />    
+                          <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-success" />  
                      </form>  
 
-
-					        
+        
 							</div>
 
 			

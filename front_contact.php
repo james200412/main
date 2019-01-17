@@ -60,8 +60,8 @@
 									 	 	<p>City University of Hong Kong.</p>
 											<p>Tat Chee Avenue. Kowloon Tong</p>
 							   			</address>
-
- <a href="front_feedback.php" class="btn btn-info">Go Feed Back</a> 						
+										   <h4>Give us feed back!</h4>
+ <a href="front_feedback_action.php" class="btn btn-info">Go Feed Back</a> 						
 					        
 							</div>
 
