@@ -9,8 +9,49 @@ $query = "SELECT * FROM TBORDER where id = '$orderid' AND odate BETWEEN '$date 0
 $result = @mysqli_query($connect, $query);
 $num = mysqli_num_rows($result); 
 
-if($num > 0){
-	
+if(isset($orderid) && isset($date) && $num > 0){
+session_start();
+$_SESSION['feedbackoid'] = $_POST['orderid'];
+$_SESSION['feedback'] = '1';
+
+	header('Location: front_feedback.php');
+}else if(isset($orderid) && isset($date)){
+	echo '<script type="text/javascript">alert ("No Order Found!");</script>';
+}
+
+
+
+//FeebBack Form Action from front_feedback.php
+if(isset($_POST['submit1']) && isset($_GET['id'])){
+unset($_SESSION['feedbackoid']);
+
+$fborderid = $_GET['id'];
+$remarkfb = $_POST['remark'];	
+$ans1= (int)$_POST['ans1-group'];
+$ans2= (int)$_POST['ans2-group'];
+
+
+//insert remark to feed back table
+$queryfb = "INSERT INTO TBFEEDBACK (oid, remark, overallrate) VALUES ('".$fborderid."', '".$remarkfb."', '".$ans1."');";
+$resultfb = @mysqli_query($connect, $queryfb);
+
+//fecth ordered dish id by order id from order detail
+$querygetod = "SELECT did FROM TBORDER_DETAIL WHERE oid =".$fborderid."";
+$resultgetod = @mysqli_query($connect, $querygetod);
+while($rowfod = mysqli_fetch_array($resultgetod)){
+
+$rowdid1 = $rowfod['did'];
+//update rating to menu table
+$querydrate = "UPDATE TBMENU SET  
+rating = rating + $ans2
+WHERE id=".$rowdid1."";
+$resultdrate = mysqli_query($connect, $querydrate);
+
+}
+
+echo "<script type='text/javascript'>alert('Thank you for feed back!');
+window.location='index.php';
+</script>";
 }
 
 ?>
@@ -69,17 +110,17 @@ if($num > 0){
 	  					  
 
 <Strong>
-<p>You are welcome to participate in the SC&FOOD customer experience survey. 
+<p>You are welcome to participate in the SC & FOOD customer experience survey. 
 <p>We value your feedback and thank you for your willingness to take 10 minutes to complete this survey and provide valuable advice to Us.
 </Strong>
 
 <p>Please enter the following information according to your Order.
 						  <form action="#" method="post" id="feedback">  
                           <label>Order ID : </label> (e.g. : 100001)
-                          <input type="text" name="orderid" id="orderid" class="form-control" />  
+                          <input type="text" name="orderid" id="orderid" class="form-control" style="width: 50%" />  
                           <br />  
                           <label>Order Date</label>  
-                          <input type="date" name="orderdate" id="orderdate" class="form-control" data-date-format="YYYY-MM-DD"></textarea>  
+                          <input type="date" name="orderdate" id="orderdate" class="form-control" style="width: 50%" data-date-format="YYYY-MM-DD"></textarea>  
                           <br />    
                           <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-success" />  
                      </form>  

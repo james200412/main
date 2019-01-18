@@ -1,9 +1,15 @@
 <?php
-if(!isset($_SESSION['feedback'])){
+session_start();
+
+if(!isset($_SESSION['feedback']) | !isset($_SESSION['feedbackoid'])){
 
 	header('Location: index.php');
 
 }
+
+$fboid = $_SESSION['feedbackoid'];
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -50,43 +56,60 @@ if(!isset($_SESSION['feedback'])){
 	<div class="contact-section-page">
 		<div class="contact-head">
 		    <div class="container">
-				<h3>Feed Back</h3>
+				<h3>Feed Back Form</h3>
 			</div>
 		</div>
 		<div class="contact_top">
 			 		<div class="container">
 			 			<div class="col-md-6 contact_left wow fadeInRight" data-wow-delay="0.4s">
-	  					  
-							<form method="post" id="feedback">  
-                          <label>今天的消費方式</label> 
-                          <input type="text" name="name" id="name" class="form-control" />  
-                          <br />  
-                          <label>整體滿意度</label>  
-                          <textarea name="address" id="address" class="form-control"></textarea>  
-                          <br />  
-                          <label>不滿意的餐點項目</label>  
-                          <input type="email" name="email" id="email" class="form-control" />  
-                          <br />                            
-                          <label>用餐碰到的問題</label>  
-                          <input type="text" name="phone" id="phone" size="8" maxlength="8" class="form-control" />  
-                          <br />
-                          <label>其中會有一題(非選擇題)可以詳述你的用餐經驗</label>  
-                          <input type="password" name="password" size="20"  minlength="8" maxlength="20" id="password" class="form-control" />  
-                          <br />
-                          <label>ACTIVATE</label>  
-                          <select name="activate" id="activate" class="form-control">  
-                               <option value="1">Yes</option>  
-                               <option value="0">No</option>
-                          </select>  
-                          <br />    
-						  <label>Select</label>  
-<p><input type="radio" id="cod" name="disposition-group" value="0" CHECKED/> Cash on delivery
-<p><input type="radio" id="cod" name="disposition-group" value="0" CHECKED/> Cash on delivery
-<br><br>
-                          <input type="hidden" name="userid" id="userid" />
+<style>
+        .Q1{width:100%;border-bottom:2px solid #CCC; line-height:50px;}
+        .A1{width:100%;}
+</style>
 
-                          <input type="submit" name="insert" id="insert" value="Submit" class="btn btn-success" />  
-                     </form>  
+
+<form action="front_feedback_action.php?id=<?php echo $fboid;?>" method="post" id="feedback"> 
+			<table class="Q1">
+            <colgroup><col width="30px"><col></colgroup>            
+            <tbody><tr><td>1.</td><td><label>Overall Satisfaction</td></tr>
+            <tr><td>  
+			</td><td>
+            <table class="A1" id="ans1" border="0">
+			<tbody><tr>
+			<td><input id="ans1_0" type="radio" name="ans1-group" value="2" CHECKED/><label for="ans1_0">Very Good</label></td>
+			<td><input id="ans1_1" type="radio" name="ans1-group" value="1"><label for="ans1_1">Good</label></td>
+			<td><input id="ans1_2" type="radio" name="ans1-group" value="0"><label for="ans1_2">Normal</label></td>
+			<td><input id="ans1_3" type="radio" name="ans1-group" value="-1"><label for="ans1_3">Bad</label></td>
+			<td><input id="ans1_4" type="radio" name="ans1-group" value="-2"><label for="ans1_4">Very Bad</label></td>
+			</tr>
+			</tbody></table>
+            </td></tr> 
+            </tbody></table>
+            <br /> 
+
+
+			<table class="Q1">
+            <colgroup><col width="30px"><col></colgroup>            
+            <tbody><tr><td>2.</td><td><label>Are You Satisfaction For the Ordered Dish?</td></tr>
+            <tr><td>  
+			</td><td>
+            <table class="A1" id="ans2" border="0">
+			<tbody><tr>
+			<td><input id="ans2_0" type="radio" name="ans2-group" value="1" CHECKED/><label for="ans2_0">Yes</label></td>
+			<td><input id="ans2_1" type="radio" name="ans2-group" value="-1"><label for="ans2_1">No</label></td>
+			<td><input id="ans2_2" type="radio" name="ans2-group" value="0"><label for="ans2_2">No Comment</label></td>
+			</tr>
+			</tbody></table>
+            </td></tr> 
+            </tbody></table>                          
+            <br />  
+
+            <label>Remark</label>  
+            <input type="text" name="remark" id="remark" size="20" id="remark" class="form-control" />  
+            <br />    
+
+            <input type="submit" name="submit1" id="submit1" value="Submit" class="btn btn-success"/>  
+            </form>  
 
 
 					        
