@@ -106,17 +106,39 @@ include 'db/dbconnect.php';
                 <div class="col-lg-12">
                     <div class="text-Left m-t-lg">
 
-                    
+                <style>
+#myInput {
+
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 20%;
+  font-size: 16px;
+  padding: 10px 20px 10px 20px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+</style>    
+
   <!--start-->
   <div class="container" style="width:100%;">
   <div>
            <h1 class="manage" style="width:50%;">Order Management</h1>
-                <br /> </div>
+ </div> 
+                <div align="right">
+               <h3>Order Status&nbsp;:&nbsp;&nbsp;
+     <select id="myInput" onchange="myFunction()">
+     <option selected value="">All</option>
+     <option value="Processing">Processing</option>
+     <option value="Delivered">Delivered</option>
+     <option value="Completed">Completed</option>
+     <option value="Canceled">Canceled</option>
+     </select>
+                </div>
                 <div class="table-responsive">  
                 
                      <br />  
                      <div id="usertable">  
-                          <table class="table table-bordered">  
+                          <table id="myTable" class="table table-bordered">  
                           <thead>
                                <tr>  
                                     <th width="5%">ORDER ID</th>  
@@ -280,6 +302,25 @@ include 'db/dbconnect.php';
 			document.body.innerHTML = printContents;
 			window.print();
 			document.body.innerHTML = originalContents;
-		}
+        }
+        
+        function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[6];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
 
 </script>
