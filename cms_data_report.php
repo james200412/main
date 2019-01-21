@@ -183,7 +183,7 @@ $chart_data2 = substr($chart_data2, 0, -2);
                     </div>
                     <div class="ibox-content">
 <?php
-$querytotal = "SELECT sum(amount) AS amount FROM TBORDER";
+$querytotal = "SELECT sum(amount) AS amount FROM TBORDER WHERE status = 2";
 $resulttotal = mysqli_query($connect, $querytotal);
 $rowtotal = mysqli_fetch_assoc($resulttotal);
 ?>                        
@@ -201,7 +201,7 @@ $rowtotal = mysqli_fetch_assoc($resulttotal);
                     </div>
                     <div class="ibox-content">   
 <?php
-$queryorder = "SELECT count(id) AS order_number FROM TBORDER";
+$queryorder = "SELECT count(id) AS order_number FROM TBORDER WHERE status = 2";
 $resultorder = mysqli_query($connect, $queryorder);
 $roworder = mysqli_fetch_assoc($resultorder);
 ?>                           
@@ -291,14 +291,14 @@ $resultt1 = mysqli_query($connect, $queryt1);
   }
 ?>   
 <?php
-$queryt2 = "SELECT sum(subtotal) AS sumtotal from tborder_detail";
+$queryt2 = "SELECT sum(amount) AS amount from tborder where status = 2";
 $resultt2 = mysqli_query($connect, $queryt2);
 $rowt2 = mysqli_fetch_assoc($resultt2);
 ?>  
   </tbody>
 
   </table>  
-  *Total Revenue HKD$ <?php echo $rowt2['sumtotal']; ?>
+  *Total Revenue HKD$ <?php echo $rowt2['amount']; ?>
                     </div>
                    
                 </div>
