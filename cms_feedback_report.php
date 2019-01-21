@@ -2,42 +2,38 @@
 include 'cms_session.php';
 include 'db/dbconnect.php';
 
- //Line Chart
-$query = "SELECT sum(amount) AS sales, CAST(odate AS DATE) AS date FROM TBORDER WHERE status = 2 GROUP BY CAST(odate AS DATE)";
+ //Donut Chart- (get mark/most hight mark)*100 = % of get mark
+$query = "SELECT COUNT(overallrate) AS vbad, 
+(SELECT COUNT(overallrate) FROM tbfeedback WHERE overallrate = -1) AS bad, 
+(SELECT COUNT(overallrate) FROM tbfeedback WHERE overallrate = 0) AS normal, 
+(SELECT COUNT(overallrate) FROM tbfeedback WHERE overallrate = 1) AS good, 
+(SELECT COUNT(overallrate) FROM tbfeedback WHERE overallrate = 2) AS vgood 
+FROM tbfeedback WHERE overallrate = -2";
+
 $result = mysqli_query($connect, $query);
 $chart_data = '';
 while($row = mysqli_fetch_array($result))
 {
- $chart_data .= "{ date:'".$row["date"]."', sales:".$row["sales"]."}, ";
+ $chart_data .= "{ label:'Very Good', value: ".$row["vgood"]."}, 
+ { label:'Good', value: ".$row["good"]."},
+ { label:'Normal', value: ".$row["normal"]."},
+ { label:'Bad', value: ".$row["bad"]."}, 
+ { label:'Very Bad', value: ".$row["vbad"]."}
+ ";
 }
 $chart_data = substr($chart_data, 0, -2);
 
-/*/Bar Chart
-$query2 = "SELECT tborder_detail.did, 
-sum(tborder_detail.subtotal) AS subtotal, 
-(SELECT sum(tborder_detail.subtotal) from tborder_detail) as sumtotal, 
-tbmenu.dname FROM tborder_detail 
-JOIN tbmenu ON tbmenu.id = tborder_detail.did GROUP BY tbmenu.id ORDER BY DPRICE DESC";
-*/
-$query2="SELECT tborder_detail.did, sum(tborder_detail.subtotal) AS subtotal, 
-(SELECT sum(tborder_detail.subtotal) from tborder_detail, tborder 
-WHERE tborder_detail.oid = tborder.id AND tborder.status = 2) as sumtotal, tbmenu.dname FROM tborder_detail 
-JOIN tbmenu ON tbmenu.id = tborder_detail.did 
-JOIN tborder ON tborder.id = tborder_detail.oid 
-AND tborder.status = 2 
-GROUP BY tbmenu.id ORDER BY DPRICE DESC
-";
 
-
+//Bar Chart
+$query2 = "SELECT * FROM TBMENU ORDER BY DTYPE DESC";
 $result2 = mysqli_query($connect, $query2);
 $chart_data2 = '';
 while($row2 = mysqli_fetch_array($result2))
 {
- $chart_data2 .= "{ dish:'".$row2["dname"]."', subtotal:".$row2["subtotal"].", sumtotal:".$row2["sumtotal"]."}, ";
+ $chart_data2 .= "{ dish:'".$row2["dname"]."', Rating:".$row2["rating"]."}, ";
 }
 
 $chart_data2 = substr($chart_data2, 0, -2);
-
 
 
 ?>
@@ -172,47 +168,63 @@ $chart_data2 = substr($chart_data2, 0, -2);
             <div class="row">
                 <div class="col-lg-12">
                     <div class="text-left m-t-lg"style="width:60%;">
-                        <h1>Sales Data</h1>
+                        <h1>Customer FeedBack</h1>
                     </div>
                     <div class="row">
             <div class="col-lg-3">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <span class="label label-success pull-right">History</span>
-                        <h5>Total Revenue</h5>
-                    </div>
-                    <div class="ibox-content">
-<?php
-$querytotal = "SELECT sum(amount) AS amount FROM TBORDER";
-$resulttotal = mysqli_query($connect, $querytotal);
-$rowtotal = mysqli_fetch_assoc($resulttotal);
-?>                        
-<div class="stat-percent font-bold text-success"></div>
-                        <small>HKD$</small>
-                        <h1 class="no-margins"><?php echo $rowtotal['amount']; ?></h1>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
                         <span class="label label-info pull-right">History</span>
-                        <h5>Confirmed Orders</h5>
+                        <h5>FeedBack Number</h5>
                     </div>
                     <div class="ibox-content">   
 <?php
-$queryorder = "SELECT count(id) AS order_number FROM TBORDER";
+$queryorder = "SELECT count(id) AS feedback_number FROM tbfeedback";
 $resultorder = mysqli_query($connect, $queryorder);
 $roworder = mysqli_fetch_assoc($resultorder);
 ?>                           
                         <div class="stat-percent font-bold text-info"></div>
-                        <small>Orders Number</small>
-                        <h1 class="no-margins"><?php echo $roworder['order_number']; ?></h1>
+                        <small>FeedBack</small>
+                        <h1 class="no-margins"><?php echo $roworder['feedback_number']; ?></h1>
    
                     </div>
                 </div>
             </div>
 
+            <div class="col-lg-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-primary pull-right">Summary</span>
+                        <h5>Overall Customer Satisfaction</h5>
+                    </div>
+                    <div class="ibox-content">
+
+                        <div class="row">
+                            <div class="col-md-6">
+
+
+<?php
+$query123 = "SELECT (SELECT COUNT(overallrate) FROM tbfeedback WHERE overallrate = -1 OR overallrate = -2) AS below, 
+(SELECT COUNT(overallrate) FROM tbfeedback WHERE overallrate = 0 OR overallrate = 1 OR overallrate = 2) AS above 
+FROM tbfeedback GROUP BY 1";
+$result123 = mysqli_query($connect, $query123);
+$row123 = mysqli_fetch_assoc($result123);
+?>
+
+                                <h1 class="no-margins"><?php echo $row123['above'];?></h1>
+                                <div class="font-bold text-navy"><small>Normal Or Above</small></div>
+                            </div>
+                            <div class="col-md-6">
+                                <h1 class="no-margins"><?php echo $row123['below'];?></h1>
+                                <div class="font-bold text-navy"><small>Below Normal</small></div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+     
         </div>
                 </div>
                 
@@ -228,7 +240,7 @@ $roworder = mysqli_fetch_assoc($resultorder);
                 <div class="col-lg-6">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Recent Sales Data</h5>
+                        <h5>Customer Overall Satisfaction</h5>
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -237,7 +249,7 @@ $roworder = mysqli_fetch_assoc($resultorder);
                         </div>
                     </div>
                     <div class="ibox-content" style="position: relative">
-          <div id="recent-sales-chart"></div>
+          <div id="morris-donut-chart"></div>
  
                     </div>
                 </div>
@@ -247,7 +259,7 @@ $roworder = mysqli_fetch_assoc($resultorder);
             <div class="col-lg-6">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Dish Sales Report</h5>
+                        <h5>Dish Rating</h5>
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -260,10 +272,7 @@ $roworder = mysqli_fetch_assoc($resultorder);
                         <br>
 
 <?php
-$queryt1 = "SELECT tborder_detail.did, 
-sum(tborder_detail.subtotal) AS subtotal, 
-tbmenu.dname FROM tborder_detail 
-JOIN tbmenu ON tbmenu.id = tborder_detail.did GROUP BY tbmenu.id ORDER BY DPRICE DESC";
+$queryt1 = "SELECT * FROM TBMENU ORDER BY DTYPE DESC";
 $resultt1 = mysqli_query($connect, $queryt1);
 
 
@@ -273,7 +282,7 @@ $resultt1 = mysqli_query($connect, $queryt1);
 <thead>
   <tr>
     <th>Dish Name</th>
-    <th>Profits(Subtotal)</th>
+    <th>Dish Rating</th>
   </tr>
   </thead>
   <tbody>
@@ -284,33 +293,81 @@ $resultt1 = mysqli_query($connect, $queryt1);
   <tr>
 
 <td><?php echo $rowt1['dname']; ?></td>
-<td>HKD$ <?php echo $rowt1['subtotal']; ?></td>
+<td><?php echo $rowt1['rating']; ?> Point</td>
+
 
   </tr>
 <?php
   }
 ?>   
-<?php
-$queryt2 = "SELECT sum(subtotal) AS sumtotal from tborder_detail";
-$resultt2 = mysqli_query($connect, $queryt2);
-$rowt2 = mysqli_fetch_assoc($resultt2);
-?>  
   </tbody>
-
-  </table>  
-  *Total Revenue HKD$ <?php echo $rowt2['sumtotal']; ?>
+  </table>
                     </div>
                    
                 </div>
             </div>
             </div>
         <!--Bar Chart End-->
+       
+<!--Customer Remark-->
 
+<div class="row">
 
+        <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Customer Remark</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+               
+            </div>
+        </div>
+        <div class="ibox-content">
+            <div class="row">
+                <div class="col-sm-9 m-b-xs">
 
+                </div>
+            </div>
+            <div class="table-responsive">
+<?php
+$query233 = "SELECT * FROM tbfeedback WHERE remark IS NOT NULL ORDER BY oid DESC";
+$result233 = mysqli_query($connect, $query233);
+?>
+                <table class="table table-striped">
+                <col width="20%">
+                <col width="80%">
+                    <thead>
+                    <tr>
+                        <th>#Order ID </th>
+                        <th>Remark </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+<?php
+while($row233 = mysqli_fetch_array($result233))
+{
+?>
+                    <tr>
+                        <td>#<?php echo $row233['oid'];?></td>
+                        <td><?php echo $row233['remark'];?></td>
+                    </tr>
+<?php
+}
+?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
 
+<!--Customer Remark-->
 
         </div>
+
         </div>
 
 
@@ -355,32 +412,25 @@ $rowt2 = mysqli_fetch_assoc($resultt2);
 <script>
 $(function() {
 
-Morris.Line({
- element : 'recent-sales-chart',
- data:[<?php echo $chart_data; ?>],
- xkey:'date',
- ykeys:['sales'],
- labels:['Sales amount HKD$'],
- hideHover:'auto',
- stacked:true,
-     resize: true,
-    lineWidth:4,
-    lineColors: ['#1ab394'],
-    pointSize:5,
-});
-
+ 
 Morris.Bar({
     element: 'morris-bar-chart',
     data: [<?php echo $chart_data2; ?>],
     xkey: 'dish',
-    ykeys: ['sumtotal', 'subtotal'],
-    labels: ['Total Amount HKD$', 'Subtotal HKD$'],
+    ykeys: ['Rating'],
+    labels: ['Rating '],
     hideHover: 'auto',
     resize: true,
     xLabelAngle: 60,
     barColors: ['#1ab394', 'lightblue'],
 });
 
+Morris.Donut({
+    element: 'morris-donut-chart',
+    data: [<?php echo $chart_data; ?>],
+    resize: true,
+    colors: ['#FF0000', '#FFF700','#00FF59','#0008FF','#FB00FF'],
+});
 
 });
 </script>

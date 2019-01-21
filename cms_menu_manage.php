@@ -77,8 +77,11 @@ include 'db/dbconnect.php';
                     <a href="cms_order_manage.php"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Order Management</span> </a>
                 </li>
                 <li>
-                    <a href="cms_data_report.php"><i class="fa fa-area-chart"></i> <span class="nav-label">Data Analysis & Report</span> </a>
-                </li>
+                                       <a href="#"><i class="fa fa-area-chart"></i> <span class="nav-label">Data Analysis</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse" style="">
+                        <li><a href="cms_data_report.php">Sales Data</a></li>
+                        <li><a href="cms_feedback_report.php">Customer FeedBack</a></li>
+                    </ul>                </li>
             </ul>
 
         </div>
