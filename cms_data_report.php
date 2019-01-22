@@ -14,13 +14,7 @@ while($row = mysqli_fetch_array($result))
 }
 $chart_data = substr($chart_data, 0, -2);
 
-/*/Bar Chart
-$query2 = "SELECT tborder_detail.did, 
-sum(tborder_detail.subtotal) AS subtotal, 
-(SELECT sum(tborder_detail.subtotal) from tborder_detail) as sumtotal, 
-tbmenu.dname FROM tborder_detail 
-JOIN tbmenu ON tbmenu.id = tborder_detail.did GROUP BY tbmenu.id ORDER BY DPRICE DESC";
-*/
+//Bar Chart
 $query2="SELECT tborder_detail.did, sum(tborder_detail.subtotal) AS subtotal, 
 (SELECT sum(tborder_detail.subtotal) from tborder_detail, tborder 
 WHERE tborder_detail.oid = tborder.id AND tborder.status = 2) as sumtotal, tbmenu.dname FROM tborder_detail 
@@ -80,6 +74,9 @@ $chart_data2 = substr($chart_data2, 0, -2);
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
 
+    <!--ionRangeSlider-->
+    <link href="css/plugins/ionRangeSlider/ion.rangeSlider.css" rel="stylesheet">
+    <link href="css/plugins/ionRangeSlider/ion.rangeSlider.skinFlat.css" rel="stylesheet">
 
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -250,8 +247,86 @@ $rowt2 = mysqli_fetch_assoc($resultt2);
             </div>
             </div>
         <!--Bar Chart End-->
+<!--Customer Remark-->
+
+<div class="row">
+
+        <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Customer Value</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+               
+            </div>
+        </div>
+        <div class="ibox-content">
+            <div class="row">
+      
+            <div id="show_ionrange"></div><br>
+
+      <div style="text-align: right; width: 98%;">
+      <button class="btn btn-secondary btn-sm" onclick="printDiv('tableprint1')">Print Customer Detail</button>      
+      </div>
+      
+                <div class="col-sm-9 m-b-xs">
+                </div>
+            </div>
+            <div class="table-responsive">
+<?php
+$queryorderdata = "SELECT tbuser.*, tborder.uid, sum(tborder.amount) AS uservalue 
+FROM tborder JOIN tbuser ON tbuser.id = tborder.uid GROUP BY tborder.uid ORDER BY uservalue DESC";
+$resultorderdata = mysqli_query($connect, $queryorderdata);
+
+?>
+<div id="tableprint1">
+                <table class="table table-striped">
+                <col width="10%">
+                <col width="10%">
+                <col width="30%">
+                <col width="10%">
+                <col width="10%">
+                <col width="10%">
+                    <thead>
+                    <tr>
+                        <th>#ID </th>
+                        <th>Customer Name </th>
+                        <th>Address </th>
+                        <th>Phone </th>
+                        <th>Email </th>
+                        <th>Total Value </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+<?php
+while($roworderdata = mysqli_fetch_array($resultorderdata))
+{
+?>
+                    <tr>
+                        <td>#<?php echo $roworderdata['id'];?></td>
+                        <td><?php echo $roworderdata['uname'];?></td>
+                        <td><?php echo $roworderdata['uaddress'];?></td>
+                        <td><?php echo $roworderdata['uphone'];?></td>
+                        <td><?php echo $roworderdata['uemail'];?></td>
+                        <td>HKD$ <?php echo $roworderdata['uservalue'];?></td>
+                    </tr>
+<?php
+}
+?>
+                    </tbody>
+                </table>
+                </div>
 
 
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+<!--Customer Remark-->
 
 
 
@@ -290,7 +365,10 @@ $rowt2 = mysqli_fetch_assoc($resultt2);
 
     <!--
     <script src="js/demo/morris-demo.js"></script>-->
-
+    
+    
+    <!-- IonRangeSlider -->
+    <script src="js/plugins/ionRangeSlider/ion.rangeSlider.min.js"></script>
 </body>
 
 </html>
@@ -328,4 +406,47 @@ Morris.Bar({
 
 
 });
+
+function printDiv(divName){
+			var printContents = document.getElementById(divName).innerHTML;
+			var originalContents = document.body.innerHTML;
+			document.body.innerHTML = printContents;
+			window.print();
+			document.body.innerHTML = originalContents;
+        }
+        
+/*
+$("#show_ionrange").ionRangeSlider({
+            min: 0,
+            max: 10000,
+            type: 'double',
+            prefix: "$",
+            maxPostfix: "+",
+            prettify: false,
+            hasGrid: true
+        });
+*/
+
+    var $d4 = $("#show_ionrange");
+    
+    $d4.ionRangeSlider({
+            min: 0,
+            max: 10000,
+            type: 'double',
+            prefix: "$",
+            maxPostfix: "+",
+            prettify: false,
+            hasGrid: true
+        });
+    
+    $d4.on("change", function () {
+        alert('123');
+        var $inp = $(this);
+        var v = $inp.prop("value");     // input value in format FROM;TO
+        var from = $inp.data("from");   // input data-from attribute
+        var to = $inp.data("to");       // input data-to attribute
+    
+        console.log(v, from, to);       // all values
+    });
+    
 </script>
