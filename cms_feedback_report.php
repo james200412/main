@@ -1,7 +1,9 @@
 <?php
 include 'cms_session.php';
 include 'db/dbconnect.php';
-
+if($_SESSION['userlevel'] == 1){
+    header('Location: cms_index.php');
+    }
  //Donut Chart- (get mark/most hight mark)*100 = % of get mark
 $query = "SELECT COUNT(overallrate) AS vbad, 
 (SELECT COUNT(overallrate) FROM tbfeedback WHERE overallrate = -1) AS bad, 
@@ -83,67 +85,9 @@ $chart_data2 = substr($chart_data2, 0, -2);
 <body>
 
 <div id="wrapper">
-
-    <nav class="navbar-default navbar-static-side" role="navigation">
-        <div class="sidebar-collapse">
-            <ul class="nav metismenu" id="side-menu">
-                <li class="nav-header">
-                    <div class="dropdown profile-element">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">
-                            
-                            <?php
-                         // echo 'Welcome : ';                          
-                            echo $_SESSION['username'];
-                            
-                            ?>
-                            
-                            </strong>
-                             </span> <span class="text-muted text-xs block">
-
-                             <?php if ($_SESSION['userlevel'] == 2){
-                                      echo "Administrator";
-                                    }  else if($_SESSION['userlevel'] == 1){
-                                      echo "Staff";
-                                    }else{
-                                      //echo "Customer";
-                                    }                              
-                                    ?>
-                                                       
-                             <b class="caret"></b></span> </span> </a>
-
-                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li><a href="logout.php">Logout</a></li>
-                            </ul>
-                    </div>
-                    <div class="logo-element">
-                        CMS
-                    </div>
-                </li>
-                <li>
-                    <a href="cms_index.php"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard </span></a>
-                </li>
-                <li>
-                    <a href="cms_account_manage.php"><i class="fa fa-user-o"></i> <span class="nav-label">Account Management</span> </a>
-                </li>
-                <li>
-                    <a href="cms_menu_manage.php"><i class="fa fa-list-alt"></i> <span class="nav-label">Menu Management</span> </a>
-                </li>
-                <li>
-                    <a href="cms_order_manage.php"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Order Management</span> </a>
-                </li>
-            
-                <li class="active">
-<a href="#"><i class="fa fa-area-chart"></i> <span class="nav-label">Data Analysis</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse in" style="">
-                        <li><a href="cms_data_report.php">Sales Data</a></li>
-                        <li><a href="cms_feedback_report.php">Customer FeedBack</a></li>
-                    </ul>                </li>
-            </ul>
-
-        </div>
-    </nav>
-
+<?php
+include 'include/cms_leftbar.php';
+?>
     <div id="page-wrapper" class="gray-bg">
         <div class="row border-bottom">
             <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
@@ -250,7 +194,54 @@ $row123 = mysqli_fetch_assoc($result123);
                     </div>
                     <div class="ibox-content" style="position: relative">
           <div id="morris-donut-chart"></div>
- 
+<br>
+<?php
+$queryt3341 = "SELECT COUNT(overallrate) AS vbad1, 
+(SELECT COUNT(overallrate) FROM tbfeedback WHERE overallrate = -1) AS bad1, 
+(SELECT COUNT(overallrate) FROM tbfeedback WHERE overallrate = 0) AS normal1, 
+(SELECT COUNT(overallrate) FROM tbfeedback WHERE overallrate = 1) AS good1, 
+(SELECT COUNT(overallrate) FROM tbfeedback WHERE overallrate = 2) AS vgood1 
+FROM tbfeedback WHERE overallrate = -2";
+$resultt3341 = mysqli_query($connect, $queryt3341);
+$rowt3341 = mysqli_fetch_array($resultt3341);
+?>
+
+<table class="table table-bordered" >
+<thead>
+  <tr>
+    <th>Selection</th>
+    <th>Number of return</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+<td>Very Good</td>
+<td><?php echo $rowt3341['vgood1']; ?> Select</td>
+  </tr> 
+  <tr>
+<td>Good</td>
+<td><?php echo $rowt3341['good1']; ?> Select</td>
+  </tr> 
+  <tr>
+<td>Normal</td>
+<td><?php echo $rowt3341['normal1']; ?> Select</td>
+  </tr> 
+  <tr>
+<td>Bad</td>
+<td><?php echo $rowt3341['bad1']; ?> Select</td>
+  </tr> 
+  <tr>
+<td>Very Bad</td>
+<td><?php echo $rowt3341['vbad1']; ?> Select</td>
+  </tr> 
+  </tbody>
+  </table>
+  <?php
+$queryt3342 = "SELECT COUNT(id) AS all1 FROM tbfeedback";
+$resultt3342 = mysqli_query($connect, $queryt3342);
+$rowt3342 = mysqli_fetch_array($resultt3342);
+?>
+  *Total Feedback Number : <?php echo $rowt3342['all1']; ?>
                     </div>
                 </div>
             </div>
@@ -316,7 +307,7 @@ $resultt1 = mysqli_query($connect, $queryt1);
         <div class="col-lg-12">
         <div class="ibox float-e-margins">
         <div class="ibox-title">
-            <h5>Customer Remark</h5>
+            <h5>Customer Remark</h5><small>&nbsp;(Display only not null records)</small>
             <div class="ibox-tools">
                 <a class="collapse-link">
                     <i class="fa fa-chevron-up"></i>
