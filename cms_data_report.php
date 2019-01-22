@@ -35,6 +35,10 @@ while($row2 = mysqli_fetch_array($result2))
 $chart_data2 = substr($chart_data2, 0, -2);
 
 
+if(isset($_POST["from"]))
+{  
+echo 'good';
+}  
 
 ?>
 
@@ -265,7 +269,7 @@ $rowt2 = mysqli_fetch_assoc($resultt2);
         <div class="ibox-content">
             <div class="row">
       
-            <div id="show_ionrange"></div><br>
+            <div id="show_ionrange"></div><br />
 
       <div style="text-align: right; width: 98%;">
       <button class="btn btn-secondary btn-sm" onclick="printDiv('tableprint1')">Print Customer Detail</button>      
@@ -369,6 +373,7 @@ while($roworderdata = mysqli_fetch_array($resultorderdata))
     
     <!-- IonRangeSlider -->
     <script src="js/plugins/ionRangeSlider/ion.rangeSlider.min.js"></script>
+
 </body>
 
 </html>
@@ -425,28 +430,75 @@ $("#show_ionrange").ionRangeSlider({
             prettify: false,
             hasGrid: true
         });
-*/
 
-    var $d4 = $("#show_ionrange");
+ */
     
-    $d4.ionRangeSlider({
+$("#show_ionrange").ionRangeSlider({
+            type: "double",
             min: 0,
             max: 10000,
-            type: 'double',
+            from: 0,
+            to: 10000,      
             prefix: "$",
             maxPostfix: "+",
             prettify: false,
-            hasGrid: true
-        });
+            hasGrid: true,   
+        onFinish: function(data) {
+        var $int = $(this);
+        var from =  $int.data("from");   // input data-from attribute
+        var to =  $int.data("to");       // input data-to attribute
+
+            $.ajax({  
+                url:"cms_data_report.php",  
+                method:"POST",  
+                data:{from: from, to: to},
+                success:function(data){
+     
+                        alert('success');
+
+/*
+                     $('#dishid1').val(data.id);                   
+                     $('#edit_data_Modal').modal('show');  
+*/
+                }  
+           }); 
+
+}
+}); 
     
-    $d4.on("change", function () {
-        alert('123');
-        var $inp = $(this);
-        var v = $inp.prop("value");     // input value in format FROM;TO
-        var from = $inp.data("from");   // input data-from attribute
-        var to = $inp.data("to");       // input data-to attribute
-    
-        console.log(v, from, to);       // all values
+/*
+   $(document).on('click', '.edit_data', function(){  
+           var dishid1 = $(this).attr("id");  
+           $.ajax({  
+                url:"cms/menu/fetch.php",  
+                method:"POST",  
+                data:{dishid1:dishid1},  
+                dataType:"json",  
+                success:function(data){
+                    
+                     $('#dishid1').val(data.id);                   
+                     $('#edname').val(data.dname);  
+                     $('#edetail').val(data.detail);  
+                     $('#etype').val(data.dtype);
+                     $('#edprice').val(data.dprice);
+                     $('#eactivate').val(data.activate); 
+                                         
+                     $('#edit_data_Modal').modal('show');  
+                }  
+           });  
+      });  
+*/
+
+   /*
+    $("#show_ionrange").ionRangeSlider({
+        type: "double",
+        min: 0,
+        max: 10000,
+        from: 5000,
+        to: 8000,
+        onChange: function (data) {
+            console.dir(data);
+        }
     });
-    
+ */
 </script>
