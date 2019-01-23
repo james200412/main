@@ -33,13 +33,6 @@ while($row2 = mysqli_fetch_array($result2))
 }
 
 $chart_data2 = substr($chart_data2, 0, -2);
-
-
-if(isset($_POST["from"]))
-{  
-echo 'good';
-}  
-
 ?>
 
 
@@ -65,6 +58,7 @@ echo 'good';
     white-space:nowrap;
     margin:0.1em 0}
 </style>
+
 <!DOCTYPE html>
 <html>
 
@@ -258,7 +252,7 @@ $rowt2 = mysqli_fetch_assoc($resultt2);
         <div class="col-lg-12">
         <div class="ibox float-e-margins">
         <div class="ibox-title">
-            <h5>Customer Value</h5>
+            <h5>Customer Value</h5><small>&nbsp;(Please select below filter to display data, Data order by high Value Customer)</small>
             <div class="ibox-tools">
                 <a class="collapse-link">
                     <i class="fa fa-chevron-up"></i>
@@ -268,8 +262,9 @@ $rowt2 = mysqli_fetch_assoc($resultt2);
         </div>
         <div class="ibox-content">
             <div class="row">
-      
-            <div id="show_ionrange"></div><br />
+         
+<input type="text"  id="show_ionrange" name="show_ionrange" value="" /><br />
+
 
       <div style="text-align: right; width: 98%;">
       <button class="btn btn-secondary btn-sm" onclick="printDiv('tableprint1')">Print Customer Detail</button>      
@@ -279,49 +274,13 @@ $rowt2 = mysqli_fetch_assoc($resultt2);
                 </div>
             </div>
             <div class="table-responsive">
-<?php
-$queryorderdata = "SELECT tbuser.*, tborder.uid, sum(tborder.amount) AS uservalue 
-FROM tborder JOIN tbuser ON tbuser.id = tborder.uid GROUP BY tborder.uid ORDER BY uservalue DESC";
-$resultorderdata = mysqli_query($connect, $queryorderdata);
 
-?>
 <div id="tableprint1">
-                <table class="table table-striped">
-                <col width="10%">
-                <col width="10%">
-                <col width="30%">
-                <col width="10%">
-                <col width="10%">
-                <col width="10%">
-                    <thead>
-                    <tr>
-                        <th>#ID </th>
-                        <th>Customer Name </th>
-                        <th>Address </th>
-                        <th>Phone </th>
-                        <th>Email </th>
-                        <th>Total Value </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-<?php
-while($roworderdata = mysqli_fetch_array($resultorderdata))
-{
-?>
-                    <tr>
-                        <td>#<?php echo $roworderdata['id'];?></td>
-                        <td><?php echo $roworderdata['uname'];?></td>
-                        <td><?php echo $roworderdata['uaddress'];?></td>
-                        <td><?php echo $roworderdata['uphone'];?></td>
-                        <td><?php echo $roworderdata['uemail'];?></td>
-                        <td>HKD$ <?php echo $roworderdata['uservalue'];?></td>
-                    </tr>
-<?php
-}
-?>
-                    </tbody>
-                </table>
-                </div>
+<div id="tableshow1">
+    <!--show ionranageslider selected data-->
+
+</div><!--tableshow1-->
+</div><!--tableprint1-->
 
 
             </div>
@@ -339,10 +298,10 @@ while($roworderdata = mysqli_fetch_array($resultorderdata))
 
 
 
-
         <div class="footer">
             <div>
-                <strong>Copyright</strong> &copy; 2018
+                <strong>Copyright</strong> &copy; 2018 
+    
             </div>
         </div>
 
@@ -359,11 +318,7 @@ while($roworderdata = mysqli_fetch_array($resultorderdata))
 <script src="js/inspinia.js"></script>
 <script src="js/plugins/pace/pace.min.js"></script>
 
-    <!-- Morris Chart 
- 
-
-     Morris Chart-->
-     
+    <!-- Morris Chart-->
      <script src="js/plugins/morris/raphael-2.1.0.min.js"></script>
     <script src="js/plugins/morris/morris.js"></script>
 
@@ -373,7 +328,6 @@ while($roworderdata = mysqli_fetch_array($resultorderdata))
     
     <!-- IonRangeSlider -->
     <script src="js/plugins/ionRangeSlider/ion.rangeSlider.min.js"></script>
-
 </body>
 
 </html>
@@ -419,86 +373,34 @@ function printDiv(divName){
 			window.print();
 			document.body.innerHTML = originalContents;
         }
-        
-/*
+
 $("#show_ionrange").ionRangeSlider({
             min: 0,
-            max: 10000,
+            max: 100000,
+            from:0,
+            to:0,
             type: 'double',
             prefix: "$",
             maxPostfix: "+",
             prettify: false,
-            hasGrid: true
+            hasGrid: true,
+            onFinish: function(){
+    var sion = $('#show_ionrange').val();   
+if(sion!=""){
+           $.ajax({  
+                url:"cms/report/update.php",  
+                method:"POST",  
+                data:{sion:sion},  
+
+                success:function(data){ 
+                $('#tableshow1').html(data);  
+
+                }  
+      
+            });
+        }
+    }
         });
 
- */
-    
-$("#show_ionrange").ionRangeSlider({
-            type: "double",
-            min: 0,
-            max: 10000,
-            from: 0,
-            to: 10000,      
-            prefix: "$",
-            maxPostfix: "+",
-            prettify: false,
-            hasGrid: true,   
-        onFinish: function(data) {
-        var $int = $(this);
-        var from =  $int.data("from");   // input data-from attribute
-        var to =  $int.data("to");       // input data-to attribute
 
-            $.ajax({  
-                url:"cms_data_report.php",  
-                method:"POST",  
-                data:{from: from, to: to},
-                success:function(data){
-     
-                        alert('success');
-
-/*
-                     $('#dishid1').val(data.id);                   
-                     $('#edit_data_Modal').modal('show');  
-*/
-                }  
-           }); 
-
-}
-}); 
-    
-/*
-   $(document).on('click', '.edit_data', function(){  
-           var dishid1 = $(this).attr("id");  
-           $.ajax({  
-                url:"cms/menu/fetch.php",  
-                method:"POST",  
-                data:{dishid1:dishid1},  
-                dataType:"json",  
-                success:function(data){
-                    
-                     $('#dishid1').val(data.id);                   
-                     $('#edname').val(data.dname);  
-                     $('#edetail').val(data.detail);  
-                     $('#etype').val(data.dtype);
-                     $('#edprice').val(data.dprice);
-                     $('#eactivate').val(data.activate); 
-                                         
-                     $('#edit_data_Modal').modal('show');  
-                }  
-           });  
-      });  
-*/
-
-   /*
-    $("#show_ionrange").ionRangeSlider({
-        type: "double",
-        min: 0,
-        max: 10000,
-        from: 5000,
-        to: 8000,
-        onChange: function (data) {
-            console.dir(data);
-        }
-    });
- */
-</script>
+ </script>
