@@ -178,7 +178,8 @@ include 'include/front_footer.php';
 <input type="radio" id="cod" name="disposition-group" value="0" CHECKED/>
 </label></li>
 <li><label for="Others">
- <span class="disposition">Others</span>
+<span class="disposition"><img src="/img/paypal.jpg" height="70%" width="70%"></span>
+
 <input type="radio" id="Others" name="disposition-group" value="1"></label>
 </li></ul>
 

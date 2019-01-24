@@ -70,7 +70,7 @@ unset($_SESSION['othersaddress']);
 header("Location: checkout.php");
  }
 
-    }elseif($_REQUEST['action'] == 'placeOrder' && $cart->total_items() > 0 && !empty($_SESSION['userid'])){
+    }elseif($_REQUEST['action'] == 'placeOrder' && $cart->total_items() > 0 && !empty($_SESSION['userid'] && $_POST['disposition-group']==0)){
         // insert order details into database
 $payment = $_POST['disposition-group'];
 
@@ -124,7 +124,10 @@ $insertOrder = $query;
             header("Location: checkout.php");
         }
     }else{
-        header("Location: front_menu.php");
+
+       // die('success');
+//set paypal here
+        header("Location: paypal_first.php");
     }
 }else{
     header("Location: front_menu.php");

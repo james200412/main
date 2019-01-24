@@ -1,41 +1,67 @@
 <?php
 //step 1 & 2 - paypal ClientID and ClientSecret
-include 'bootstrap.php';
+include 'paypal_bootstrap.php';
 //
 
-// After Step 2
-//create a new Payment
-$payer = new \PayPal\Api\Payer();
-$payer->setPaymentMethod('paypal');
+use PayPal\Api\Amount;
+use PayPal\Api\Details;
+use PayPal\Api\Item;
+use PayPal\Api\ItemList;
+use PayPal\Api\Payer;
+use PayPal\Api\Payment;
+use PayPal\Api\RedirectUrls;
+use PayPal\Api\Transaction;
 
-$amount = new \PayPal\Api\Amount();
-$amount->setTotal('1.00');
-$amount->setCurrency('USD');
+$payer = new Payer();
+$payer->setPaymentMethod("paypal");
 
-$transaction = new \PayPal\Api\Transaction();
-$transaction->setAmount($amount);
 
-$redirectUrls = new \PayPal\Api\RedirectUrls();
-$redirectUrls->setReturnUrl("https://example.com/your_redirect_url.html")
-    ->setCancelUrl("https://example.com/your_cancel_url.html");
+$item = new Item();
+$item->setName('Product Name')
+    ->setCurrency('HKD')
+    ->setQuantity(1)
+    ->setSku("sku")
+    ->setPrice(200);
 
-$payment = new \PayPal\Api\Payment();
-$payment->setIntent('sale')
+$itemList = new ItemList();
+$itemList->setItems([$item]);
+$details = new Details();
+$details->setShipping(5)
+    ->setTax(1)
+    ->setSubtotal(200);
+
+$amount = new Amount();
+$amount->setCurrency("HKD")
+    ->setTotal(206)
+    ->setDetails($details);
+	
+$transaction = new Transaction();
+$transaction->setAmount($amount)
+    ->setItemList($itemList)
+    ->setDescription("Total Payment")
+    ->setInvoiceNumber(uniqid());
+	
+$baseUrl = "http://fypfinal";
+$redirectUrls = new RedirectUrls();
+$redirectUrls->setReturnUrl("$baseUrl/paypal_ExecutePayment.php?success=true")
+    ->setCancelUrl("$baseUrl/paypal_ExecutePayment.php?success=false");
+	
+$payment = new Payment();
+$payment->setIntent("sale")
     ->setPayer($payer)
-    ->setTransactions(array($transaction))
-    ->setRedirectUrls($redirectUrls);
-
-// After Step 3 
-//Make a Create Call
+    ->setRedirectUrls($redirectUrls)
+    ->setTransactions(array($transaction));
+	
+	
+$request = clone $payment;
 try {
     $payment->create($apiContext);
-    echo $payment;
-
-    echo "\n\nRedirect user to approval_url: " . $payment->getApprovalLink() . "\n";
+}catch (Exception $ex) {
+	/* print "<pre>";
+	print_r($ex);
+	print "</pre>"; */
+	exit(1);
 }
-catch (\PayPal\Exception\PayPalConnectionException $ex) {
-    // This will print the detailed information on the exception.
-    //REALLY HELPFUL FOR DEBUGGING
-    echo $ex->getData();
-}
+$approvalUrl = $payment->getApprovalLink();
+header("location:".$approvalUrl);
 ?>
