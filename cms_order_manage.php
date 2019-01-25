@@ -115,7 +115,7 @@ include 'include/cms_leftbar.php';
                                     <td><?php if ($orderrow["paytype"] == 0){
                                       echo "cash on delivery";
                                     }  else{
-                                      echo "Others";
+                                      echo "Online Payment";
                                     }                              
                                     ?>
                                     </td>

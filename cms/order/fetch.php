@@ -73,7 +73,7 @@ $output .='cash on delivery';
 
 }else{
 
- $output .='Others';
+ $output .='Online Payment';
  
 }
 

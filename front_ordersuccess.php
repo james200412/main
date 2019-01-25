@@ -105,6 +105,7 @@ height: 'auto',
     <!-- header-section-starts -->
 	<?php
 include 'include/front_topmenu.php';
+//echo $_SESSION['ispaypal'];
 	?>
 	<!-- header-section-ends -->
 	<div class="order-section-page">

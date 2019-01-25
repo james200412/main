@@ -1,14 +1,18 @@
 <?php
-
+Session_start();
 use PayPal\Api\Payment;
 use PayPal\Api\PaymentExecution;
 include 'paypal_bootstrap.php';
 
 if(!isset($_GET["success"] , $_GET["paymentId"] , $_GET["PayerID"])){
-	die('cancel');
+
+	unset($_SESSION['ispaypal']);
+	header('Location: checkout.php');
 }
 if((bool) $_GET["success"] === false){
-	die('success');
+die('error1');
+//header('Location: cartaction.php?action=placeOrder');
+
 }
 $paymentId = $_GET["paymentId"];
 $payerId = $_GET["PayerID"];
@@ -18,7 +22,8 @@ $execute->setPayerId($payerId);
 try{
 	$result = $payment->execute($execute , $apiContext );
 	/* var_dump($result); */
-header('Location: front_ordersuccess.php');
+	$_SESSION['ispaypal'] =1;
+header('Location: cartaction.php?action=placeOrderpaypal');
 }
 catch(Exception $e){
 	$data = json_decode($e->getData());

@@ -117,91 +117,18 @@ $insertOrder = $query;
                 $cart->destroy();
                 header("Location: front_ordersuccess.php?id=$orderID");
             }else{
-
                 header("Location: checkout.php");
             }
-
         }else{
 
+            
             header("Location: checkout.php");
         }
     }else{
 
-//if select paypal payment method $_POST['disposition-group']==1      
-
-if(!isset($_SESSION['ispaypal'])){
-    //if not create paypal process can create new paypal process
-header("Location: paypal_first.php");
-
-
-}
-
-if(isset($_SESSION['ispaypal']) && $_REQUEST['action'] == 'placeOrderpaypal' && $cart->total_items() > 0 && !empty($_SESSION['userid'])){
-    //paypal payment completed action
-	Session_start();
-    unset($_SESSION['ispaypal']);
-    
-       // insert order details into database
-       $payment = 1;
-
-       if(isset($_SESSION['othersaddress'])){
-       
-               $query1 = "  
-       INSERT INTO TBORDER(uid, amount, odate, status, oaddress, paytype)  
-       VALUES('".$_SESSION['userid']."', '".$cart->total()."', '".date("Y-m-d H:i:s")."', '0','".$_SESSION['othersaddress']."', $payment)";
-       
-       
-       }else{
-       
-           $query1 = "  
-           INSERT INTO TBORDER(uid, amount, odate, status, oaddress, paytype)  
-           VALUES('".$_SESSION['userid']."', '".$cart->total()."', '".date("Y-m-d H:i:s")."', '0','".$_SESSION['defaultaddress']."', $payment)";
-               
-       
-       }
-       
-       unset($_SESSION['othersaddress']);
-       
-       //die();
-       $result1 = mysqli_query($connect, $query1);
-       
-       $insertOrder1 = $query1;
-       
-               if($insertOrder1){
-                   $orderID1 = mysqli_insert_id($connect);
-       
-                   $sql1 = '';
-                   // get cart items
-                   $cartItems1 = $cart->contents();
-               
-                   foreach($cartItems1 as $item){
-               
-                       $sql1 .= "INSERT INTO TBORDER_DETAIL (oid, did, qty, subtotal) VALUES ('".$orderID1."', '".$item['id']."', '".$item['qty']."', ".$item["price"]."*".$item['qty'].");";
-                       
-           }
-                   // insert order items into database
-                   $insertOrderItems1 = $connect->multi_query($sql1);
-       
-                   if($insertOrderItems1){
-                       $cart->destroy();
-                       header("Location: front_ordersuccess.php?id=$orderID1");
-                   }else{
-                    die('3');
-                       header("Location: checkout.php");
-                   }
-                   
-               }else{
-                die('4');
-                   header("Location: checkout.php");
-               }
-//end paypal payment
-}
-
-
-
-die('error in paypal payment');
-
-
+       // die('success');
+//set paypal here
+        header("Location: paypal_first.php");
     }
 }else{
     header("Location: front_menu.php");
