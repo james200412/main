@@ -131,15 +131,16 @@ $insertOrder = $query;
 
 if(!isset($_SESSION['ispaypal'])){
     //if not create paypal process can create new paypal process
+session_start();
+$_SESSION['forpaypalamount'] = $cart->total();
 header("Location: paypal_first.php");
-
-
 }
 
 if(isset($_SESSION['ispaypal']) && $_REQUEST['action'] == 'placeOrderpaypal' && $cart->total_items() > 0 && !empty($_SESSION['userid'])){
     //paypal payment completed action
 	Session_start();
     unset($_SESSION['ispaypal']);
+    unset($_SESSION['forpaypalamount']);
     
        // insert order details into database
        $payment = 1;

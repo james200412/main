@@ -2,6 +2,8 @@
 //step 1 & 2 - paypal ClientID and ClientSecret
 include 'paypal_bootstrap.php';
 //
+session_start();
+$amountpaypal = $_SESSION['forpaypalamount'];
 
 use PayPal\Api\Amount;
 use PayPal\Api\Details;
@@ -41,7 +43,7 @@ $transaction->setAmount($amount)
     ->setDescription("Total Payment")
     ->setInvoiceNumber(uniqid());
 	
-$baseUrl = "http://fypfinal:8080";
+$baseUrl = "http://fypfinal";
 $redirectUrls = new RedirectUrls();
 $redirectUrls->setReturnUrl("$baseUrl/paypal_ExecutePayment.php?success=true")
     ->setCancelUrl("$baseUrl/paypal_ExecutePayment.php?success=false");
