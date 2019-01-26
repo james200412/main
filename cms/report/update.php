@@ -22,13 +22,17 @@ HAVING SUM(tborder.amount) > $var1 AND SUM(tborder.amount) < $var2
 ORDER BY uservalue DESC";
 */
 //completed query with ionrangeslider
-
+if($var2==100000){
 $queryorderdata = "SELECT tbuser.*, tborder.uid, sum(tborder.amount) AS uservalue 
 FROM tborder JOIN tbuser ON tbuser.id = tborder.uid AND tborder.status = 2 GROUP BY tborder.uid 
-HAVING SUM(tborder.amount) > $var1 AND SUM(tborder.amount) < $var2 
+HAVING SUM(tborder.amount) >= $var1 
 ORDER BY uservalue DESC";
-
-
+}else{
+    $queryorderdata = "SELECT tbuser.*, tborder.uid, sum(tborder.amount) AS uservalue 
+    FROM tborder JOIN tbuser ON tbuser.id = tborder.uid AND tborder.status = 2 GROUP BY tborder.uid 
+    HAVING SUM(tborder.amount) >= $var1 AND SUM(tborder.amount) <= $var2 
+    ORDER BY uservalue DESC"; 
+}
 $resultorderdata = mysqli_query($connect, $queryorderdata);
 
 
