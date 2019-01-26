@@ -173,13 +173,14 @@ include 'include/front_footer.php';
 
 <form action="cartaction.php?action=placeOrder" method="post">
 <ul class="list-inline order-type clearfix" align= "left" style="white-space:nowrap">
+
 <li class="col-sm-6" align="center"><label for="cod">
-<span><img src="/img/cod.png" height="30%" width="30%"></span>
+<span><img src="/img/cod.png" height="50%" width="50%"></span>
 <input type="radio" id="cod" name="disposition-group" value="0" CHECKED/>
 
 </label></li>
 <li class="col-sm-6" align="center"><label for="Others">
-<span><img src="/img/paypal.png" height="40%" width="40%"></span>
+<span><img src="/img/paypal.png" height="50%" width="50%"></span>
 
 <input type="radio" id="Others" name="disposition-group" value="1"></label>
 </li></ul>
