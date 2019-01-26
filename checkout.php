@@ -162,23 +162,24 @@ include 'include/front_footer.php';
     <div class="modal-content">
       <!--Header-->
       <div class="modal-header">
-        <h3 class="modal-title" id="myModalLabel"> Please Select </h3>
+        <h3 class="modal-title" id="myModalLabel" align= center> Payment </h3>
+        <h4 class="modal-title" align= center> Please Select Method </h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
       </div>
       <!--Body-->
       <div class="modal-body">
-      
+
 <form action="cartaction.php?action=placeOrder" method="post">
-<ul class="list-inline order-type clearfix">
-<li><label for="cod">
-<span><i class="fa fa-taxi"></i> </span>
-<span>Cash on delivery</span>
+<ul class="list-inline order-type clearfix" align= "left" style="white-space:nowrap">
+<li class="col-sm-6" align="center"><label for="cod">
+<span><img src="/img/cod.png" height="30%" width="30%"></span>
 <input type="radio" id="cod" name="disposition-group" value="0" CHECKED/>
+
 </label></li>
-<li><label for="Others">
-<span class="disposition"><img src="/img/paypal.jpg" height="70%" width="70%"></span>
+<li class="col-sm-6" align="center"><label for="Others">
+<span><img src="/img/paypal.png" height="40%" width="40%"></span>
 
 <input type="radio" id="Others" name="disposition-group" value="1"></label>
 </li></ul>
