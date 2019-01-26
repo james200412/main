@@ -128,11 +128,11 @@ $insertOrder = $query;
     }else{
 
 //if select paypal payment method $_POST['disposition-group']==1      
-
-if(!isset($_SESSION['ispaypal'])){
-    //if not create paypal process can create new paypal process
 session_start();
 $_SESSION['forpaypalamount'] = $cart->total();
+if(!isset($_SESSION['ispaypal'])){
+    //if not create paypal process can create new paypal process
+
 header("Location: paypal_first.php");
 }
 

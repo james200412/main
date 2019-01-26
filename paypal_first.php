@@ -4,7 +4,7 @@ include 'paypal_bootstrap.php';
 //
 session_start();
 $amountpaypal = $_SESSION['forpaypalamount'];
-
+//die($amountpaypal);
 use PayPal\Api\Amount;
 use PayPal\Api\Details;
 use PayPal\Api\Item;
@@ -19,28 +19,26 @@ $payer->setPaymentMethod("paypal");
 
 
 $item = new Item();
-$item->setName('Product Name')
+$item->setName('Item Price')
     ->setCurrency('HKD')
     ->setQuantity(1)
-    ->setSku("sku")
-    ->setPrice(200);
+    ->setPrice($amountpaypal);
 
 $itemList = new ItemList();
 $itemList->setItems([$item]);
+
 $details = new Details();
-$details->setShipping(5)
-    ->setTax(1)
-    ->setSubtotal(200);
+$details->setShipping(0)
+    ->setSubtotal($amountpaypal);
 
 $amount = new Amount();
 $amount->setCurrency("HKD")
-    ->setTotal(206)
+    ->setTotal($amountpaypal)
     ->setDetails($details);
 	
 $transaction = new Transaction();
 $transaction->setAmount($amount)
     ->setItemList($itemList)
-    ->setDescription("Total Payment")
     ->setInvoiceNumber(uniqid());
 	
 $baseUrl = "http://fypfinal";
