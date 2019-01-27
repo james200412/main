@@ -5,17 +5,37 @@ session_start();
 if(isset($_SESSION["userid"]) && $_SESSION['userlevel'] == 0){
 ?>
 
-
+<style>
+.userdetail1{
+	color:black;
+	font-size:1.3em;
+	font-weight:300;
+	margin-top: 3px;
+}
+</style>
 <div class="header">
 		<div class="container">
 			<div class="top-header">
-				<div class="logo">
+				<div class="col-sm-4 userdetail1">
+
+				<div>
+				&nbsp;
+				</div>
+				
+				<div>Hello,&nbsp;<?php  echo $_SESSION["username"];?></div>
+
+				</div>
+				
+				<div class="col-sm-4 ">
 					<a href="index.php"><img src="../frontend/images/logo.png" class="img-responsive" alt="" /></a>
 				</div>
-				<div class="queries">
+				
+				<div class="col-sm-4 queries" align="right">
 					<p>Order Food now!!!<span>24-hour service</span></p>
 				</div>
+				
 				<div class="clearfix"></div>
+			
 			</div>
 		</div>
 			<div class="menu-bar">
@@ -33,7 +53,7 @@ if(isset($_SESSION["userid"]) && $_SESSION['userlevel'] == 0){
 
 				<div class="login-section">
 					<ul>
-						<li><i><b>Welcome !! <?php  echo $_SESSION["username"];?></i></b></li>|
+						
 						<li><a href="front_userinfo.php"><b>Account Info</a></b></li>|
 
 			<?php	if(isset($_SESSION['cart_contents'])){	?>
@@ -63,13 +83,24 @@ if(isset($_SESSION["userid"]) && $_SESSION['userlevel'] == 0){
 	<div class="header">
 	<div class="container">
 		<div class="top-header">
-			<div class="logo">
-				<a href="index.php"><img src="../frontend/images/logo.png" class="img-responsive" alt="" /></a>
-			</div>
-			<div class="queries">
-				<p>Order Food now!!!<span>24-hour service</span></p>
-			</div>
-			<div class="clearfix"></div>
+		<div class="col-sm-4 userdetail1">
+
+<div>
+&nbsp;
+</div>
+
+
+</div>
+
+<div class="col-sm-4 ">
+	<a href="index.php"><img src="../frontend/images/logo.png" class="img-responsive" alt="" /></a>
+</div>
+
+<div class="col-sm-4 queries" align="right">
+	<p>Order Food now!!!<span>24-hour service</span></p>
+</div>
+
+<div class="clearfix"></div>
 		</div>
 	</div>
 		<div class="menu-bar">

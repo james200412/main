@@ -53,14 +53,14 @@
 							 <h4>Contact Info</h4>
 							     		
 			      						<address>
-											 <p>Email:<a href="mail-to: info@scfood.com"> fakeinfo@scfood.com</a></p>
+											 <p>Email:<a href="mail-to: info@scfood.com"> info@scfood.com</a></p>
 											 <p>Phone:  +852 1234 5678</p>
 											 <p>Address: </p>
 											<p>SC & FOOD Ltd, Cityu Scope</p>
 									 	 	<p>City University of Hong Kong.</p>
 											<p>Tat Chee Avenue. Kowloon Tong</p>
 							   			</address>
-										   <h4>Give us feed back!</h4>
+										   <h4>Give us feed back!</h4><br>
  <a href="front_feedback_action.php" class="btn btn-info">Go Feed Back</a> 						
 					        
 							</div>
