@@ -104,144 +104,38 @@ include 'include/front_topmenu.php';
 		</div>
 
 
-<!--
-		<div class="popular-restaurents" id="Popular-Restaurants">
-			<div class="container">
-				<div class="col-md-4 top-restaurents">
-					<div class="top-restaurent-head">
-						<h3>Top Restaurants</h3>
-					</div>
-					<div class="top-restaurent-grids">
-						<div class="top-restaurent-logos">
-							<div class="res-img-1 wow bounceIn" data-wow-delay="0.4s">
-								<img src="images/restaurent-1.jpg" class="img-responsive" alt="" />
-							</div>
-							<div class="res-img-2 wow bounceIn" data-wow-delay="0.4s">
-							    <img src="images/restaurent-2.jpg" class="img-responsive" alt="" />
-							</div>
-							<div class="res-img-1 wow bounceIn" data-wow-delay="0.4s">
-							    <img src="images/restaurent-3.jpg" class="img-responsive" alt="" />
-							</div>
-							<div class="res-img-2 wow bounceIn" data-wow-delay="0.4s">
-							    <img src="images/restaurent-4.jpg" class="img-responsive" alt="" />
-							</div>
-							<div class="res-img-1 nth-grid1 wow bounceIn" data-wow-delay="0.4s">
-							    <img src="images/restaurent-5.jpg" class="img-responsive" alt="" />
-							</div>
-							<div class="res-img-2 nth-grid1 wow bounceIn" data-wow-delay="0.4s">
-							    <img src="images/restaurent-6.jpg" class="img-responsive" alt="" />
-							</div>
-							<div class="clearfix"></div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-8 top-cuisines">
-					<div class="top-cuisine-head">
-						<h3>Top Cuisines</h3>
-					</div>
-					<div class="top-cuisine-grids">
-						<div class="top-cuisine-grid wow bounceIn" data-wow-delay="0.4s">
-						    <a href=""><img src="images/cuisine1.jpg" class="img-responsive" alt="" /> </a>
-							<label>Cuisine Name</label>
-					    </div>
-						<div class="top-cuisine-grid wow bounceIn" data-wow-delay="0.4s">
-						    <a href=""><img src="images/cuisine2.jpg" class="img-responsive" alt="" /> </a>
-							<label>Cuisine Name</label>
-					    </div>
-						<div class="top-cuisine-grid wow bounceIn" data-wow-delay="0.4s">
-						    <a href=""><img src="images/cuisine3.jpg" class="img-responsive" alt="" /> </a>
-							<label>Cuisine Name</label>
-					    </div>
-						<div class="top-cuisine-grid nth-grid wow bounceIn" data-wow-delay="0.4s">
-						    <a href=""><img src="images/cuisine4.jpg" class="img-responsive" alt="" /> </a>
-							<label>Cuisine Name</label>
-					    </div>
-						<div class="top-cuisine-grid nth-grid1 wow bounceIn" data-wow-delay="0.4s">
-						    <a href=""><img src="images/cuisine5.jpg" class="img-responsive" alt="" /> </a>
-							<label>Cuisine Name</label>
-					    </div>
-						<div class="top-cuisine-grid nth-grid1 wow bounceIn" data-wow-delay="0.4s">
-						    <a href=""><img src="images/cuisine6.jpg" class="img-responsive" alt="" /> </a>
-							<label>Cuisine Name</label>
-					    </div>
-						<div class="top-cuisine-grid nth-grid1 wow bounceIn" data-wow-delay="0.4s">
-						    <a href=""><img src="images/cuisine7.jpg" class="img-responsive" alt="" /> </a>
-							<label>Cuisine Name</label>
-					    </div>
-						<div class="top-cuisine-grid nth-grid nth-grid1 wow bounceIn" data-wow-delay="0.4s">
-						    <a href=""><img src="images/cuisine8.jpg" class="img-responsive" alt="" /> </a>
-							<label>Cuisine Name</label>
-					    </div>
-						<div class="clearfix"></div>
-					</div>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-		</div>
--->
-
 		<div class="service-section">
 			<div class="service-section-top-row">
 				<div class="container">
-					<div class="service-section-top-row-grids wow bounceInLeft" data-wow-delay="0.4s">
-					<div class="col-md-3 service-section-top-row-grid1">
-						<h3>Enjoy Exclusive Food Order any of these</h3>
-					</div>
-					<div class="col-md-2 service-section-top-row-grid2">
-						<ul>
-							<li><i class="arrow"></i></li>
-							<li class="lists">Party Orders</li>
-						</ul>
-						<ul>
-							<li><i class="arrow"></i></li>
-							<li class="lists">Home Made Food</li>
-						</ul>
-						<ul>
-							<li><i class="arrow"></i></li>
-							<li class="lists"> Diet Food </li>
-						</ul>
-					</div>
-					<div class="col-md-5 service-section-top-row-grid3">
-						<img src="images/lunch.png" class="img-responsive" alt="" />
-					</div>
-					<div class="col-md-2 service-section-top-row-grid4 wow swing animated" data-wow-delay= "0.4s">
-						<input type="submit" value="Order Now">
-					</div>
+
 					<div class="clearfix"></div>
 					</div>
 				</div>
-				
-				
 			</div>
+
 			<div class="service-section-bottom-row">
 				<div class="container">
 					<div class="col-md-4 service-section-bottom-grid wow bounceIn "data-wow-delay="0.2s">
-						<div class="icon">
-							<img src="images/icon1.jpg" class="img-responsive" alt="" />
-						</div>
+
 						<div class="icon-data">
 							<h4>100% Service Guarantee</h4>
-							<p>Lorem ipsum dolor sit amet, consect-etuer adipiscing elit. </p>
+							<p>Feed Back is </p>
 						</div>
 						<div class="clearfix"></div>
 					</div>
 					<div class="col-md-4 service-section-bottom-grid wow bounceIn "data-wow-delay="0.2s">
-						<div class="icon">
-							<img src="images/icon2.jpg" class="img-responsive" alt="" />
-						</div>
+
 						<div class="icon-data">
-							<h4>Fully Secure Payment</h4>
-							<p>Lorem ipsum dolor sit amet, consect-etuer adipiscing elit. </p>
+							<h4>Secure Payment Method</h4>
+							<p>Provide Paypal or Cash On Delivery Payment Method</p>
 						</div>
 						<div class="clearfix"></div>
 					</div>
 					<div class="col-md-4 service-section-bottom-grid wow bounceIn "data-wow-delay="0.2s">
-						<div class="icon">
-							<img src="images/icon3.jpg" class="img-responsive" alt="" />
-						</div>
+
 						<div class="icon-data">
 							<h4>Track Your Order</h4>
-							<p>Lorem ipsum dolor sit amet, consect-etuer adipiscing elit. </p>
+							<p>Order can be check after</p>
 						</div>
 						<div class="clearfix"></div>
 					</div>

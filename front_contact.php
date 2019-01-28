@@ -40,10 +40,27 @@
 
 
 
-	<div class="contact-section-page">
-		<div class="contact-head">
+	<div class="Popular-Restaurants-content">
+		<div class="Popular-Restaurants-grids">
 		    <div class="container">
-				<h3>Contact Us</h3>
+                <!-- head link-->
+				<div class="dreamcrub">
+			   	 <ul class="breadcrumbs">
+                    <li class="home">
+                       <a href="index.php" title="Go to Home Page">Home</a>&nbsp;
+                       <span>&gt;</span>
+                    </li>
+                    <li>
+                       Contact Us
+                    </li>
+                </ul>
+                <ul class="previous">
+                	<li><a href="index.php">Back to Home Page</a></li>
+                </ul>
+                <div class="clearfix"></div>
+			   </div>	
+<!--head link end-->
+
 			</div>
 		</div>
 		<div class="contact_top">

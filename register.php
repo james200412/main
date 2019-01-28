@@ -40,9 +40,26 @@ include 'include/front_topmenu.php';
 	<!-- header-section-ends -->
 	<!-- content-section-starts -->
 
-	<div class="content">
-	<div class="main">
+	<div class="Popular-Restaurants-content">
+		<div class="Popular-Restaurants-grids">
 	   <div class="container">
+		                   <!-- head link-->
+				<div class="dreamcrub">
+			   	 <ul class="breadcrumbs">
+                    <li class="home">
+                       <a href="index.php" title="Go to Home Page">Home</a>&nbsp;
+                       <span>&gt;</span>
+                    </li>
+                    <li>
+					Register
+                    </li>
+                </ul>
+                <ul class="previous">
+                	<li><a href="index.php">Back to Home Page</a></li>
+                </ul>
+                <div class="clearfix"></div>
+			   </div>	
+<!--head link end-->
 		  <div class="register">
 
 

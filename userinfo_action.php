@@ -11,6 +11,8 @@ if (isset($_POST['submit'])) {
 	$phone = $_POST['phone'];
     $password = $_POST['password'];
 
+$_SESSION["username"] = $name;
+
         $query = "SELECT * FROM TBUSER WHERE uemail = '$email'";
         $result = mysqli_query($connect, $query);        
         $row = mysqli_fetch_array($result);

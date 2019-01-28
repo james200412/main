@@ -22,7 +22,7 @@ if(isset($_SESSION["userid"]) && $_SESSION['userlevel'] == 0){
 				&nbsp;
 				</div>
 				
-				<div>Hello,&nbsp;<?php  echo $_SESSION["username"];?></div>
+				<div style="font-family: 'Lobster Two', cursive;">Hello,&nbsp;<?php  echo $_SESSION["username"];?></div>
 
 				</div>
 				

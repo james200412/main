@@ -83,9 +83,26 @@ height: 'auto',
 include 'include/front_topmenu.php';
 	?>
 	<!-- header-section-ends -->
-	<div class="order-section-page">
-		<div class="ordering-form">
+	<div class="Popular-Restaurants-content">
+		<div class="Popular-Restaurants-grids">
 			<div class="container">
+                <!-- head link-->
+<div class="dreamcrub">
+			   	 <ul class="breadcrumbs">
+                    <li class="home">
+                       <a href="index.php" title="Go to Home Page">Home</a>&nbsp;
+                       <span>&gt;</span>
+                    </li>
+                    <li>
+                       Order History
+                    </li>
+                </ul>
+                <ul class="previous">
+                	<li><a href="index.php">Back to Home Page</a></li>
+                </ul>
+                <div class="clearfix"></div>
+			   </div>	
+<!--head link end-->
 			<div class="order-form-head text-Right wow bounceInLeft" data-wow-delay="0.4s">
 						<h3>Order History</h3>
 					</div>
@@ -148,11 +165,7 @@ echo '<li>Accumulated Spending [Till '. $rowlast['CAST(odate AS DATE)'] .'] : $H
         }
 		ul{
 			list-style-type: none;
-			padding-left: 5px;
-		}
-		li{
-            padding-top: 5px;
-            padding-bottom: 5px
+
 		}
 
 	.accordion {
@@ -210,7 +223,7 @@ echo '$HKD '. $row['amount'] .'.00</li>
     echo '<br><br>Please <a href="register.php" class="h4" style="color: red"><b>Register</b></a> To Place Order!';
 }
 ?>
-
+<br><br><br><br>
 			</div>
 				</div>
 			</div>

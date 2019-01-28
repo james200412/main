@@ -37,7 +37,7 @@ label{
 	margin:0;
 }
 .header {
-	border-top: 3px solid #5BBD50;
+	border-top: 3px solid red;
 }
 .top-header{
 	padding:2em 0;
@@ -90,10 +90,10 @@ label{
 	text-transform:uppercase;
 }
 .top-menu ul li.active a{
-	color:#5BBD50;
+	color:red;
 }
 .top-menu ul li a:hover{
-	color:#5BBD50;
+	color:red;
 }
 .login-section ul li{
 	display:inline-block;
@@ -467,7 +467,7 @@ label{
 	width: 68%;
 }
 .icon-data h4{
-	color:#5BBD50;
+	color:red;
 	font-size:1.4em;
 	font-family: 'Lobster Two', cursive;
 	font-weight:700;
@@ -537,7 +537,7 @@ label{
 }
 .contact-section{
 	padding:3em 0;
-	background:#515151;
+	background:#4D4D4D;
 }
 .contact-section-grid h4{
 	color:#FFFFFF;
@@ -603,7 +603,7 @@ label{
 	margin:0.6em 0;
 }
 .contact-section-grid ul li a{
-	color:#A9A9A9;
+	color:#FFFFFF;
 }
 .contact-section-grid ul li a:hover{
 	color:#fff;
@@ -645,7 +645,7 @@ label{
 	background:#4D4D4D;
 }
 .footer p{
-	color:#5BBD50;
+	color:whitesmoke;
 	font-size:16px;
 	font-weight:500;
 }
@@ -1380,7 +1380,7 @@ i.mail{
 	text-transform: uppercase;
 }
 .acount-btn:hover, .login-right input[type="submit"]:hover{
-	background:#5BBD50;
+	background:red;
 	text-decoration:none;
 	color:#fff;
 }
@@ -1667,7 +1667,7 @@ ul.women_pagenation li a:hover{
 	outline:none;
 }
 .register-but input[type="submit"]:hover {
-	background:#5BBD50;
+	background:red;
 }
 div.register-bottom-grid {
 	margin-top:3em;
