@@ -1,8 +1,9 @@
 <?php
 session_start(); 
 require ('db/dbconnect.php');
+$md5pw = md5($_POST['userpw']);
 
-$sql= "SELECT uname, ulevel, activate FROM TBUSER WHERE id='$_POST[userid]' && upassword='$_POST[userpw]'";
+$sql= "SELECT uname, ulevel, activate FROM TBUSER WHERE id='$_POST[userid]' && upassword='$md5pw'";
 $r = @mysqli_query ($connect, $sql);
 $num = mysqli_num_rows($r);
 

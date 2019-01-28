@@ -10,12 +10,11 @@ include('../../db/dbconnect.php');
       $email = mysqli_real_escape_string($connect, $_POST["email"]);        
       $phone = mysqli_real_escape_string($connect, $_POST["phone"]); 
       $level = mysqli_real_escape_string($connect, $_POST["level"]);  
-      $password = mysqli_real_escape_string($connect, $_POST["password"]); 
+      $password = md5($_POST["password"]);
       $activate = mysqli_real_escape_string($connect, $_POST["activate"]);
 
       if($_POST["userid"] != '')  
       {  
-      
            $query = "  
            UPDATE TBUSER   
            SET uname='$name',   

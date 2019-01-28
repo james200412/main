@@ -96,8 +96,8 @@ include 'include/front_topmenu.php';
 <div class="register-bottom-grid">
 						    <h3>LOGIN INFORMATION</h3>
 							 <div class="wow fadeInLeft" data-wow-delay="0.4s">
-								<span>Password (within 8 ~ 20 characters)<label>*</label></span>
-								<input type="password" name="password" id="password" size="20" minlength="8" maxlength="20" required/>
+								<span>Password (at least 8 characters)<label>*</label></span>
+								<input type="password" name="password" id="password" size="255" minlength="8" maxlength="255" required/>
 							 </div>
 </div>
 

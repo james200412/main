@@ -10,7 +10,7 @@ if (isset($_POST['submit'])) {
 	$phone = $_POST['phone'];
     $password = $_POST['password'];
 
-
+$md5password = md5($password);
 
         $query = "SELECT * FROM TBUSER  WHERE uemail ='$email'";
 		$result = mysqli_query($connect, $query);
@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
         if ($num == 0) { // If no existing user is using this email.
 
             $query = "INSERT INTO TBUSER (uname, uemail ,uaddress ,uphone ,upassword, ulevel) 
-			VALUES ( '$name', '$email', '$address', '$phone', '$password', '0')";
+			VALUES ( '$name', '$email', '$address', '$phone', '$md5password', '0')";
 
 			$result = mysqli_query($connect, $query);
 			
