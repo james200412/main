@@ -53,10 +53,27 @@ include 'db/dbconnect.php';
  ?>  
 
 
-	<div class="contact-section-page">
-		<div class="contact-head">
+	<div class="Popular-Restaurants-content">
+		<div class="Popular-Restaurants-grids">
 		    <div class="container">
-				<h3>Account Information</h3>
+<!-- head link-->
+<div class="dreamcrub">
+			   	 <ul class="breadcrumbs">
+                    <li class="home">
+                       <a href="index.php" title="Go to Home Page">Home</a>&nbsp;
+                       <span>&gt;</span>
+                    </li>
+                    <li>
+                       Account Information
+                    </li>
+                </ul>
+                <ul class="previous">
+                	<li><a href="index.php">Back to Home Page</a></li>
+                </ul>
+                <div class="clearfix"></div>
+			   </div>	
+
+
 			</div>
 		</div>
 		<div class="contact_top">
@@ -110,6 +127,8 @@ include 'db/dbconnect.php';
 
 	</div>
 	</div>
+	<br>
+	<br><br>
 	<!-- footer-section-starts -->
 <?php
 

@@ -56,9 +56,27 @@ $cart = new Cart;
 	?>
 	<!-- header-section-ends -->
 
-	<div class="contact-head">
+	<div class="Popular-Restaurants-content">
+
 		    <div class="container">
-				<h3>Cart</h3>
+                
+<!-- head link-->
+<div class="dreamcrub">
+			   	 <ul class="breadcrumbs">
+                    <li class="home">
+                       <a href="index.php" title="Go to Home Page">Home</a>&nbsp;
+                       <span>&gt;</span>
+                    </li>
+                    <li>
+                       Cart
+                    </li>
+                </ul>
+                <ul class="previous">
+                	<li><a href="index.php">Back to Home Page</a></li>
+                </ul>
+                <div class="clearfix"></div>
+			   </div>	
+<h3>Cart Information</h3>
 			</div>
 		</div>
 <br>
@@ -140,7 +158,9 @@ input[type=number]::-webkit-outer-spin-button {
 </div>
 
 
-
+<br>
+<br>
+<br>
 
 </div>
 	<!-- footer-section-starts -->

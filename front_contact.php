@@ -78,7 +78,7 @@
 											<p>Tat Chee Avenue. Kowloon Tong</p>
 							   			</address>
 										   <h4>Give us feed back!</h4><br>
- <a href="front_feedback_action.php" class="btn btn-info">Go Feed Back</a> 						
+ <a href="front_feedback_action.php" class="btn btn-danger">Go Feed Back</a> 						
 					        
 							</div>
 

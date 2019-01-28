@@ -71,7 +71,7 @@ include 'include/front_topmenu.php';
 						<div class="ordering-section-grid-process wow fadeInRight" data-wow-delay="0.4s"">
 							<i class="one"></i><br>
 							<i class="one-icon"></i>
-							<p>Choose <span>Your Restaurant</span></p>
+							<p>Register Account</p>
 							<label></label>
 						</div>
 					</div>
@@ -79,7 +79,7 @@ include 'include/front_topmenu.php';
 						<div class="ordering-section-grid-process wow fadeInRight" data-wow-delay="0.4s"">
 							<i class="two"></i><br>
 							<i class="two-icon"></i>
-							<p>Order  <span>Your Cuisine</span></p>
+							<p>Place Your Order</p>
 							<label></label>
 						</div>
 					</div>
@@ -87,7 +87,7 @@ include 'include/front_topmenu.php';
 						<div class="ordering-section-grid-process wow fadeInRight" data-wow-delay="0.4s"">
 							<i class="three"></i><br>
 							<i class="three-icon"></i>
-							<p>Pay   <span> online / on delivery</span></p>
+							<p>Pay online / on delivery</p>
 							<label></label>
 						</div>
 					</div>
@@ -95,7 +95,7 @@ include 'include/front_topmenu.php';
 						<div class="ordering-section-grid-process wow fadeInRight" data-wow-delay="0.4s"">
 							<i class="four"></i><br>
 							<i class="four-icon"></i>
-							<p>Enjoy <span>your food </span></p>
+							<p>Enjoy your food</p>
 						</div>
 					</div>
 					<div class="clearfix"></div>
@@ -104,22 +104,16 @@ include 'include/front_topmenu.php';
 		</div>
 
 
-		<div class="service-section">
-			<div class="service-section-top-row">
-				<div class="container">
 
-					<div class="clearfix"></div>
-					</div>
-				</div>
-			</div>
+					<div class="clearfix" style="	border-bottom:2px solid #F1F1F1;"></div>
 
 			<div class="service-section-bottom-row">
 				<div class="container">
 					<div class="col-md-4 service-section-bottom-grid wow bounceIn "data-wow-delay="0.2s">
 
 						<div class="icon-data">
-							<h4>100% Service Guarantee</h4>
-							<p>Feed Back is </p>
+							<h4>Delivery Service Guarantee</h4>
+							<p>We promise the food arrives within 90 minutes</p>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -135,7 +129,7 @@ include 'include/front_topmenu.php';
 
 						<div class="icon-data">
 							<h4>Track Your Order</h4>
-							<p>Order can be check after</p>
+							<p>Order can be review after placed</p>
 						</div>
 						<div class="clearfix"></div>
 					</div>

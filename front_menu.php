@@ -95,7 +95,7 @@ if(isset($_SESSION['userid']) && $_SESSION['userlevel'] == 0){
                      		echo '</div>';
 							echo '<div class="col-md-4 buy"><span>' . '$' . $row['dprice'] . 
                                 '</span>
-                                <a class="btn btn-success" href="cartaction.php?action=addToCart&id=' . $row["id"] . '">Add to cart</a>
+                                <a class="btn btn-danger" href="cartaction.php?action=addToCart&id=' . $row["id"] . '">Add to cart</a>
                                 </div>' .
                                 '<div class="clearfix"></div>' .
                                 '</div>';
@@ -118,7 +118,7 @@ if(isset($_SESSION['userid']) && $_SESSION['userlevel'] == 0){
                      		echo '</div>';
 							echo '<div class="col-md-4 buy"><span>' . '$' . $row['dprice'] . 
                                 '</span>
-                                <a class="btn btn-success" href="cartaction.php?action=addToCart&id=' . $row["id"] . '">Add to cart</a>
+                                <a class="btn btn-danger" href="cartaction.php?action=addToCart&id=' . $row["id"] . '">Add to cart</a>
                                 </div>' .
                                 '<div class="clearfix"></div>' .
                                 '</div>';
@@ -178,7 +178,7 @@ else{
                     '<div class="rating">'. $row['detail'] .'</div>';
                 echo '</div>';
                 echo '<div class="col-md-4 buy"><span>' . '$' . $row['dprice'] . 
-                    '</span><a class="btn btn-success" data-toggle="modal" data-target="#myModalguest">Add to cart</a></div>' .
+                    '</span><a class="btn btn-danger" data-toggle="modal" data-target="#myModalguest">Add to cart</a></div>' .
                     '<div class="clearfix"></div>' .
                     '</div>';
                 }
@@ -200,7 +200,7 @@ else{
                     '<div class="rating">'. $row['detail'] .'</div>';
                  echo '</div>';
                 echo '<div class="col-md-4 buy"><span>' . '$' . $row['dprice'] . 
-                    '</span><a class="btn btn-success"  data-toggle="modal" data-target="#myModalguest">Add to cart</a></div>' .
+                    '</span><a class="btn btn-danger"  data-toggle="modal" data-target="#myModalguest">Add to cart</a></div>' .
                     '<div class="clearfix"></div>' .
                     '</div>';
                 }
