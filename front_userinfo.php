@@ -110,7 +110,7 @@ include 'db/dbconnect.php';
 
 <div class="register-bottom-grid">
 							 <div class="wow fadeInLeft" data-wow-delay="0.4s">
-								Password (within 8 ~ 20 characters)<label>*</label>
+							 Password (at least 8 characters)<label>*</label>
 								<input type="password" style="border:1px solid #5e5e5e" name="password" id="password" size="20" minlength="8" maxlength="20" value="<?php echo $rpassword;?>" required/>
 							 </div>
 </div>

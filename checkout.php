@@ -133,11 +133,11 @@ $crow = mysqli_fetch_assoc($result);
     </div><br>
 
     <div class="footBtn">
-    <a href="front_viewcart.php" class="btn btn-warning"> Back to Cart</a>
-    <a data-toggle="modal" data-target="#modalCartAddress" class="btn btn-success ">Use Other Delivery Address</a>
+    <a href="front_viewcart.php" class="btn btn-primary"> Back to Cart</a>
+    <a data-toggle="modal" data-target="#modalCartAddress" class="btn btn-danger ">Use Other Delivery Address</a>
   <!--  <a href="cartaction.php?action=placeOrder" class="btn btn-success orderBtn">Confirm Order</a>
   -->  
-<a class="btn btn-success orderBtn" data-toggle="modal" data-target="#paymentModal">Confirm Order <i class="glyphicon glyphicon-circle-arrow-right"></i></a>
+<a class="btn btn-danger orderBtn" data-toggle="modal" data-target="#paymentModal">Confirm Order <i class="glyphicon glyphicon-circle-arrow-right"></i></a>
 
  <!-- <a href="front_payment.php" class="btn btn-success orderBtn">Confirm Order</a>
             -->
@@ -188,9 +188,9 @@ include 'include/front_footer.php';
       </div>
       <!--Footer-->
       <div class="modal-footer">
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
         <!--<a href="cartaction.php?action=placeOrder" class="btn btn-success orderBtn">Confirm Order</a>-->
-     <button id="submit" class="btn btn-success orderBtn" onclick="return confirm('Confirm?')">Confirm Order <i class="glyphicon glyphicon-circle-arrow-right"></i></button>
+     <button id="submit" class="btn btn-danger orderBtn" onclick="return confirm('Confirm?')">Confirm Order <i class="glyphicon glyphicon-circle-arrow-right"></i></button>
 </form> 
 </div>
     </div>
@@ -239,9 +239,9 @@ echo 'Address : '.$crow['uaddress'].'';
       </div>
       <!--Footer-->
       <div class="modal-footer">
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
         <!--<a href="cartaction.php?action=placeOrder" class="btn btn-success orderBtn">Confirm Order</a>-->
-     <button id="submit" class="btn btn-success orderBtn">Update</button>
+     <button id="submit" class="btn btn-danger orderBtn">Update</button>
 </form> 
 </div>
     </div>

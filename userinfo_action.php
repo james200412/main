@@ -9,7 +9,7 @@ if (isset($_POST['submit'])) {
 	$email = $_POST['email'];
 	$address = $_POST['address'];
 	$phone = $_POST['phone'];
-    $password = $_POST['password'];
+    $mdpw = md5($_POST['password']);
 
 $_SESSION["username"] = $name;
 
@@ -28,7 +28,7 @@ $rowid = $row['id'];
            uaddress = '$address', 
            uemail = '$email', 
            uphone = '$phone', 
-           upassword = '$password' 
+           upassword = '$mdpw' 
            WHERE id = '$userid123'";
         
            $result12 = mysqli_query($connect, $query);

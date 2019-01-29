@@ -139,7 +139,7 @@ input[type=number]::-webkit-outer-spin-button {
     </tbody>
     <tfoot>
         <tr>
-            <td><a href="front_menu.php" class="btn btn-warning">Back To Menu</a></td>
+            <td><a href="front_menu.php" class="btn btn-primary">Back To Menu</a></td>
 
     <?php if($cart->total_items() > 0){ ?>
             <td>
@@ -150,7 +150,7 @@ input[type=number]::-webkit-outer-spin-button {
             <td colspan="2"></td>
             <?php if($cart->total_items() > 0){ ?>
             <td class="text-center"><strong>Total Price: <?php echo '$'.$cart->total().' HKD'; ?></strong></td>
-            <td><a href="checkout.php" class="btn btn-success btn-block">Checkout <i class="glyphicon glyphicon-circle-arrow-right"></i></a></td>
+            <td><a href="checkout.php" class="btn btn-danger btn-block">Checkout <i class="glyphicon glyphicon-circle-arrow-right"></i></a></td>
             <?php } ?>
         </tr>
     </tfoot>

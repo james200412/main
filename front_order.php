@@ -138,7 +138,7 @@ echo '<li>Member Card ID： '. $rowuser['id'] .'</li>';
 echo '<li>Accumulated Spending [Till '. $rowlast['CAST(odate AS DATE)'] .'] : $HKD '.$sum.'.00</li>';
 ?>
 <br>
-	<a class="btn btn-success" href="front_userinfo.php"><h4>Update Account Detail</h4></a>
+	<a class="btn btn-danger" href="front_userinfo.php"><h4>Update Account Detail</h4></a>
 </ul>
 </div>
 	
@@ -169,7 +169,7 @@ echo '<li>Accumulated Spending [Till '. $rowlast['CAST(odate AS DATE)'] .'] : $H
 		}
 
 	.accordion {
-  border-left: 5px solid lightgreen;
+  border-left: 5px solid red;
   background-color: #f1f1f1;
   list-style-type: none;
   padding: 10px 20px;
