@@ -66,9 +66,27 @@ $crow = mysqli_fetch_assoc($result);
 	include 'include/front_topmenu.php'
 	?>
 	<!-- header-section-ends -->
-	<div class="contact-head">
+	<div class="Popular-Restaurants-content">
+	
 		    <div class="container">
-				<h3>Order Preview</h3>
+                <!-- head link-->
+<div class="dreamcrub">
+			   	 <ul class="breadcrumbs">
+                    <li class="home">
+                       <a href="index.php" title="Go to Home Page">Home</a>&nbsp;
+                       <span>&gt;</span>
+                    </li>
+                    <li>
+                    Order Preview
+                    </li>
+                </ul>
+                <ul class="previous">
+                	<li><a href="index.php">Back to Home Page</a></li>
+                </ul>
+                <div class="clearfix"></div>
+			   </div>	
+
+               <h3>Order Preview</h3>
 			</div>
 		</div>
 

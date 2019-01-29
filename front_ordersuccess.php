@@ -150,7 +150,7 @@ echo 'Estimated Delivery Time : '.$stamp.'';
 
 
 <br><br>
-	<a class="btn btn-success" href="front_order.php" target="_blank"><h4>Check Order Detail</h4></a>
+	<a class="btn btn-danger" href="front_order.php" target="_blank"><h4>Check Order Detail</h4></a>
 </ul>
 
 </div>
@@ -165,12 +165,12 @@ echo 'Estimated Delivery Time : '.$stamp.'';
 <div class="col-md-6 ordering-image wow bounceIn" data-wow-delay="0.4s">
 	<div class="order-history">
 		<header class="order-history__header">
-			<h3>FeedBack To Us!</h3> 
+			<h3 style="font-family: 'Lobster Two', cursive;">FeedBack To Us!</h3> 
 			<div class="text-right"><br></div>
             </header>			
 <div class="feedback-content">
 
- <a href="front_feedback_action.php" class="btn btn-info" target="_blank">Go Feed Back</a> 
+ <a href="front_feedback_action.php" class="btn btn-danger" target="_blank">Go Feed Back</a> 
 
  
 
