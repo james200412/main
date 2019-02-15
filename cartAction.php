@@ -9,7 +9,8 @@ include 'db/dbconnect.php';
 
 
 if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
-    if($_REQUEST['action'] == 'addToCart' && !empty($_REQUEST['id'])){
+    if($_REQUEST['action'] == 'addToCart' && !empty($_REQUEST['id'])){    
+        $_SESSION['addalert'] = 1;
         $productID = $_REQUEST['id'];
 
         // get product details
@@ -31,6 +32,7 @@ if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
 
 
     }elseif($_REQUEST['action'] == 'updateCartItem' && !empty($_REQUEST['id'])){
+        $_SESSION['updatealert'] = 1;
         if($_REQUEST['qty']<0 || $_REQUEST['qty'] != (int)$_REQUEST['qty']){
 //not intger
 echo 'error';
@@ -45,10 +47,12 @@ echo 'error';
     }
 
     }elseif($_REQUEST['action'] == 'removeCartItem' && !empty($_REQUEST['id'])){
+        $_SESSION['removealert'] = 1;
         $deleteItem = $cart->remove($_REQUEST['id']);
         header("Location: front_viewCart.php");
 
     }elseif($_REQUEST['action'] == 'removeCartItemall'){
+        $_SESSION['removealert'] = 1;
         $cart->destroy();
         header("Location: front_viewCart.php");
 

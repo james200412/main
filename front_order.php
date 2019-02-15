@@ -135,7 +135,7 @@ include 'db/dbconnect.php';
 <?php
 echo '<li><b>'. $rowuser['uname'] .'</b></li><br>';
 echo '<li>Member Card ID： '. $rowuser['id'] .'</li>';
-echo '<li>Accumulated Spending [Till '. $rowlast['CAST(odate AS DATE)'] .'] : $HKD '.$sum.'.00</li>';
+echo '<li>Accumulated Spending [Till '. $rowlast['CAST(odate AS DATE)'] .'] : HKD$ '.$sum.'.00</li>';
 ?>
 <br>
 	<a class="btn btn-danger" href="front_userinfo.php"><h4>Update Account Detail</h4></a>
@@ -203,7 +203,7 @@ $query1 = "SELECT * FROM TBORDER_DETAIL JOIN TBMENU ON (TBMENU.id = TBORDER_DETA
 		$result1 = @mysqli_query($connect, $query1);
 while ($row1 = mysqli_fetch_assoc($result1)) {
 echo '<div class="order-detail"><div><h4 class="h4"><b>Item : </b>'. $row1['dname'] .' x '. $row1['qty'] .'</h4>';
-echo '<div>Sub Total : $HKD '. $row1['subtotal'] .'.00</div>';
+echo '<div>Sub Total : HKD$ '. $row1['subtotal'] .'.00</div>';
 echo '<ul><li><b>Item detail : </b>';
 echo '<div>'. $row1['detail'] .'</div>';
 echo '</li></ul></div>';
@@ -212,7 +212,7 @@ echo '</li></ul></div>';
 echo '<br><div><div><p><b>Delivery Address:</b><br>'. $row['oaddress'] .'</p></div>
 
 <ul><br><li><b>Order Total : </b>';
-echo '$HKD '. $row['amount'] .'.00</li>
+echo 'HKD$ '. $row['amount'] .'.00</li>
 <li></li></ul></div></li></ul></li></ul></div></div>
 <br>';
 }

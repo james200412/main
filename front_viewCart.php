@@ -75,7 +75,42 @@ $cart = new Cart;
                 	<li><a href="index.php">Back to Home Page</a></li>
                 </ul>
                 <div class="clearfix"></div>
-			   </div>	
+</div>
+
+<!--alert-->    
+<?php
+session_start();
+if(isset($_SESSION['addalert'])){ ?>    
+<div class="alert alert-success">
+  <strong>Add To Cart Success!</strong>
+</div>
+
+<?php 
+unset($_SESSION['addalert']);
+}else if(isset($_SESSION['updatealert'])){ ?>
+
+<div class="alert alert-info">
+  <strong>Order Updated!</strong>
+</div>
+
+<?php 
+unset($_SESSION['updatealert']);
+}else if(isset($_SESSION['removealert'])){ ?>
+
+<div class="alert alert-danger">
+  <strong>Remove Success!</strong>
+</div>
+
+<?php
+unset($_SESSION['removealert']);
+}else{
+    
+}
+
+?>
+<!--alert-->
+
+
 <h3>Cart Information</h3>
 			</div>
 		</div>

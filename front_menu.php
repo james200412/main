@@ -80,8 +80,17 @@ if(isset($_SESSION['userid']) && $_SESSION['userlevel'] == 0){
 
 
 <!-- Menu Start -->		
-							
-                            <?php
+<!--Tabs-->
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#menu">Main Dishes Set</a></li>
+    <li><a data-toggle="tab" href="#menu1">Drink</a></li>
+ <!--   <li><a data-toggle="tab" href="#menu2">????</a></li>-->
+  </ul>
+
+  <div class="tab-content">
+    <div id="menu" class="tab-pane fade in active">
+<!--Food-->							
+<?php
                             include 'db/dbconnect.php';
                             $query = "SELECT * FROM TBMENU where dtype IN ('food') AND activate IN ('1') ORDER BY id ASC";
                             $result = @mysqli_query($connect, $query);
@@ -89,7 +98,7 @@ if(isset($_SESSION['userid']) && $_SESSION['userlevel'] == 0){
                             echo '<br>';
                             while ($row = mysqli_fetch_assoc($result)) {
                             echo '<div class="Popular-Restaurants-grid wow fadeInRight" data-wow-delay="0.4s">' .
-                                '<div class="col-md-3 restaurent-logo"><img src="' . $row['dimage'] . '" class="img-responsive" alt="" /></div>' .
+                                '<div class="col-md-3 restaurent-logo"><img src="' . $row['dimage'] . '" style="height:150px; width:auto" class="img-responsive img-rounded" alt="" /></div>' .
                                 '<div class="col-md-5 restaurent-title"><div class="logo-title"><h4>' . $row['dname'] . '</h4></div>'.
                                 '<div class="rating">'. $row['detail'] .'</div>';
                      		echo '</div>';
@@ -102,9 +111,12 @@ if(isset($_SESSION['userid']) && $_SESSION['userlevel'] == 0){
                             }
                             mysqli_close($connect);
 							?>  
-					
-					  
-                            <?php
+<!--Food-->				
+
+     </div>
+    <div id="menu1" class="tab-pane fade">
+<!--Drink-->					  
+<?php
                             include 'db/dbconnect.php';
                             $query = "SELECT * FROM TBMENU where dtype IN ('drink') AND activate IN ('1') ORDER BY id ASC";
                             $result = @mysqli_query($connect, $query);
@@ -112,7 +124,7 @@ if(isset($_SESSION['userid']) && $_SESSION['userlevel'] == 0){
                             echo '<br>';
                             while ($row = mysqli_fetch_assoc($result)) {
                             echo '<div class="Popular-Restaurants-grid wow fadeInRight" data-wow-delay="0.4s">' .
-                                '<div class="col-md-3 restaurent-logo"><img src="' . $row['dimage'] . '" class="img-responsive" alt="" /></div>' .
+                                '<div class="col-md-3 restaurent-logo"><img src="' . $row['dimage'] . '" style="height:150px; width:auto" class="img-responsive img-rounded" alt="" /></div>' .
                                 '<div class="col-md-5 restaurent-title"><div class="logo-title"><h4>' . $row['dname'] . '</h4></div>'.
                                 '<div class="rating">'. $row['detail'] .'</div>';
                      		echo '</div>';
@@ -125,11 +137,18 @@ if(isset($_SESSION['userid']) && $_SESSION['userlevel'] == 0){
                             }
                             mysqli_close($connect);
                             ?>  
+<!--Drink-->	
 
 
+  </div>
+    <!--<div id="menu2" class="tab-pane fade">
+Three
+   </div>-->
+  </div>
 
+<!--Tabs-->
 
-				
+					
 			</div><!--<div class="container"></div> end-->
 <?php
 //SESSION userid exist and user level = 0, user is login
@@ -164,7 +183,18 @@ else{
 
 
 <!-- Menu Start -->
-                <?php
+
+<!--Tabs-->
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#gmenu">Main Dishes Set</a></li>
+    <li><a data-toggle="tab" href="#gmenu1">Drink</a></li>
+ <!--   <li><a data-toggle="tab" href="#gmenu2">????</a></li>-->
+  </ul>
+
+  <div class="tab-content">
+    <div id="gmenu" class="tab-pane fade in active">
+<!--Food-->							
+<?php
 //food
                 include 'db/dbconnect.php';
                 $query = "SELECT * FROM TBMENU where dtype IN ('food') AND activate IN ('1') ORDER BY id ASC";
@@ -173,7 +203,7 @@ else{
                 echo '<br>';
                 while ($row = mysqli_fetch_assoc($result)) {
                 echo '<div class="Popular-Restaurants-grid wow fadeInRight" data-wow-delay="0.4s">' .
-                    '<div class="col-md-3 restaurent-logo"><img src="' . $row['dimage'] . '" class="img-responsive" alt="" /></div>' .
+                    '<div class="col-md-3 restaurent-logo"><img src="' . $row['dimage'] . '" style="height:150px; width:auto" class="img-responsive img-rounded" alt="" /></div>' .
                     '<div class="col-md-5 restaurent-title"><div class="logo-title"><h4>' . $row['dname'] . '</h4></div>'.
                     '<div class="rating">'. $row['detail'] .'</div>';
                 echo '</div>';
@@ -184,9 +214,12 @@ else{
                 }
                 mysqli_close($connect);
                 ?>  
-        
-   
-                <?php
+<!--Food-->				
+
+     </div>
+    <div id="gmenu1" class="tab-pane fade">
+<!--Drink-->					  
+<?php
 //drink    
                 include 'db/dbconnect.php';
                 $query = "SELECT * FROM TBMENU where dtype IN ('drink') AND activate IN ('1') ORDER BY id ASC";
@@ -195,7 +228,7 @@ else{
                 echo '<br>';
                 while ($row = mysqli_fetch_assoc($result)) {
                 echo '<div class="Popular-Restaurants-grid wow fadeInRight" data-wow-delay="0.4s">' .
-                    '<div class="col-md-3 restaurent-logo"><img src="' . $row['dimage'] . '" class="img-responsive" alt="" /></div>' .
+                    '<div class="col-md-3 restaurent-logo"><img src="' . $row['dimage'] . '" style="height:150px; width:auto" class="img-responsive img-rounded" alt="" /></div>' .
                     '<div class="col-md-5 restaurent-title"><div class="logo-title"><h4>' . $row['dname'] . '</h4></div>'.
                     '<div class="rating">'. $row['detail'] .'</div>';
                  echo '</div>';
@@ -205,10 +238,18 @@ else{
                     '</div>';
                 }
                 mysqli_close($connect);
-                ?>  
+                ?> 
+<!--Drink-->	
 
 
+  </div>
+  <!--
+    <div id="gmenu2" class="tab-pane fade">
+Three
+   </div>-->
+  </div>
 
+<!--Tabs-->
 
     
 </div><!--<div class="container"></div> end-->
