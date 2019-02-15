@@ -186,9 +186,27 @@ else{
 
 <!--Tabs-->
 <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#gmenu">Main Dishes Set</a></li>
+
+
+<?php
+//food
+                include 'db/dbconnect.php';
+                $query = "SELECT * FROM TBMENUTYPE where activate IN ('1') ORDER BY id ASC";
+                $result = @mysqli_query($connect, $query);
+// Cycle through the result set
+echo '<li class="active">';
+                while ($row = mysqli_fetch_assoc($result)) {
+ echo   '<li><a data-toggle="tab" href="#' . $row['id'] . '">'. $row['dtname'] .'</a></li>';
+
+               
+
+                }
+                mysqli_close($connect);
+          
+?>
+
     <li><a data-toggle="tab" href="#gmenu1">Drink</a></li>
- <!--   <li><a data-toggle="tab" href="#gmenu2">????</a></li>-->
+    <li><a data-toggle="tab" href="#gmenu2">????</a></li>
   </ul>
 
   <div class="tab-content">
@@ -243,10 +261,10 @@ else{
 
 
   </div>
-  <!--
+ 
     <div id="gmenu2" class="tab-pane fade">
 Three
-   </div>-->
+   </div>
   </div>
 
 <!--Tabs-->

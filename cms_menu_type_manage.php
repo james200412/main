@@ -1,14 +1,8 @@
 <?php  
 include 'cms_session.php';
 include 'db/dbconnect.php';
- $query = "SELECT TBMENU.*, TBMENUTYPE.dtname FROM TBMENU JOIN TBMENUTYPE ON TBMENUTYPE.id = TBMENU.dtype ORDER BY TBMENU.id ASC";  
+ $query = "SELECT * FROM TBMENUTYPE ORDER BY id ASC";  
  $result = mysqli_query($connect, $query);  
-
- $querydt = "SELECT * FROM TBMENUTYPE ORDER BY id ASC";  
- $resultdt = mysqli_query($connect, $querydt);  
-
- $querydt1 = "SELECT * FROM TBMENUTYPE ORDER BY id ASC";  
- $resultdt1 = mysqli_query($connect, $querydt1);  
  ?>  
 
  
@@ -61,23 +55,19 @@ include 'include/cms_leftbar.php';
                     
   <!--start-->
   <div class="container" style="width:100%;">
-           <h1 class="manage">Menu</h1>
+           <h1 class="manage">Dish Type</h1>
                 <br />  
                 <div class="table-responsive">  
                      <div>  
-                          <button type="button" name="add" id="add" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-success">Add Menu</button>  
+                          <button type="button" name="add" id="add" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-success">Add Type</button>  
                      </div>  
                      <br />  
                      <div id="usertable">  
                           <table class="table table-bordered">  
                           <thead>
                                <tr>  
-                                    <th width="5%">DISH ID</th>  
-                                    <th width="15%">DISH IMAGE</th>
-                                    <th width="10%">DISH NAME</th>
-                                    <th width="10%">DISH PRICE</th>
-                                    <th width="10%">DISH TYPE</th>
-                                    <th width="30%">DETAIL</th>
+                                    <th width="5%">TYPE ID</th>  
+                                    <th width="15%">TYPE NAME</th>
                                     <th width="10%">ACTIVATE</th>
                                     <th width="5%"></th>
                                     <!--<th width="5%"></th>  -->
@@ -90,18 +80,7 @@ include 'include/cms_leftbar.php';
                                ?>  
                                <tr>  
                                     <td>#<?php echo $row["id"]; ?></td> 
-                                    <td>
-
-
-                                    <img class="img-thumbnail" src="<?php echo $row["dimage"]; ?>" />
-                                    
-                                    
-                                    
-                                    </td> 
-                                    <td><?php echo $row["dname"]; ?></td> 
-                                    <td>$<?php echo $row["dprice"]; ?></td> 
                                     <td><?php echo $row["dtname"]; ?></td> 
-                                    <td><?php echo $row["detail"]; ?></td>
                                     <td><?php if ($row["activate"] == 0){
                                       echo "No";
                                     }  else{
@@ -110,9 +89,7 @@ include 'include/cms_leftbar.php';
                                     ?>
                                     </td>
                                     <td><input type="button" name="edit" value="Edit" id="<?php echo $row["id"]; ?>" class="btn btn-info btn-xs edit_data" /></td>  
-  <!-- <td><input type="button" name="view" value="view" id="<?php echo $row["id"]; ?>" class="btn btn-info btn-xs view_data" /></td> -->
-  <!-- <td><input type="button" name="delete" value="delete" id="<?php echo $row["id"]; ?>" class="btn btn-info btn-xs delete_data" /></td> 
-                               -->
+
                                </tr>  
                                <?php  
                                } 
@@ -175,41 +152,19 @@ include 'include/cms_leftbar.php';
                      <h4 class="modal-title">ADD Form</h4>  
                 </div>  
                 <div class="modal-body">  
-                     <form method="post" action="cms/menu/insert.php" enctype="multipart/form-data">  
-                          <label>Enter Name</label> 
+                     <form method="post" action="cms/menutype/insert.php" enctype="multipart/form-data">  
+                          <label>Type Name</label> 
                           <input type="text" name="adname" id="adname" class="form-control" required/>  
                           <br />  
                           <label>Detail</label>  
                           <textarea name="adetail" id="adetail" class="form-control" required></textarea>  
-                          <br />  
-
-                          <label>TYPE</label>  
-                           <select name="atype" id="atype" class="form-control" required>  
-<?php  while($rowdt = mysqli_fetch_array($resultdt))  
-                               {  ?>
-                                   
-<option value="<?php echo $rowdt['id'];?>"><?php echo $rowdt['dtname'];?></option> 
-<?php
-                              }
-                          ?>
-                          </select> 
-                         
                           <br />                            
-                          <label>Enter Price</label>  
-                          <input type="text" name="adprice" id="adprice" size="8" maxlength="8" class="form-control" required/>  
-                          <br />
                           <label>Activate</label>  
                           <select name="activate1" id="activate1" class="form-control" required>  
                                <option value="0">NO</option>  
                                <option value="1">YES</option>
                           </select>  
-                          <br />  
-
-                         <label>Select image to upload:</label>
-                          <input type="file" name="aimage" id="aimage" required>
-                          <br />  
-
-                          <input type="hidden" name="dishid" id="dishid" />
+                          <br /> 
                           <input type="submit" name="insert" id="insert" value="insert" class="btn btn-success" />  
                      </form>  
                 </div>  
@@ -236,26 +191,13 @@ include 'include/cms_leftbar.php';
                      <h4 class="modal-title">Edit</h4>  
                 </div>  
                 <div class="modal-body">  
-                     <form method="post" action="cms/menu/update.php" enctype="multipart/form-data">
+                     <form method="post" action="cms/menutype/update.php" enctype="multipart/form-data">
                           <label>Enter Name</label> 
                           <input type="text" name="edname" id="edname" class="form-control" />  
                           <br />  
                           <label>Detail</label>  
                           <textarea name="edetail" id="edetail" class="form-control"></textarea>  
-                          <br />  
-                          <label>TYPE</label>  
-                          <select name="etype" id="etype" class="form-control">  
-<?php  while($rowdt1 = mysqli_fetch_array($resultdt1))  
-                               {  ?>
-                                   
-<option value="<?php echo $rowdt1['id'];?>"><?php echo $rowdt1['dtname'];?></option> 
-<?php
-                              }
-                          ?>
-                          </select>  
-                          <br />                            
-                          <label>Enter Price</label>  
-                          <input type="text" name="edprice" id="edprice" size="8" maxlength="8" class="form-control" />  
+   
                           <br />
                           <label>Activate</label>  
                           <select name="eactivate" id="eactivate" class="form-control">  
@@ -263,11 +205,6 @@ include 'include/cms_leftbar.php';
                                <option value="1">YES</option>
                           </select>  
                           <br />  
-
-                         <label>Select image to upload:</label>
-                          <input type="file" name="eimage" id="eimage">
-                          <br />  
-
                           <input type="hidden" name="dishid1" id="dishid1"/>
                           <input type="submit" name="update" id="update" value="Update" class="btn btn-success" />  
                      </form>  
@@ -292,59 +229,28 @@ include 'include/cms_leftbar.php';
       $(document).on('click', '.edit_data', function(){  
            var dishid1 = $(this).attr("id");  
            $.ajax({  
-                url:"cms/menu/fetch.php",  
+                url:"cms/menutype/fetch.php",  
                 method:"POST",  
                 data:{dishid1:dishid1},  
                 dataType:"json",  
                 success:function(data){
                     
                      $('#dishid1').val(data.id);                   
-                     $('#edname').val(data.dname);  
-                     $('#edetail').val(data.detail);  
-                     $('#etype').val(data.dtype);
-                     $('#edprice').val(data.dprice);
+                     $('#edname').val(data.dtname);  
+                     $('#edetail').val(data.dtdetail);  
                      $('#eactivate').val(data.activate); 
                                          
                      $('#edit_data_Modal').modal('show');  
                 }  
            });  
       });  
-
-
-
-/*ajax delete*/
-
-$(document).on('click', '.delete_data', function(){
-  var dishid = $(this).attr("id");
-  var el = this;
-  if(confirm("Are you sure you want to delete this?"))
-  {
-   $.ajax({
-    url:"cms/menu/delete.php",
-    method:"POST",
-    data:{dishid:dishid},
-    success:function(data)
-    {
-     $(el).closest('tr').css('background','#de6f6c');
-    $(el).closest('tr').fadeOut(800, function(){ 
-     $(this).remove();
-    });
-
-    }
-   });
-  }
-  else
-  {
-   return false; 
-  }
- });
  
 
 
   	$( ".table" ).DataTable({
         bPaginate: true,
 bLengthChange: false,
-bFilter: true,
+bFilter: false,
 bSort: false, 
 bInfo: false,
 bAutoWidth: false,

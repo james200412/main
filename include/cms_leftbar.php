@@ -46,9 +46,15 @@ if(isset($_SESSION['userid']) && $_SESSION['userlevel'] == 2){
                 <li>
                     <a href="cms_account_manage.php"><i class="fa fa-user-o"></i> <span class="nav-label">Account Management</span> </a>
                 </li>
+
                 <li>
-                    <a href="cms_menu_manage.php"><i class="fa fa-list-alt"></i> <span class="nav-label">Menu Management</span> </a>
+<a href="#"><i class="fa fa-list-alt"></i> <span class="nav-label">Menu Management</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse" style="">
+                        <li><a href="cms_menu_manage.php">Menu</a></li>
+                        <li><a href="cms_menu_type_manage.php">Menu Type</a></li>
+                    </ul>                
                 </li>
+
                 <li>
                     <a href="cms_order_manage.php"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Order Management</span> </a>
                 </li>
