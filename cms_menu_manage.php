@@ -63,7 +63,7 @@ include 'include/cms_leftbar.php';
   <div class="container" style="width:100%;">
            <h1 class="manage">Menu</h1>
                 <br />  
-                <div class="table-responsive">  
+                <div class="">  
                      <div>  
                           <button type="button" name="add" id="add" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-success">Add Menu</button>  
                      </div>  

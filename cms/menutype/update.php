@@ -2,12 +2,11 @@
 include('../../db/dbconnect.php');
 
       $name = $_POST["edname"]; 
-      $detail = $_POST["edetail"]; 
       $activate =  $_POST["eactivate"]; 
 
 if(isset($_POST["dishid1"])){  
     $dishid = $_POST["dishid1"];
-          $c_update="update TBMENUTYPE set dtname='$name', dtdetail='$detail', activate='$activate'
+          $c_update="update TBMENUTYPE set dtname='$name', activate='$activate'
            where id='$dishid'";
       }
 

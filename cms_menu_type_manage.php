@@ -57,7 +57,7 @@ include 'include/cms_leftbar.php';
   <div class="container" style="width:100%;">
            <h1 class="manage">Dish Type</h1>
                 <br />  
-                <div class="table-responsive">  
+                <div class="">  
                      <div>  
                           <button type="button" name="add" id="add" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-success">Add Type</button>  
                      </div>  
@@ -155,10 +155,7 @@ include 'include/cms_leftbar.php';
                      <form method="post" action="cms/menutype/insert.php" enctype="multipart/form-data">  
                           <label>Type Name</label> 
                           <input type="text" name="adname" id="adname" class="form-control" required/>  
-                          <br />  
-                          <label>Detail</label>  
-                          <textarea name="adetail" id="adetail" class="form-control" required></textarea>  
-                          <br />                            
+                          <br />                             
                           <label>Activate</label>  
                           <select name="activate1" id="activate1" class="form-control" required>  
                                <option value="0">NO</option>  
@@ -195,10 +192,6 @@ include 'include/cms_leftbar.php';
                           <label>Enter Name</label> 
                           <input type="text" name="edname" id="edname" class="form-control" />  
                           <br />  
-                          <label>Detail</label>  
-                          <textarea name="edetail" id="edetail" class="form-control"></textarea>  
-   
-                          <br />
                           <label>Activate</label>  
                           <select name="eactivate" id="eactivate" class="form-control">  
                                <option value="0">NO</option>  
