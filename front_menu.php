@@ -79,73 +79,90 @@ if(isset($_SESSION['userid']) && $_SESSION['userlevel'] == 0){
 			   </div>	
 
 
-<!-- Menu Start -->		
+<!-- Menu Start -->
 <!--Tabs-->
-  <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#menu">Main Dishes Set</a></li>
-    <li><a data-toggle="tab" href="#menu1">Drink</a></li>
- <!--   <li><a data-toggle="tab" href="#menu2">????</a></li>-->
+<ul class="nav nav-tabs">
+
+
+<?php
+                include 'db/dbconnect.php';
+                $query = "SELECT * FROM TBMENUTYPE where activate IN ('1') ORDER BY id ASC";
+                $result = @mysqli_query($connect, $query);
+//all dishes
+echo '<li class="active"><a data-toggle="tab" href="#all">ALL Dishes</a></li>';
+// Cycle through the result set
+                while ($row = mysqli_fetch_assoc($result)) {
+echo   '<li><a data-toggle="tab" href="#' . $row['id'] . '">'. $row['dtname'] .'</a></li>';
+                }
+                mysqli_close($connect);
+        
+                
+?>
   </ul>
 
-  <div class="tab-content">
-    <div id="menu" class="tab-pane fade in active">
-<!--Food-->							
+<div class="tab-content">
 <?php
-                            include 'db/dbconnect.php';
-                            $query = "SELECT * FROM TBMENU where dtype IN ('food') AND activate IN ('1') ORDER BY id ASC";
-                            $result = @mysqli_query($connect, $query);
+//all
+echo '<div id="all" class="tab-pane fade in active">';
+echo '<br>';
+include 'db/dbconnect.php';
+$q123 = "SELECT * FROM TBMENU where activate IN ('1') ORDER BY dtype ASC";
+$re123 = mysqli_query($connect, $q123);
+
+             while ($rowtx123 = mysqli_fetch_assoc($re123)) {
+              echo '<div class="Popular-Restaurants-grid wow fadeInRight" data-wow-delay="0.4s">' .
+                  '<div class="col-md-3 restaurent-logo"><img src="' . $rowtx123['dimage'] . '" style="height:150px; width:auto" class="img-responsive img-rounded" alt="" /></div>' .
+                  '<div class="col-md-5 restaurent-title"><div class="logo-title"><h4>' . $rowtx123['dname'] . '</h4></div>'.
+                  '<div class="rating">'. $rowtx123['detail'] .'</div>';
+           echo '</div>';
+echo '<div class="col-md-4 buy"><span>' . '$' . $rowtx123['dprice'] . 
+                  '</span>
+                  <a class="btn btn-danger" href="cartaction.php?action=addToCart&id=' . $rowtx123["id"] . '">Add to cart</a>
+                  </div>' .
+                  '<div class="clearfix"></div>' .
+                  '</div>';
+              }
+             mysqli_close($connect);
+
+echo '</div>';
+//all end
+
+
+                include 'db/dbconnect.php';
+                $queryt = "SELECT * FROM TBMENUTYPE where activate IN ('1') ORDER BY id ASC";
+                $resultt = @mysqli_query($connect, $queryt);
 // Cycle through the result set
-                            echo '<br>';
-                            while ($row = mysqli_fetch_assoc($result)) {
-                            echo '<div class="Popular-Restaurants-grid wow fadeInRight" data-wow-delay="0.4s">' .
-                                '<div class="col-md-3 restaurent-logo"><img src="' . $row['dimage'] . '" style="height:150px; width:auto" class="img-responsive img-rounded" alt="" /></div>' .
-                                '<div class="col-md-5 restaurent-title"><div class="logo-title"><h4>' . $row['dname'] . '</h4></div>'.
-                                '<div class="rating">'. $row['detail'] .'</div>';
-                     		echo '</div>';
-							echo '<div class="col-md-4 buy"><span>' . '$' . $row['dprice'] . 
-                                '</span>
-                                <a class="btn btn-danger" href="cartaction.php?action=addToCart&id=' . $row["id"] . '">Add to cart</a>
-                                </div>' .
-                                '<div class="clearfix"></div>' .
-                                '</div>';
-                            }
-                            mysqli_close($connect);
-							?>  
-<!--Food-->				
+   while ($rowt = mysqli_fetch_assoc($resultt)) { 
+   $typeid = $rowt['id'];
+   echo '<div id="' . $typeid . '" class="tab-pane fade">';
+   echo '<br>';
+   
 
-     </div>
-    <div id="menu1" class="tab-pane fade">
-<!--Drink-->					  
-<?php
-                            include 'db/dbconnect.php';
-                            $query = "SELECT * FROM TBMENU where dtype IN ('drink') AND activate IN ('1') ORDER BY id ASC";
-                            $result = @mysqli_query($connect, $query);
+   $q = "SELECT * FROM TBMENU where dtype IN ('" . $typeid . "') AND activate IN ('1') ORDER BY id ASC";
+   $re = mysqli_query($connect, $q);
+
 // Cycle through the result set
-                            echo '<br>';
-                            while ($row = mysqli_fetch_assoc($result)) {
-                            echo '<div class="Popular-Restaurants-grid wow fadeInRight" data-wow-delay="0.4s">' .
-                                '<div class="col-md-3 restaurent-logo"><img src="' . $row['dimage'] . '" style="height:150px; width:auto" class="img-responsive img-rounded" alt="" /></div>' .
-                                '<div class="col-md-5 restaurent-title"><div class="logo-title"><h4>' . $row['dname'] . '</h4></div>'.
-                                '<div class="rating">'. $row['detail'] .'</div>';
-                     		echo '</div>';
-							echo '<div class="col-md-4 buy"><span>' . '$' . $row['dprice'] . 
-                                '</span>
-                                <a class="btn btn-danger" href="cartaction.php?action=addToCart&id=' . $row["id"] . '">Add to cart</a>
-                                </div>' .
-                                '<div class="clearfix"></div>' .
-                                '</div>';
-                            }
-                            mysqli_close($connect);
-                            ?>  
-<!--Drink-->	
+                while ($rowtx = mysqli_fetch_assoc($re)) {
+                  echo '<div class="Popular-Restaurants-grid wow fadeInRight" data-wow-delay="0.4s">' .
+                      '<div class="col-md-3 restaurent-logo"><img src="' . $rowtx['dimage'] . '" style="height:150px; width:auto" class="img-responsive img-rounded" alt="" /></div>' .
+                      '<div class="col-md-5 restaurent-title"><div class="logo-title"><h4>' . $rowtx['dname'] . '</h4></div>'.
+                      '<div class="rating">'. $rowtx['detail'] .'</div>';
+               echo '</div>';
+    echo '<div class="col-md-4 buy"><span>' . '$' . $rowtx['dprice'] . 
+                      '</span>
+                      <a class="btn btn-danger" href="cartaction.php?action=addToCart&id=' . $rowtx["id"] . '">Add to cart</a>
+                      </div>' .
+                      '<div class="clearfix"></div>' .
+                      '</div>';
+                  }
+                echo '</div>';
+     }
+                mysqli_close($connect);
+        
 
 
+                ?>  			
   </div>
-    <!--<div id="menu2" class="tab-pane fade">
-Three
-   </div>-->
-  </div>
-
 <!--Tabs-->
 
 					
@@ -192,9 +209,9 @@ else{
                 include 'db/dbconnect.php';
                 $query = "SELECT * FROM TBMENUTYPE where activate IN ('1') ORDER BY id ASC";
                 $result = @mysqli_query($connect, $query);
+//all dishes
+echo '<li class="active"><a data-toggle="tab" href="#all">ALL Dishes</a></li>';
 // Cycle through the result set
-$row = mysqli_fetch_assoc($result);
-echo '<li class="active"><a data-toggle="tab" href="#' . $row['id'] . '">'. $row['dtname'] .'</a></li>';
                 while ($row = mysqli_fetch_assoc($result)) {
 echo   '<li><a data-toggle="tab" href="#' . $row['id'] . '">'. $row['dtname'] .'</a></li>';
                 }
@@ -203,20 +220,46 @@ echo   '<li><a data-toggle="tab" href="#' . $row['id'] . '">'. $row['dtname'] .'
                 
 ?>
   </ul>
-  <div class="tab-content">
 
+<div class="tab-content">
 <?php
+//all
+echo '<div id="all" class="tab-pane fade in active">';
+echo '<br>';
+include 'db/dbconnect.php';
+$q123 = "SELECT * FROM TBMENU where activate IN ('1') ORDER BY dtype ASC";
+$re123 = mysqli_query($connect, $q123);
+
+while ($rowtx123=mysqli_fetch_assoc($re123)){
+// Cycle through the result set
+             echo '<div class="Popular-Restaurants-grid wow fadeInRight" data-wow-delay="0.4s">' .
+                 '<div class="col-md-3 restaurent-logo"><img src="' . $rowtx123['dimage'] . '" style="height:150px; width:auto" class="img-responsive img-rounded" alt="" /></div>' .
+                 '<div class="col-md-5 restaurent-title"><div class="logo-title"><h4>' . $rowtx123['dname'] . '</h4></div>'.
+                 '<div class="rating">'. $rowtx123['detail'] .'</div>';
+             echo '</div>';
+             echo '<div class="col-md-4 buy"><span>' . '$' . $rowtx123['dprice'] . 
+                 '</span><a class="btn btn-danger" data-toggle="modal" data-target="#myModalguest">Add to cart</a></div>' .
+                 '<div class="clearfix"></div>' .
+                 '</div>';
+             }
+             mysqli_close($connect);
+
+echo '</div>';
+//all end
+
+
                 include 'db/dbconnect.php';
                 $queryt = "SELECT * FROM TBMENUTYPE where activate IN ('1') ORDER BY id ASC";
                 $resultt = @mysqli_query($connect, $queryt);
 // Cycle through the result set
-                while ($rowt = mysqli_fetch_assoc($resultt)) { 
+   while ($rowt = mysqli_fetch_assoc($resultt)) { 
    $typeid = $rowt['id'];
-   echo '<div id="' . $typeid . '" class="tab-pane fade in active">';
-
+   echo '<div id="' . $typeid . '" class="tab-pane fade">';
    echo '<br>';
    
-   $re = mysqli_query($connect, "SELECT * FROM TBMENU where dtype IN ('1') AND activate IN ('1') ORDER BY id ASC");
+
+   $q = "SELECT * FROM TBMENU where dtype IN ('" . $typeid . "') AND activate IN ('1') ORDER BY id ASC";
+   $re = mysqli_query($connect, $q);
 
    while ($rowtx=mysqli_fetch_assoc($re)){
 // Cycle through the result set
@@ -228,17 +271,17 @@ echo   '<li><a data-toggle="tab" href="#' . $row['id'] . '">'. $row['dtname'] .'
                 echo '<div class="col-md-4 buy"><span>' . '$' . $rowtx['dprice'] . 
                     '</span><a class="btn btn-danger" data-toggle="modal" data-target="#myModalguest">Add to cart</a></div>' .
                     '<div class="clearfix"></div>' .
-                    '</div>'.
                     '</div>';
                 }
+                echo '</div>';
      }
                 mysqli_close($connect);
         
 
 
                 ?>  
+                
 <!--Food-->				
-
   </div>
 <!--Tabs-->
 
