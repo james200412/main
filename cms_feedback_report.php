@@ -323,7 +323,7 @@ $resultt1 = mysqli_query($connect, $queryt1);
             </div>
             <div class="table-responsive">
 <?php
-$query233 = "SELECT * FROM tbfeedback WHERE remark IS NOT NULL ORDER BY oid DESC";
+$query233 = "SELECT * FROM tbfeedback WHERE remark IS NOT NULL AND remark !='' ORDER BY oid DESC";
 $result233 = mysqli_query($connect, $query233);
 ?>
                 <table class="table table-striped">
