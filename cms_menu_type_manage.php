@@ -68,7 +68,7 @@ include 'include/cms_leftbar.php';
                                <tr>  
                                     <th width="5%">TYPE ID</th>  
                                     <th width="15%">TYPE NAME</th>
-                                    <th width="10%">ACTIVATE</th>
+                                    <th width="10%">DISPLAY?</th>
                                     <th width="5%"></th>
                                     <!--<th width="5%"></th>  -->
                                </tr>  
@@ -156,7 +156,7 @@ include 'include/cms_leftbar.php';
                           <label>Type Name</label> 
                           <input type="text" name="adname" id="adname" class="form-control" required/>  
                           <br />                             
-                          <label>Activate</label>  
+                          <label>Display?</label>  
                           <select name="activate1" id="activate1" class="form-control" required>  
                                <option value="0">NO</option>  
                                <option value="1">YES</option>
@@ -192,7 +192,7 @@ include 'include/cms_leftbar.php';
                           <label>Enter Name</label> 
                           <input type="text" name="edname" id="edname" class="form-control" />  
                           <br />  
-                          <label>Activate</label>  
+                          <label>Display?</label>  
                           <select name="eactivate" id="eactivate" class="form-control">  
                                <option value="0">NO</option>  
                                <option value="1">YES</option>

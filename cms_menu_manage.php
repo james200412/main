@@ -78,7 +78,7 @@ include 'include/cms_leftbar.php';
                                     <th width="10%">DISH PRICE</th>
                                     <th width="10%">DISH TYPE</th>
                                     <th width="30%">DETAIL</th>
-                                    <th width="10%">ACTIVATE</th>
+                                    <th width="10%">DISPLAY?</th>
                                     <th width="5%"></th>
                                     <!--<th width="5%"></th>  -->
                                </tr>  
@@ -198,7 +198,7 @@ include 'include/cms_leftbar.php';
                           <label>Enter Price</label>  
                           <input type="text" name="adprice" id="adprice" size="8" maxlength="8" class="form-control" required/>  
                           <br />
-                          <label>Activate</label>  
+                          <label>Display?</label>  
                           <select name="activate1" id="activate1" class="form-control" required>  
                                <option value="0">NO</option>  
                                <option value="1">YES</option>
@@ -257,7 +257,7 @@ include 'include/cms_leftbar.php';
                           <label>Enter Price</label>  
                           <input type="text" name="edprice" id="edprice" size="8" maxlength="8" class="form-control" />  
                           <br />
-                          <label>Activate</label>  
+                          <label>Display?</label>  
                           <select name="eactivate" id="eactivate" class="form-control">  
                                <option value="0">NO</option>  
                                <option value="1">YES</option>

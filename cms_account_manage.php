@@ -78,7 +78,7 @@ include 'include/cms_leftbar.php';
                                     <th width="10%">EMAIL</th>
                                     <th width="10%">PHONE</th>
                                     <th width="10%">USER LEVEL</th>
-                                    <th width="5%">ACTIVATE</th>
+                                    <th width="5%">Enable?</th>
                                     <th width="5%"></th>
                                    <!-- <th width="5%"></th>  -->
                                </tr>  
@@ -212,7 +212,7 @@ include 'include/cms_leftbar.php';
                                <option value="2">Admin</option>    
                           </select>  
                           <br />
-                          <label>ACTIVATE</label>  
+                          <label>Enable?</label>  
                           <select name="activate" id="activate" class="form-control">  
                                <option value="1">Yes</option>  
                                <option value="0">No</option>
