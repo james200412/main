@@ -179,24 +179,6 @@ $roworder = mysqli_fetch_assoc($resultorder);
                     <div class="ibox-content" style="position: relative">
           <div id="recent-sales-chart"></div>
  
-
- <div>
- 
- <!--test-->
- <input type="hidden" id="hiddenline" value="" />
-
-<div class="">
-<input type="text" name="From" id="From" class="form-control" placeholder="From Date"/>
-</div>
-<div class="">
-<input type="text" name="to" id="to" class="form-control" placeholder="To Date"/>
-</div>
-<div class="">
-<input type="button" name="range" id="range" value="Range" class="btn btn-success"/>
-</div>
-<!--test--></div>
-
-
                     </div>
                 </div>
             </div>
@@ -350,60 +332,24 @@ $rowt2 = mysqli_fetch_assoc($resultt2);
 
 </html>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+
 
 <script>
-$(document).ready(function() {
+$(function() {
 
-var line_chart =  Morris.Line({
+Morris.Line({
  element : 'recent-sales-chart',
  data:[<?php echo $chart_data; ?>],
  xkey:'date',
  ykeys:['sales'],
  labels:['Sales amount HKD$'],
- hideHover:['auto'],
+ hideHover:'auto',
  stacked:true,
      resize: true,
     lineWidth:4,
     lineColors: ['#1ab394'],
     pointSize:5,
 });
-
-$.datepicker.setDefaults({
-		dateFormat: 'yy-mm-dd'
-	});
-	$(function(){
-		$("#From").datepicker();
-		$("#to").datepicker();
-	});
-	$('#range').click(function(){
-		var From = $('#From').val();
-		var to = $('#to').val();
-		if(From != '' && to != '')
-		{
-			$.ajax({
-				url:"cms/report/filteraction.php",
-				method:"POST",
-				data:{From:From, to:to},
-				success:function(data123)
-				{
-                   // var res1 = data123.split(",");
-                   var re = [];
-                   var r = data123.substring(0, data123.length - 1);
-                   re.push(r.split(","));
-                   //line_chart.setData(re);
-                   alert(json_decode(data123, true));
-				}
-			});
-		}
-		else
-		{
-			alert("Please Select the Date");
-		}
-	});
-
-
 
 Morris.Bar({
     element: 'morris-bar-chart',
