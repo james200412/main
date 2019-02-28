@@ -24,6 +24,14 @@ AND tborder.status = 2
 GROUP BY tbmenu.id ORDER BY subtotal DESC LIMIT 5
 ";
 
+$queryt1 = "SELECT tborder_detail.did, 
+sum(tborder_detail.subtotal) AS subtotal, 
+tbmenu.dname FROM tborder_detail 
+JOIN tbmenu ON tbmenu.id = tborder_detail.did GROUP BY tbmenu.id ORDER BY subtotal DESC LIMIT 5";
+$resultt1 = mysqli_query($connect, $queryt1);
+
+
+
 
 $result2 = mysqli_query($connect, $query2);
 $chart_data2 = '';
@@ -218,15 +226,7 @@ $roworder = mysqli_fetch_assoc($resultorder);
                         <div id="morris-bar-chart"></div> 
                         <br>
 
-<?php
-$queryt1 = "SELECT tborder_detail.did, 
-sum(tborder_detail.subtotal) AS subtotal, 
-tbmenu.dname FROM tborder_detail 
-JOIN tbmenu ON tbmenu.id = tborder_detail.did GROUP BY tbmenu.id ORDER BY subtotal DESC LIMIT 5";
-$resultt1 = mysqli_query($connect, $queryt1);
 
-
-?>
 
 <table class="table table-bordered" >
 <thead>
