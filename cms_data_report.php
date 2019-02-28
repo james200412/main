@@ -21,7 +21,7 @@ WHERE tborder_detail.oid = tborder.id AND tborder.status = 2) as sumtotal, tbmen
 JOIN tbmenu ON tbmenu.id = tborder_detail.did 
 JOIN tborder ON tborder.id = tborder_detail.oid 
 AND tborder.status = 2 
-GROUP BY tbmenu.id ORDER BY DPRICE DESC
+GROUP BY tbmenu.id ORDER BY subtotal DESC LIMIT 5
 ";
 
 
@@ -206,7 +206,7 @@ $roworder = mysqli_fetch_assoc($resultorder);
             <div class="col-lg-6">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Dish Sales Report</h5>
+                        <h5>Top 5 Dish Sales</h5>
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -222,7 +222,7 @@ $roworder = mysqli_fetch_assoc($resultorder);
 $queryt1 = "SELECT tborder_detail.did, 
 sum(tborder_detail.subtotal) AS subtotal, 
 tbmenu.dname FROM tborder_detail 
-JOIN tbmenu ON tbmenu.id = tborder_detail.did GROUP BY tbmenu.id ORDER BY DPRICE DESC";
+JOIN tbmenu ON tbmenu.id = tborder_detail.did GROUP BY tbmenu.id ORDER BY subtotal DESC LIMIT 5";
 $resultt1 = mysqli_query($connect, $queryt1);
 
 

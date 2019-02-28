@@ -31,7 +31,7 @@ if(isset($_SESSION["userid"]) && $_SESSION['userlevel'] == 0){
 				</div>
 				
 				<div class="col-sm-4 queries" align="right">
-					<p>Order Food now!!!<span>24-hour service</span></p>
+					<p><span>24-hour service</span></p>
 				</div>
 				
 				<div class="clearfix"></div>
@@ -97,7 +97,7 @@ if(isset($_SESSION["userid"]) && $_SESSION['userlevel'] == 0){
 </div>
 
 <div class="col-sm-4 queries" align="right">
-	<p>Order Food now!!!<span>24-hour service</span></p>
+	<p><span>24-hour service</span></p>
 </div>
 
 <div class="clearfix"></div>
