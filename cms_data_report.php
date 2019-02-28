@@ -165,10 +165,10 @@ $roworder = mysqli_fetch_assoc($resultorder);
 
         <div class="wrapper wrapper-content animated fadeInRight" >
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Recent Sales Data</h5>
+                        <h5>Sales Data</h5>
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -182,19 +182,20 @@ $roworder = mysqli_fetch_assoc($resultorder);
 
  <div>
  
- <!--test-->
- <input type="hidden" id="hiddenline" value="" />
-
-<div class="">
+ <!--Search-->
+ <br>
+ <div class="container">
+<div class="col-sm-4">
 <input type="text" name="From" id="From" class="form-control" placeholder="From Date"/>
 </div>
-<div class="">
+<div class="col-sm-4">
 <input type="text" name="to" id="to" class="form-control" placeholder="To Date"/>
 </div>
-<div class="">
-<input type="button" name="range" id="range" value="Range" class="btn btn-success"/>
+<div class="col-sm-4">
+<input type="button" name="range" id="range" value="Filter" class="btn btn-success"/>
 </div>
-<!--test--></div>
+</div>
+<!--Search--></div>
 
 
                     </div>
@@ -388,12 +389,11 @@ $.datepicker.setDefaults({
 				data:{From:From, to:to},
 				success:function(data123)
 				{
-                   // var res1 = data123.split(",");
                    var re = [];
                    var r = data123.substring(0, data123.length - 1);
                    re.push(r.split(","));
-                   //line_chart.setData(re);
-                   alert(json_decode(data123, true));
+                   line_chart.setData(jQuery.parseJSON(data123));
+                   //alert(jQuery.parseJSON( data123 ));
 				}
 			});
 		}

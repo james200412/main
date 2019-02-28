@@ -14,13 +14,13 @@ $result = mysqli_query($connect, $querytime);
 $chart_data = '';
 while($row = mysqli_fetch_array($result))
 {
-
-$chart_data .= "{ date:'".$row["date"]."', sales:".$row["sales"]."}, ";
 /*
+$chart_data .= "{ date:'".$row["date"]."', sales:".$row["sales"]."}, ";
+*/
 $chart_data[] = array(
     'date'  => $row["date"],
     'sales'  => $row["sales"]
-);*/
+);
 }
 
 $chart_data = json_encode($chart_data);
