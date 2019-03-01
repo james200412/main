@@ -241,12 +241,19 @@ $queryt3342 = "SELECT COUNT(id) AS all1 FROM tbfeedback";
 $resultt3342 = mysqli_query($connect, $queryt3342);
 $rowt3342 = mysqli_fetch_array($resultt3342);
 ?>
-  *Total Feedback Number : <?php echo $rowt3342['all1']; ?>
+  * Total Feedback Number : <?php echo $rowt3342['all1']; ?>
                     </div>
                 </div>
             </div>
 
 <!--Bar Chart-->
+<style>
+select {
+    width: 30%;
+    text-align: center;
+    text-align-last: center;
+}
+</style>
             <div class="col-lg-6">
 
 <h4>Show : &nbsp;
