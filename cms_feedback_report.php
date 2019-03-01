@@ -27,7 +27,7 @@ $chart_data = substr($chart_data, 0, -2);
 
 
 //Bar Chart
-$query2 = "SELECT * FROM TBMENU ORDER BY DTYPE DESC";
+$query2 = "SELECT * FROM TBMENU ORDER BY RATING DESC LIMIT 3";
 $result2 = mysqli_query($connect, $query2);
 $chart_data2 = '';
 while($row2 = mysqli_fetch_array($result2))
@@ -248,22 +248,36 @@ $rowt3342 = mysqli_fetch_array($resultt3342);
 
 <!--Bar Chart-->
             <div class="col-lg-6">
-                <div class="ibox float-e-margins">
+
+<h4>Show : &nbsp;
+<select id="dish_rating" name="dish_rating">
+<option disabled selected>Please Select</option>
+<option value="10000">All</option>
+<option value="3">Top 3</option>
+<option value="5">Top 5</option>
+<option value="10">Top 10</option>
+</select>    </h4 >
+
+                <div id="barchart-rating" class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Dish Rating</h5>
+                        <h5>Top Rated 3 Dishes</h5 >
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
                             </a>
 
                         </div>
-                    </div>
+
+                    </div>   
+
+
+
                     <div class="ibox-content">
                         <div id="morris-bar-chart"></div> 
                         <br>
 
 <?php
-$queryt1 = "SELECT * FROM TBMENU ORDER BY DTYPE DESC";
+$queryt1 = "SELECT * FROM TBMENU ORDER BY RATING DESC LIMIT 3";
 $resultt1 = mysqli_query($connect, $queryt1);
 
 
@@ -403,7 +417,7 @@ while($row233 = mysqli_fetch_array($result233))
 <script>
 $(function() {
 
- 
+//bar chart ajax 
 Morris.Bar({
     element: 'morris-bar-chart',
     data: [<?php echo $chart_data2; ?>],
@@ -415,6 +429,25 @@ Morris.Bar({
     xLabelAngle: 60,
     barColors: ['#1ab394', 'lightblue'],
 });
+
+$('#dish_rating').change(function() {
+    
+    var dishrating = $('#dish_rating').val();
+    
+    if(dishrating != ''){
+    $.ajax({
+            url: "cms/report/feedback_barchartfilter.php",
+            method:"POST",
+            data:{dishrating:dishrating},
+            success: function(data343) {
+            $('#barchart-rating').html(data343);
+         //   alert(data343);
+    
+            }
+      });
+    }
+    });
+
 
 Morris.Donut({
     element: 'morris-donut-chart',

@@ -16,7 +16,7 @@ $chart_data = substr($chart_data, 0, -2);
 
 //Bar Chart
 
-$BarChartLimit = 5;
+$BarChartLimit = 3;
 
 $query2="SELECT tborder_detail.did, sum(tborder_detail.subtotal) AS subtotal, 
 (SELECT sum(tborder_detail.subtotal) from tborder_detail, tborder 
@@ -225,7 +225,7 @@ select {
 }
 </style>
 
-<h4>Show :
+<h4>Show : &nbsp;
 <select id="dish_number" name="dish_number">
 <option disabled selected>Please Select</option>
 <option value="10000">All</option>
@@ -235,7 +235,7 @@ select {
 </select>    </h4 >
                 <div id="barchart-content" class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Top 5 Dish Sales</h5>
+                        <h5>Top 3 Dish Sales</h5>
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -451,7 +451,7 @@ var dishnumber = $('#dish_number').val();
 
 if(dishnumber != ''){
 $.ajax({
-        url: "cms/report/barchartfilter.php",
+        url: "cms/report/data_report_barchartfilter.php",
         method:"POST",
 		data:{dishnumber:dishnumber},
         success: function(data333) {
