@@ -15,19 +15,24 @@ while($row = mysqli_fetch_array($result))
 $chart_data = substr($chart_data, 0, -2);
 
 //Bar Chart
+
+$BarChartLimit = 5;
+
 $query2="SELECT tborder_detail.did, sum(tborder_detail.subtotal) AS subtotal, 
 (SELECT sum(tborder_detail.subtotal) from tborder_detail, tborder 
 WHERE tborder_detail.oid = tborder.id AND tborder.status = 2) as sumtotal, tbmenu.dname FROM tborder_detail 
 JOIN tbmenu ON tbmenu.id = tborder_detail.did 
 JOIN tborder ON tborder.id = tborder_detail.oid 
 AND tborder.status = 2 
-GROUP BY tbmenu.id ORDER BY subtotal DESC LIMIT 5
+GROUP BY tbmenu.id ORDER BY subtotal DESC LIMIT $BarChartLimit
 ";
 
-$queryt1 = "SELECT tborder_detail.did, 
+$queryt1 = "SELECT tborder_detail.did,
 sum(tborder_detail.subtotal) AS subtotal, 
-tbmenu.dname FROM tborder_detail 
-JOIN tbmenu ON tbmenu.id = tborder_detail.did GROUP BY tbmenu.id ORDER BY subtotal DESC LIMIT 5";
+tbmenu.dname FROM tborder_detail
+JOIN tbmenu ON tbmenu.id = tborder_detail.did JOIN tborder ON tborder.id = tborder_detail.oid 
+AND tborder.status = 2 
+GROUP BY tbmenu.id ORDER BY subtotal DESC LIMIT $BarChartLimit";
 $resultt1 = mysqli_query($connect, $queryt1);
 
 
@@ -212,7 +217,23 @@ $roworder = mysqli_fetch_assoc($resultorder);
 
 <!--Bar Chart-->
             <div class="col-lg-6">
-                <div class="ibox float-e-margins">
+<style>
+select {
+    width: 30%;
+    text-align: center;
+    text-align-last: center;
+}
+</style>
+
+<h4>Show :
+<select id="dish_number" name="dish_number">
+<option disabled selected>Please Select</option>
+<option value="10000">All</option>
+<option value="3">Top 3</option>
+<option value="5">Top 5</option>
+<option value="10">Top 10</option>
+</select>    </h4 >
+                <div id="barchart-content" class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>Top 5 Dish Sales</h5>
                         <div class="ibox-tools">
@@ -257,13 +278,19 @@ $rowt2 = mysqli_fetch_assoc($resultt2);
   </tbody>
 
   </table>  
-  *Total Revenue HKD$ <?php echo $rowt2['amount']; ?>
+
+
+
+  * Top Sales Dish Revenue HKD$ <?php echo $rowt2['amount']; ?>
                     </div>
                    
                 </div>
-            </div>
-            </div>
+            </div>         
+</div>
+            
+
         <!--Bar Chart End-->
+
 <!--Customer Remark-->
 
 <div class="row">
@@ -356,7 +383,7 @@ $rowt2 = mysqli_fetch_assoc($resultt2);
 
 <script>
 $(document).ready(function() {
-
+//line chart ajax
 var line_chart =  Morris.Line({
  element : 'recent-sales-chart',
  data:[<?php echo $chart_data; ?>],
@@ -404,7 +431,7 @@ $.datepicker.setDefaults({
 	});
 
 
-
+//bar chart ajax
 Morris.Bar({
     element: 'morris-bar-chart',
     data: [<?php echo $chart_data2; ?>],
@@ -417,6 +444,24 @@ Morris.Bar({
     barColors: ['#1ab394', 'lightblue'],
 });
 
+
+$('#dish_number').change(function() {
+    
+var dishnumber = $('#dish_number').val();
+
+if(dishnumber != ''){
+$.ajax({
+        url: "cms/report/barchartfilter.php",
+        method:"POST",
+		data:{dishnumber:dishnumber},
+        success: function(data333) {
+        $('#barchart-content').html(data333);
+     //   alert(data333);
+
+        }
+  });
+}
+});
 
 });
 

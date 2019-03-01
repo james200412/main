@@ -21,8 +21,16 @@ WHERE tborder_detail.oid = tborder.id AND tborder.status = 2) as sumtotal, tbmen
 JOIN tbmenu ON tbmenu.id = tborder_detail.did 
 JOIN tborder ON tborder.id = tborder_detail.oid 
 AND tborder.status = 2 
-GROUP BY tbmenu.id ORDER BY DPRICE DESC
+GROUP BY tbmenu.id ORDER BY subtotal DESC LIMIT 5
 ";
+
+$queryt1 = "SELECT tborder_detail.did, 
+sum(tborder_detail.subtotal) AS subtotal, 
+tbmenu.dname FROM tborder_detail 
+JOIN tbmenu ON tbmenu.id = tborder_detail.did GROUP BY tbmenu.id ORDER BY subtotal DESC LIMIT 5";
+$resultt1 = mysqli_query($connect, $queryt1);
+
+
 
 
 $result2 = mysqli_query($connect, $query2);
@@ -165,10 +173,10 @@ $roworder = mysqli_fetch_assoc($resultorder);
 
         <div class="wrapper wrapper-content animated fadeInRight" >
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Recent Sales Data</h5>
+                        <h5>Sales Data</h5>
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -179,6 +187,25 @@ $roworder = mysqli_fetch_assoc($resultorder);
                     <div class="ibox-content" style="position: relative">
           <div id="recent-sales-chart"></div>
  
+
+ <div>
+ 
+ <!--Search-->
+ <br>
+ <div class="container">
+<div class="col-sm-4">
+<input type="text" name="From" id="From" class="form-control" placeholder="From Date"/>
+</div>
+<div class="col-sm-4">
+<input type="text" name="to" id="to" class="form-control" placeholder="To Date"/>
+</div>
+<div class="col-sm-4">
+<input type="button" name="range" id="range" value="Filter" class="btn btn-success"/>
+</div>
+</div>
+<!--Search--></div>
+
+
                     </div>
                 </div>
             </div>
@@ -187,7 +214,7 @@ $roworder = mysqli_fetch_assoc($resultorder);
             <div class="col-lg-6">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Dish Sales Report</h5>
+                        <h5>Top 5 Dish Sales</h5>
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -199,15 +226,7 @@ $roworder = mysqli_fetch_assoc($resultorder);
                         <div id="morris-bar-chart"></div> 
                         <br>
 
-<?php
-$queryt1 = "SELECT tborder_detail.did, 
-sum(tborder_detail.subtotal) AS subtotal, 
-tbmenu.dname FROM tborder_detail 
-JOIN tbmenu ON tbmenu.id = tborder_detail.did GROUP BY tbmenu.id ORDER BY DPRICE DESC";
-$resultt1 = mysqli_query($connect, $queryt1);
 
-
-?>
 
 <table class="table table-bordered" >
 <thead>
@@ -332,24 +351,59 @@ $rowt2 = mysqli_fetch_assoc($resultt2);
 
 </html>
 
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
 
 <script>
-$(function() {
+$(document).ready(function() {
 
-Morris.Line({
+var line_chart =  Morris.Line({
  element : 'recent-sales-chart',
  data:[<?php echo $chart_data; ?>],
  xkey:'date',
  ykeys:['sales'],
  labels:['Sales amount HKD$'],
- hideHover:'auto',
+ hideHover:['auto'],
  stacked:true,
      resize: true,
     lineWidth:4,
     lineColors: ['#1ab394'],
     pointSize:5,
 });
+
+$.datepicker.setDefaults({
+		dateFormat: 'yy-mm-dd'
+	});
+	$(function(){
+		$("#From").datepicker();
+		$("#to").datepicker();
+	});
+	$('#range').click(function(){
+		var From = $('#From').val();
+		var to = $('#to').val();
+		if(From != '' && to != '')
+		{
+			$.ajax({
+				url:"cms/report/filteraction.php",
+				method:"POST",
+				data:{From:From, to:to},
+				success:function(data123)
+				{
+                   var re = [];
+                   var r = data123.substring(0, data123.length - 1);
+                   re.push(r.split(","));
+                   line_chart.setData(jQuery.parseJSON(data123));
+                   //alert(jQuery.parseJSON( data123 ));
+				}
+			});
+		}
+		else
+		{
+			alert("Please Select the Date");
+		}
+	});
+
+
 
 Morris.Bar({
     element: 'morris-bar-chart',
