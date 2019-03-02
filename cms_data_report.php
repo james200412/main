@@ -170,12 +170,15 @@ $roworder = mysqli_fetch_assoc($resultorder);
                 </div>
                 
             </div>
-            
-        
 
+<!--chart-->           
+<?php
+$queryocount = "SELECT count(id) AS onumber FROM TBORDER WHERE status = 2";
+$resultocount = mysqli_query($connect, $queryocount);
+$rowocount = mysqli_fetch_assoc($resultocount);
+?>                         
 
-<!--chart-->
-
+<!--Line Chart-->
         <div class="wrapper wrapper-content animated fadeInRight" >
             <div class="row">
                 <div class="col-lg-12">
@@ -209,11 +212,23 @@ $roworder = mysqli_fetch_assoc($resultorder);
 </div>
 </div>
 <!--Search--></div>
-
+<br>
+<div id="filter_amount" class="container">
+<div class="col-sm-4"><h4>Period Revenue : </h4>           
+<small>HKD$</small>
+<h1><?php echo $rowtotal['amount']; ?></h1>
+</div>
+<div class="col-sm-4"><h4>Period Confirmed Orders : </h4>           
+<small>Order Number</small>
+<h1><?php echo $rowocount["onumber"]; ?></h1>
+</div>
+</div>   
 
                     </div>
                 </div>
             </div>
+<!--Line Chart-->
+
 
 <!--Bar Chart-->
             <div class="col-lg-6">
@@ -411,7 +426,7 @@ $.datepicker.setDefaults({
 		if(From != '' && to != '')
 		{
 			$.ajax({
-				url:"cms/report/filteraction.php",
+				url:"cms/report/data_report_linefilteraction.php",
 				method:"POST",
 				data:{From:From, to:to},
 				success:function(data123)
@@ -422,7 +437,19 @@ $.datepicker.setDefaults({
                    line_chart.setData(jQuery.parseJSON(data123));
                    //alert(jQuery.parseJSON( data123 ));
 				}
-			});
+			});    
+
+            $.ajax({
+				url:"cms/report/data_report_linefilter_amount.php",
+				method:"POST",
+				data:{From:From, to:to},
+				success:function(data331)
+				{
+                    $('#filter_amount').html(data331);  
+                   // alert(data331);
+				}
+            });
+
 		}
 		else
 		{
