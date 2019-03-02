@@ -217,8 +217,8 @@ $rowocount = mysqli_fetch_assoc($resultocount);
 <option disabled selected>Please Select</option>
 <option value="7">7 Days</option>
 <option value="30">30 Days</option>
-<option value="120">6 Month</option>
-<option value="365">1 Year</option>
+<option value="180">180 Days</option>
+<option value="365">365 Days</option>
 </select>    </h4 >
 </div>
 
