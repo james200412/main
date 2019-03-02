@@ -201,15 +201,27 @@ $rowocount = mysqli_fetch_assoc($resultocount);
  <!--Search-->
  <br>
  <div class="container">
-<div class="col-sm-4">
+<div class="col-sm-2">
 <input type="text" name="From" id="From" class="form-control" placeholder="From Date"/>
 </div>
-<div class="col-sm-4">
+<div class="col-sm-2">
 <input type="text" name="to" id="to" class="form-control" placeholder="To Date"/>
 </div>
-<div class="col-sm-4">
+<div class="col-sm-2">
 <input type="button" name="range" id="range" value="Filter" class="btn btn-success"/>
 </div>
+
+<div class="col-sm-6">
+<h4>Period : &nbsp;
+<select id="Sales_Period" name="Sales_Period">
+<option disabled selected>Please Select</option>
+<option value="7">7 Days</option>
+<option value="30">30 Days</option>
+<option value="120">6 Month</option>
+<option value="365">1 Year</option>
+</select>    </h4 >
+</div>
+
 </div>
 <!--Search--></div>
 <br>
@@ -435,6 +447,7 @@ $.datepicker.setDefaults({
                    var r = data123.substring(0, data123.length - 1);
                    re.push(r.split(","));
                    line_chart.setData(jQuery.parseJSON(data123));
+                   $('#Sales_Period').val('Please Select');
                    //alert(jQuery.parseJSON( data123 ));
 				}
 			});    
@@ -456,6 +469,42 @@ $.datepicker.setDefaults({
 			alert("Please Select the Date");
 		}
 	});
+
+
+    $('#Sales_Period').change(function() {
+    
+    var periodnumber = $('#Sales_Period').val();
+    
+    if(periodnumber != ''){
+    $.ajax({
+            url: "cms/report/data_report_linefilter_period.php",
+            method:"POST",
+            data:{periodnumber:periodnumber},
+            success: function(data783) {
+                var re1 = [];
+                var r1 = data783.substring(0, data783.length - 1);
+                re1.push(r1.split(","));
+                line_chart.setData(jQuery.parseJSON(data783));
+           // $('#barchart-content').html(data333);
+           // alert(data783);
+    
+            }
+      });
+
+      $.ajax({
+				url:"cms/report/data_report_linefilter_period_amount.php",
+				method:"POST",
+				data:{periodnumber:periodnumber},
+				success:function(data211)
+				{
+                    $('#filter_amount').html(data211);  
+                   // alert(data331);
+				}
+            });
+
+    }
+    });
+
 
 
 //bar chart ajax
