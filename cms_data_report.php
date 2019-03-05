@@ -191,7 +191,7 @@ $rowcno = mysqli_fetch_assoc($resultcno);
             <div class="col-lg-3">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <span class="label label-success pull-right">All</span>
+                        <span class="label label-success pull-right"><a href="cms_data_report_excel" style="color: white;">Export</a></span>
                         <h5>Active Customers</h5>
                     </div>
                     <div class="ibox-content">
