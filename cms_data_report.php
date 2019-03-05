@@ -166,6 +166,49 @@ $roworder = mysqli_fetch_assoc($resultorder);
                 </div>
             </div>
 
+
+
+
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-success pull-right">All</span>
+                        <h5>Customers</h5>
+                    </div>
+                    <div class="ibox-content">
+<?php
+$querycno = "SELECT count(id) AS cnumber FROM TBUSER WHERE ulevel = 0";
+$resultcno = mysqli_query($connect, $querycno);
+$rowcno = mysqli_fetch_assoc($resultcno);
+?>                        
+<div class="stat-percent font-bold text-success"></div>
+                        <small>Number of Registered Customers</small>
+                        <h1 class="no-margins"><?php echo $rowcno['cnumber']; ?></h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-success pull-right">All</span>
+                        <h5>Active Customers</h5>
+                    </div>
+                    <div class="ibox-content">
+<?php
+$queryac = "SELECT count(DISTINCT uid) AS acustomer FROM TBORDER WHERE odate >= DATE_ADD(NOW(), INTERVAL -3 MONTH)";
+$resultac = mysqli_query($connect, $queryac);
+$rowac = mysqli_fetch_assoc($resultac);
+?>                        
+<div class="stat-percent font-bold text-success"></div>
+                        <small>Have Ordered in recent 3 months</small>
+                        <h1 class="no-margins"><?php echo $rowac['acustomer']; ?></h1>
+                    </div>
+                </div>
+            </div>
+
+
+            
         </div>
                 </div>
                 
