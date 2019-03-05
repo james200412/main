@@ -79,7 +79,7 @@ include 'include/cms_leftbar.php';
      <option value="Processing">Processing</option>
      <option value="Delivered">Delivered</option>
      <option value="Completed">Completed</option>
-     <option value="Canceled">Canceled</option>
+     <option value="Cancelled">Cancelled</option>
      </select>
                 </div>
                 <div class="table-responsive">  
@@ -141,7 +141,7 @@ include 'include/cms_leftbar.php';
                                     }else if($orderrow["status"] == 2){
                                       echo "Completed"; 
                                     }else if($orderrow["status"] == 3){
-                                      echo "Canceled";
+                                      echo "Cancelled";
                                     }                        
                                     ?>
                                     </td>
