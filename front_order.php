@@ -206,7 +206,7 @@ echo '<div class="order-detail"><div><h4 class="h4"><b>Item : </b>'. $row1['dnam
 echo '<div>Sub Total : HKD$ '. $row1['subtotal'] .'.00</div>';
 echo '<ul><li><b>Item detail : </b>';
 echo '<div>'. $row1['detail'] .'</div>';
-echo '</li></ul></div>';
+echo '</li></ul></div>--------------------------------------------';
 }
 
 echo '<br><div><div><p><b>Delivery Address:</b><br>'. $row['oaddress'] .'</p></div>
